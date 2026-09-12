@@ -1,4 +1,20 @@
 import nodemailer from 'nodemailer';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Pre-load the logo as base64 once at startup — embeds it directly in email HTML
+// so it displays in ALL email clients without any external image blocking.
+let LOGO_BASE64 = '';
+try {
+  const logoPath = join(__dirname, '../public/images/logo.png');
+  LOGO_BASE64 = readFileSync(logoPath).toString('base64');
+} catch (e) {
+  console.warn('Could not load logo file for email:', e.message);
+}
 
 export default async function handler(req, res) {
   // Only allow POST requests
@@ -34,11 +50,10 @@ export default async function handler(req, res) {
 
     const fullEnquiryType = enquiryType === 'Other' ? `Other (${otherEnquiryDetail})` : enquiryType;
 
-    const host = req.headers['x-forwarded-host'] || req.headers.host || 'adhik-sir-freelance.vercel.app';
-    const protocol = req.headers['x-forwarded-proto'] || (host.includes('localhost') ? 'http' : 'https');
-    
-    // Hardcoding the GitHub raw URL as a highly reliable fallback for email clients
-    const logoUrl = `https://raw.githubusercontent.com/YashI2IT/Adhik_sir_freelance/main/public/images/logo.png`;
+    // Use base64 embedded logo — displays in ALL email clients with zero external requests
+    const logoUrl = LOGO_BASE64
+      ? `data:image/png;base64,${LOGO_BASE64}`
+      : 'https://raw.githubusercontent.com/YashI2IT/Adhik_sir_freelance/main/public/images/logo.png';
 
     const commonEmailStyle = `
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
