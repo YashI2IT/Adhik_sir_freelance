@@ -15,8 +15,8 @@ export function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'About Adhik', path: '/about' },
     { name: 'His Journey', path: '/journey' },
-    { name: 'Our Work', path: '/work' },
-    { name: 'Our Impact', path: '/impact' },
+    { name: 'His Work', path: '/work' },
+    { name: 'His Impact', path: '/impact' },
     { name: 'Recognition', path: '/recognition' },
     { name: 'Contact', path: '/contact' },
   ]
