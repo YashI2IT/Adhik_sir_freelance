@@ -200,13 +200,13 @@ export function HomePageContent() {
             <Tag text="Impact at Scale" />
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 gap-x-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-16 md:gap-y-20 gap-x-4 sm:gap-x-8 md:gap-x-12">
             {impact.map((stat, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.05)} className="flex flex-col border-l border-bwf-ivory/10 pl-6">
-                <span className="font-light text-[3.5rem] md:text-[4.5rem] text-bwf-gold leading-none mb-3 block tracking-tight">
+              <motion.div key={i} {...fadeUp(i * 0.05)} className="flex flex-col border-l border-bwf-ivory/10 pl-4 md:pl-6">
+                <span className="font-light text-[clamp(2.25rem,8vw,4.5rem)] text-bwf-gold leading-none mb-2 md:mb-3 block tracking-tight">
                   {stat.prefix}{stat.value}{stat.suffix}
                 </span>
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-ivory/50">
+                <span className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-ivory/50 leading-relaxed pr-2">
                   {stat.label}
                 </span>
               </motion.div>
