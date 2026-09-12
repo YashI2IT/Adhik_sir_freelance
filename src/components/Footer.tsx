@@ -69,9 +69,11 @@ export function Footer() {
               className="py-10 lg:py-12 pr-0 sm:pr-8 border-b sm:border-b-0 border-bwf-ivory/10 sm:border-r"
             >
               <Link to="/" className="mb-5 block">
-                <span className="font-display text-[22px] md:text-[26px] tracking-wide text-bwf-ivory leading-snug">
-                  Borderless World<br />Foundation
-                </span>
+                <img
+                  src="/images/logo.png"
+                  alt="Borderless World Foundation"
+                  className="h-16 w-auto object-contain"
+                />
               </Link>
 
               <div className="mb-5 space-y-1.5">
