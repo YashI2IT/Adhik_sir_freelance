@@ -80,9 +80,8 @@ export function useContactForm() {
     setSubmitError(null)
 
     try {
-      // Connect to the backend API
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-      const response = await fetch(`${apiUrl}/api/contact`, {
+      // Connect to the Vercel Serverless API
+      const response = await fetch(`/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
