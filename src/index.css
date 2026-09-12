@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	color: #0D343A;
+	background: #F7F6F1;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+
+	--bwf-teal: #12636B;
+	--bwf-blue: #155A8A;
+	--bwf-aqua: #4AAEAE;
+	--bwf-deep: #0D343A;
+	--bwf-ivory: #F7F6F1;
+	--bwf-white: #FFFFFF;
+	--bwf-gold: #B59A63;
+
+	--bwf-container: 72rem;
+	--bwf-reading-width: 42rem;
+	--bwf-radius-sm: 0.25rem;
+	--bwf-radius-md: 0.5rem;
+	--bwf-shadow-soft: 0 0.75rem 2rem rgb(13 52 58 / 0.08);
+}
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	html {
+		min-width: 320px;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		min-width: 320px;
+		min-height: 100vh;
+		margin: 0;
+		background: var(--bwf-ivory);
+		color: var(--bwf-deep);
+		font-size: 1rem;
+		line-height: 1.6;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	button,
+	input,
+	textarea,
+	select {
+		font: inherit;
+	}
+
+	button,
+	a {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	img,
+	svg {
+		display: block;
+		max-width: 100%;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	p {
+		margin: 0;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-weight: 600;
+		letter-spacing: 0;
+		line-height: 1.05;
+	}
+}
+
+@layer components {
+	.container-bwf {
+		width: min(100% - 2.5rem, var(--bwf-container));
+		margin-inline: auto;
+	}
+
+	.text-reading {
+		max-width: var(--bwf-reading-width);
+	}
+
+	.type-display-xl {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: clamp(3.5rem, 8vw, 6.5rem);
+		font-weight: 500;
+		line-height: 0.94;
+	}
+
+	.type-display-lg {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: clamp(3rem, 6vw, 5rem);
+		font-weight: 500;
+		line-height: 0.98;
+	}
+
+	.type-heading-lg {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: clamp(2.25rem, 4vw, 3.5rem);
+		font-weight: 600;
+	}
+
+	.type-heading-md {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: clamp(1.875rem, 3vw, 2.75rem);
+		font-weight: 600;
+	}
+
+	.type-heading-sm {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: clamp(1.5rem, 2vw, 2rem);
+		font-weight: 600;
+	}
+
+	.type-label {
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.button-bwf {
+		display: inline-flex;
+		min-height: 3rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		border: 1px solid transparent;
+		border-radius: var(--bwf-radius-sm);
+		padding: 0.75rem 1.25rem;
+		font-size: 0.875rem;
+		font-weight: 700;
+		line-height: 1;
+		text-decoration: none;
+		transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+	}
+
+	.button-bwf:hover {
+		transform: translateY(-1px);
+	}
+
+	.button-bwf:focus-visible {
+		outline: 3px solid var(--bwf-aqua);
+		outline-offset: 3px;
+	}
+
+	.button-bwf-primary {
+		background: var(--bwf-teal);
+		color: var(--bwf-white);
+	}
+
+	.button-bwf-primary:hover {
+		background: var(--bwf-deep);
+	}
+
+	.button-bwf-secondary {
+		border-color: var(--bwf-teal);
+		background: transparent;
+		color: var(--bwf-teal);
+	}
+
+	.button-bwf-secondary:hover {
+		background: var(--bwf-teal);
+		color: var(--bwf-white);
+	}
+
+	.button-bwf-light {
+		background: var(--bwf-white);
+		color: var(--bwf-deep);
+	}
+
+	.button-bwf-light:hover {
+		background: var(--bwf-gold);
+		color: var(--bwf-white);
+	}
+
+	.section-padding {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	.section-padding-sm {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+
+	@media (min-width: 768px) {
+		.section-padding {
+			padding-top: 7rem;
+			padding-bottom: 7rem;
+		}
+
+		.section-padding-sm {
+			padding-top: 5rem;
+			padding-bottom: 5rem;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.container-bwf {
+		width: min(100% - 4rem, var(--bwf-container));
+	}
+}
