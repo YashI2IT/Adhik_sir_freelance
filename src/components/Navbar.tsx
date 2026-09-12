@@ -83,6 +83,30 @@ export function Navbar() {
           ))}
         </div>
 
+        {/* Desktop Social Icons */}
+        <div className="hidden md:flex items-center gap-3 ml-4">
+          <a href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+            className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/adhik.kadam777?stkn=bTJ6bDZvdW4weWp0" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="https://x.com/adhikadhik" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+            className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+            </svg>
+          </a>
+        </div>
+
         {/* Mobile Menu Toggle */}
         <button
           className={`md:hidden p-2 z-50 relative transition-colors duration-300 ${isOpen ? 'text-bwf-ivory' : 'text-bwf-deep'}`}
@@ -143,6 +167,31 @@ export function Navbar() {
                 className="mt-auto pt-10"
               >
                 <div className="w-12 h-[1px] bg-bwf-gold/30 mb-6" />
+                <p className="text-bwf-ivory/50 text-[11px] uppercase tracking-widest font-bold mb-4">
+                  Follow Adhik
+                </p>
+                <div className="flex gap-3 mb-6">
+                  <a href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                    className="w-10 h-10 rounded-full border border-bwf-ivory/20 flex items-center justify-center text-bwf-ivory/60 hover:border-bwf-ivory hover:text-bwf-ivory transition-all duration-300">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </a>
+                  <a href="https://www.instagram.com/adhik.kadam777?stkn=bTJ6bDZvdW4weWp0" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                    className="w-10 h-10 rounded-full border border-bwf-ivory/20 flex items-center justify-center text-bwf-ivory/60 hover:border-bwf-ivory hover:text-bwf-ivory transition-all duration-300">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  </a>
+                  <a href="https://x.com/adhikadhik" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+                    className="w-10 h-10 rounded-full border border-bwf-ivory/20 flex items-center justify-center text-bwf-ivory/60 hover:border-bwf-ivory hover:text-bwf-ivory transition-all duration-300">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                    </svg>
+                  </a>
+                </div>
                 <p className="text-bwf-ivory/50 text-[11px] uppercase tracking-widest font-bold mb-3">
                   Get in Touch
                 </p>
