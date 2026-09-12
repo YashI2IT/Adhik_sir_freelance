@@ -34,28 +34,82 @@ export default async function handler(req, res) {
 
     const fullEnquiryType = enquiryType === 'Other' ? `Other (${otherEnquiryDetail})` : enquiryType;
 
+    const host = req.headers['x-forwarded-host'] || req.headers.host || 'adhik-sir-freelance.vercel.app';
+    const protocol = req.headers['x-forwarded-proto'] || (host.includes('localhost') ? 'http' : 'https');
+    
+    // Hardcoding the GitHub raw URL as a highly reliable fallback for email clients
+    const logoUrl = `https://raw.githubusercontent.com/YashI2IT/Adhik_sir_freelance/main/public/images/logo.png`;
+
+    const commonEmailStyle = `
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    `;
+
+    const headerStyle = `
+      background-color: #051315;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 3px solid #D4AF37;
+    `;
+
     // 1. Email to the Website Owner (BWF Team)
     const mailToOwner = {
       from: `"BWF Website Contact" <${user}>`,
-      to: user, // Send to the owner's email (the same one used to authenticate)
+      to: user,
       replyTo: email,
-      subject: `New Enquiry from Website: ${fullEnquiryType}`,
+      subject: `New Enquiry: ${fullEnquiryType} - ${fullName}`,
       html: `
-        <h2>New Website Enquiry</h2>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Organisation:</strong> ${organisation || 'N/A'}</p>
-        <p><strong>Enquiry Type:</strong> ${fullEnquiryType}</p>
-        <hr />
-        <h3>Message:</h3>
-        <p>${message.replace(/\n/g, '<br/>')}</p>
+        <div style="background-color: #f9fafb; padding: 20px; font-family: sans-serif;">
+          <div style="${commonEmailStyle}">
+            <div style="${headerStyle}">
+              <img src="${logoUrl}" alt="Borderless World Foundation" style="max-height: 60px; display: block; margin: 0 auto;" />
+            </div>
+            
+            <div style="padding: 40px 30px;">
+              <h2 style="color: #051315; margin-top: 0; font-size: 24px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px;">New Website Enquiry</h2>
+              
+              <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6; width: 120px;"><strong style="color: #4b5563; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Name</strong></td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;">${fullName}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6;"><strong style="color: #4b5563; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Email</strong></td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6;"><a href="mailto:${email}" style="color: #12636B; text-decoration: none;">${email}</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6;"><strong style="color: #4b5563; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Phone</strong></td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;">${phone || '<span style="color:#9ca3af; font-style:italic;">Not provided</span>'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6;"><strong style="color: #4b5563; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Organisation</strong></td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;">${organisation || '<span style="color:#9ca3af; font-style:italic;">Not provided</span>'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6;"><strong style="color: #4b5563; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Enquiry Type</strong></td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;"><span style="background-color: #f3f4f6; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 500;">${fullEnquiryType}</span></td>
+                </tr>
+              </table>
+              
+              <div style="margin-top: 30px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 25px;">
+                <h3 style="color: #051315; margin-top: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Message Details</h3>
+                <p style="color: #334155; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
+              </div>
+              
+              <div style="margin-top: 30px; text-align: center;">
+                <a href="mailto:${email}" style="background-color: #12636B; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 600; display: inline-block;">Reply to ${fullName}</a>
+              </div>
+            </div>
+          </div>
+        </div>
       `,
     };
-
-    const host = req.headers['x-forwarded-host'] || req.headers.host || 'adhik-sir-freelance.vercel.app';
-    const protocol = req.headers['x-forwarded-proto'] || (host.includes('localhost') ? 'http' : 'https');
-    const logoUrl = `${protocol}://${host}/images/logo.png`;
 
     // 2. Thank You Email to the User (Sender)
     const mailToSender = {
@@ -63,44 +117,52 @@ export default async function handler(req, res) {
       to: email,
       subject: `Thank you for contacting Borderless World Foundation`,
       html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-          
-          <!-- Header with Logo -->
-          <div style="text-align: center; padding: 30px 20px 20px 20px;">
-            <img src="${logoUrl}" alt="Borderless World Foundation" style="max-height: 80px; width: auto; object-fit: contain;" />
-          </div>
-          
-          <!-- Blue Separator -->
-          <hr style="border: 0; border-top: 2px solid #16363B; margin: 0;" />
-          
-          <!-- Main Content -->
-          <div style="padding: 30px 40px;">
-            <h2 style="color: #051315; margin-top: 0; margin-bottom: 20px; font-size: 22px;">Thank you for contacting us, ${fullName}!</h2>
-            
-            <p style="color: #4a5568; line-height: 1.6; margin-bottom: 20px;">We have successfully received your inquiry regarding <strong>${fullEnquiryType}</strong>.</p>
-            
-            <p style="color: #4a5568; line-height: 1.6; margin-bottom: 30px;">Our team is currently reviewing your message and will get back to you as soon as possible.</p>
-            
-            <!-- Message Quote Block -->
-            <div style="background-color: #f8fafc; border-left: 3px solid #D4AF37; padding: 20px; margin: 0 0 30px 0; border-radius: 0 4px 4px 0;">
-              <p style="font-size: 11px; color: #718096; margin-top: 0; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">YOUR MESSAGE</p>
-              <p style="margin: 0; color: #4a5568; font-style: italic; line-height: 1.5;">"${message.replace(/\n/g, '<br/>')}"</p>
+        <div style="background-color: #f9fafb; padding: 20px; font-family: sans-serif;">
+          <div style="${commonEmailStyle}">
+            <div style="${headerStyle}">
+              <img src="${logoUrl}" alt="Borderless World Foundation" style="max-height: 60px; display: block; margin: 0 auto;" />
             </div>
             
-            <p style="color: #4a5568; line-height: 1.6; margin-bottom: 30px;">If you have any urgent queries, feel free to reply directly to this email.</p>
+            <div style="padding: 40px 30px;">
+              <h2 style="color: #051315; margin-top: 0; font-size: 24px; margin-bottom: 20px;">Thank you for reaching out, ${fullName}!</h2>
+              
+              <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+                We have successfully received your inquiry regarding <strong style="color: #111827;">${fullEnquiryType}</strong>.
+              </p>
+              
+              <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+                Our team is currently reviewing your message and will get back to you as soon as possible. We deeply appreciate your interest in our mission.
+              </p>
+              
+              <div style="background-color: #f8fafc; border-left: 4px solid #D4AF37; padding: 25px; margin: 0 0 30px 0; border-radius: 0 6px 6px 0;">
+                <p style="font-size: 12px; color: #64748b; margin-top: 0; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Copy of your message</p>
+                <p style="margin: 0; color: #334155; font-style: italic; line-height: 1.6; white-space: pre-wrap;">"${message}"</p>
+              </div>
+              
+              <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin-bottom: 40px;">
+                If you have any urgent queries or need to add more information, feel free to reply directly to this email.
+              </p>
+              
+              <table style="width: 100%; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+                <tr>
+                  <td>
+                    <p style="color: #111827; margin: 0; font-weight: bold; font-size: 16px;">Best Regards,</p>
+                    <p style="color: #12636B; margin: 5px 0 0 0; font-weight: bold; font-size: 16px;">The Borderless World Foundation Team</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
             
-            <!-- Signature -->
-            <p style="color: #051315; margin-bottom: 5px;">Best Regards,</p>
-            <p style="color: #051315; margin-top: 0; font-weight: bold;">The Borderless World Foundation Team</p>
+            <div style="background-color: #f1f5f9; padding: 25px 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+              <p style="margin: 0; color: #64748b; font-size: 12px; line-height: 1.5;">
+                <strong>Borderless World Foundation</strong><br/>
+                Working towards a world without boundaries.
+              </p>
+              <p style="margin: 10px 0 0 0; color: #94a3b8; font-size: 11px;">
+                © ${new Date().getFullYear()} Borderless World Foundation. All rights reserved.
+              </p>
+            </div>
           </div>
-          
-          <!-- Footer -->
-          <div style="background-color: #f1f5f9; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
-            <p style="margin: 0; color: #718096; font-size: 11px;">
-              © ${new Date().getFullYear()} <span style="color: #D4AF37; font-weight: bold;">Borderless World Foundation</span>. All rights reserved.
-            </p>
-          </div>
-          
         </div>
       `,
     };
