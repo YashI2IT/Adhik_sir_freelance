@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Users } from 'lucide-react'
 import { LegalModal, LegalDocType } from './LegalModal'
-import { useVisitorStats } from '../hooks/useVisitorStats'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
   const [legalModal, setLegalModal] = useState<LegalDocType>(null)
-  const { total, active } = useVisitorStats()
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -156,40 +154,8 @@ export function Footer() {
             </motion.div>
           </div>
 
-          {/* ── Visitor counter strip ──────────────────────── */}
-          <motion.div
-            variants={itemVariants}
-            className="py-6 sm:py-8 border-t border-bwf-ivory/10 flex justify-center"
-          >
-            <div className="flex items-center gap-10 sm:gap-16">
-              
-              <div className="flex flex-col items-center gap-1.5 group">
-                <span className="text-xl sm:text-2xl font-medium text-bwf-ivory/90 tracking-wide group-hover:text-bwf-gold transition-colors duration-500">
-                  {total.toLocaleString()}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <Users size={10} className="text-bwf-gold/60" />
-                  <span className="text-[8px] tracking-[0.25em] uppercase font-bold text-bwf-ivory/40">Total Visitors</span>
-                </div>
-              </div>
 
-              <div className="w-px h-8 bg-gradient-to-b from-transparent via-bwf-ivory/20 to-transparent" />
 
-              <div className="flex flex-col items-center gap-1.5 group">
-                <span className="text-xl sm:text-2xl font-medium text-bwf-ivory/90 tracking-wide group-hover:text-bwf-teal transition-colors duration-500">
-                  {active}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-2.5 w-2.5 -left-0.5 -top-0.5 rounded-full bg-bwf-teal/40 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-bwf-teal" />
-                  </span>
-                  <span className="text-[8px] tracking-[0.25em] uppercase font-bold text-bwf-ivory/40">Online Now</span>
-                </div>
-              </div>
-
-            </div>
-          </motion.div>
 
           {/* ── Bottom bar ────────────────────────────────── */}
           <motion.div
