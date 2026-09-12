@@ -58,7 +58,7 @@ export function Navbar() {
       <div className="w-full px-6 md:px-8 lg:px-12 flex items-center justify-between h-20 md:h-24 transition-all duration-300">
         <Link to="/" className="flex items-center shrink-0 z-50 relative" onClick={() => setIsOpen(false)}>
           <img 
-            src="/images/logo.webp" 
+            src="/images/logo.png" 
             alt="BWF Logo" 
             className={`h-[65px] md:h-[75px] w-auto object-contain transition-all duration-300 ${isOpen ? 'scale-105 origin-left' : ''}`} 
           />

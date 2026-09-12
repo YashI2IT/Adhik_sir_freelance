@@ -102,7 +102,6 @@ export function HomePageContent() {
         {/* Content */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10 w-full py-32 lg:py-40">
           <motion.div {...fadeUp(0)} className="max-w-2xl">
-            <Tag text={hero.eyebrow} />
             <h1 className="font-display text-[clamp(3.5rem,8vw,6.5rem)] leading-[1] text-bwf-ivory mb-6 tracking-tight">
               {hero.title.split(' ').map((word, i) => (
                 <span key={i} className={i === 1 ? 'text-bwf-gold italic font-light' : ''}>
