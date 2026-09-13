@@ -32,11 +32,8 @@ const staggerItem = {
 
 /* ─── Premium SVG Seal Component ─── */
 function AwardSeal({ title, icon: Icon = Award }: { title: string, icon?: LucideIcon }) {
-  const single = `${title} • `;
-  let paddedTitle = single;
-  while (paddedTitle.length + single.length <= 75) {
-    paddedTitle += single;
-  }
+  // Use a unique ID for the path to avoid conflicts
+  const pathId = `circlePath-${title.replace(/[^a-zA-Z0-9]/g, '')}`;
   
   return (
     <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center shrink-0 mx-auto mb-10 group-hover:scale-105 transition-transform duration-700">
@@ -47,10 +44,10 @@ function AwardSeal({ title, icon: Icon = Award }: { title: string, icon?: Lucide
       
       {/* Rotating Curved Text */}
       <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full animate-[spin_40s_linear_infinite]">
-        <path id={`circlePath-${title.replace(/\s+/g, '')}`} d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-        <text className="text-[7.5px] font-bold tracking-[0.25em] uppercase fill-[#B59A63]/80">
-          <textPath href={`#circlePath-${title.replace(/\s+/g, '')}`} startOffset="0%">
-            {paddedTitle}
+        <path id={pathId} d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+        <text className="text-[7.5px] font-bold tracking-[0.25em] uppercase fill-[#B59A63]/80" textAnchor="middle">
+          <textPath href={`#${pathId}`} startOffset="25%">
+            {title}
           </textPath>
         </text>
       </svg>
