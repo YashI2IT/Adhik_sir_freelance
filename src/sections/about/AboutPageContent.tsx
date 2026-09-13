@@ -5,10 +5,16 @@ import { aboutData } from '../../data/about'
 
 /* ─── Reusable fade-up motion props ─────────────────── */
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-40px' },
-  transition: { duration: 0.7, ease: 'easeOut' as const, delay },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay },
+})
+
+const heroFadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay },
 })
 
 /* ─── Section label ─────────────────────────────────── */
@@ -52,7 +58,7 @@ export function AboutPageContent() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/50 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10 w-full">
-          <motion.div {...fadeUp(0)} className="max-w-4xl">
+          <motion.div {...heroFadeUp(0)} className="max-w-4xl">
             <Tag text={hero.label} />
             <h1 className="font-display text-[clamp(2.8rem,7vw,5.5rem)] leading-[1.05] text-bwf-ivory mb-8">
               A life shaped by<br />

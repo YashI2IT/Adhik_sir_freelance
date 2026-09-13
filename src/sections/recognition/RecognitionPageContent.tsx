@@ -11,6 +11,12 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay },
 })
 
+const heroFadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay },
+})
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   show: {
@@ -71,7 +77,7 @@ export function RecognitionPageContent() {
         </div>
 
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-          <motion.div {...fadeUp(0)}>
+          <motion.div {...heroFadeUp(0)}>
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#B59A63] mb-8">
               {recognitionData.hero.eyebrow}
             </p>

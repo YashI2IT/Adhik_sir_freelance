@@ -13,6 +13,12 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: 'easeOut' as const, delay },
 })
 
+const heroFadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: 'easeOut' as const, delay },
+})
+
 /* ─── Section label ─────────────────────────────────── */
 function Tag({ text }: { text: string }) {
   return <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-bwf-gold mb-6">{text}</p>
@@ -102,7 +108,7 @@ export function HomePageContent() {
         
         {/* Content */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10 w-full py-32 lg:py-40">
-          <motion.div {...fadeUp(0)} className="max-w-2xl">
+          <motion.div {...heroFadeUp(0)} className="max-w-2xl">
             <h1 className="font-display text-[clamp(3.5rem,8vw,6.5rem)] leading-[1] text-bwf-ivory mb-6 tracking-tight">
               {hero.title.split(' ').map((word, i) => (
                 <span key={i} className={i === 1 ? 'text-bwf-gold italic font-light' : ''}>

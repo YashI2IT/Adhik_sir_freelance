@@ -11,6 +11,12 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: 'easeOut' as const, delay },
 })
 
+const heroFadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: 'easeOut' as const, delay },
+})
+
 /* ─── Animated number counter ───────────────────────── */
 function AnimatedStat({ value, label, context, size = 'lg' }: {
   value: string; label: string; context?: string; size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -116,7 +122,7 @@ export function ImpactPageContent() {
         </motion.div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10 w-full">
-          <motion.div {...fadeUp(0)} className="max-w-4xl">
+          <motion.div {...heroFadeUp(0)} className="max-w-4xl">
             <Tag text="Impact" />
             <h1 className="font-display text-[clamp(2.8rem,7vw,5.5rem)] leading-[1.05] text-bwf-ivory mb-8 text-balance">
               What changes when<br />
