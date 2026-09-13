@@ -166,7 +166,7 @@ export const journeyData = {
     method: 'Be present. Listen. Respond to what people actually need. Mobilise what you do not have. Connect people who can help. Build local capacity. Remain after attention moves elsewhere.'
   },
   cta: {
-    primary: { text: 'EXPLORE OUR WORK', link: '/work' },
+    primary: { text: 'EXPLORE HIS WORK', link: '/work' },
     secondary: { text: 'DISCOVER THE IMPACT', link: '/impact' }
   }
 }

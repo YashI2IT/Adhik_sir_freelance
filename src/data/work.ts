@@ -1,6 +1,6 @@
 export const workData = {
   hero: {
-    label: 'OUR WORK',
+    label: 'HIS WORK',
     heading: 'Where compassion becomes action.',
     supporting: 'From emergency response to long-term systems for education, healthcare, protection, empowerment and community resilience.'
   },

@@ -70,6 +70,6 @@ export const contactData = {
     heading: 'Start a conversation.',
     supporting: 'One conversation can become a connection. One connection can become a bridge.',
     primary: { text: 'SEND AN ENQUIRY', anchor: '#contact-form' },
-    secondary: { text: 'EXPLORE OUR WORK', link: '/work' }
+    secondary: { text: 'EXPLORE HIS WORK', link: '/work' }
   }
 }

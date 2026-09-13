@@ -415,7 +415,7 @@ export function ContactPageContent() {
             to="/work"
             className="flex items-center justify-center gap-4 py-16 px-8 text-bwf-ivory/80 hover:text-bwf-gold hover:bg-[#051315]/40 backdrop-blur-sm transition-all duration-500 group"
           >
-            <span className="text-[11px] font-bold tracking-[0.25em] uppercase">Explore our work</span>
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase">Explore his work</span>
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>

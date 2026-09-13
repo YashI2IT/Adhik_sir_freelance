@@ -11,13 +11,17 @@ export function Navbar() {
   const location = useLocation()
   const { scrollY } = useScroll()
 
-  const links = [
+  type NavLink = { name: string; path: string; external?: boolean };
+
+  const links: NavLink[] = [
     { name: 'Home', path: '/' },
     { name: 'About Adhik', path: '/about' },
     { name: 'His Journey', path: '/journey' },
     { name: 'His Work', path: '/work' },
     { name: 'His Impact', path: '/impact' },
     { name: 'Recognition', path: '/recognition' },
+    { name: 'The Heart of the Cause', path: '/heart-of-the-cause' },
+    { name: 'Gallery & Media', path: '/gallery-media' },
     { name: 'Contact', path: '/contact' },
   ]
 
@@ -55,36 +59,78 @@ export function Navbar() {
           : 'bg-bwf-ivory border-b border-transparent'
       }`}
     >
-      <div className="w-full px-6 md:px-8 lg:px-12 flex items-center justify-between h-20 md:h-24 transition-all duration-300">
-        <Link to="/" className="flex items-center shrink-0 z-50 relative" onClick={() => setIsOpen(false)}>
-          <img 
-            src="/images/logo.png" 
-            alt="BWF Logo" 
-            className={`h-[65px] md:h-[75px] w-auto object-contain transition-all duration-300 ${isOpen ? 'scale-105 origin-left' : ''}`} 
-          />
-        </Link>
+      <div className="w-full px-6 md:px-10 lg:px-12 xl:px-16 flex items-center justify-between h-20 md:h-28 transition-all duration-300">
+        
+        {/* LOGO - LEFT (flex-shrink: 0) */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex-shrink-0 flex items-center z-50 relative"
+        >
+          <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
+            {/* Noticeably larger logo */}
+            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[68px] lg:h-[76px] w-auto object-contain" />
+          </Link>
+        </motion.div>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-12">
-          {links.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`relative text-[13px] md:text-[14px] font-medium transition-colors duration-300 group ${
-                isActive(link.path) ? 'text-bwf-teal' : 'text-bwf-deep/70 hover:text-bwf-deep'
-              }`}
-            >
-              {link.name}
-              {/* Subtle hover indicator */}
-              <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-bwf-teal transition-transform duration-300 origin-left ${
-                isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-              }`} />
-            </Link>
-          ))}
-        </div>
+        {/* NAVIGATION - CENTER (flexible center area) */}
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
+          }}
+          className="hidden lg:flex flex-1 justify-center items-center gap-4 xl:gap-6 2xl:gap-8 px-4"
+        >
+          {links.map((link) =>
+            link.external ? (
+              <motion.a
+                variants={{
+                  hidden: { opacity: 0, y: -10 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                }}
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`relative text-[12px] xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
+              >
+                {link.name}
+                <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-bwf-teal transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100`} />
+              </motion.a>
+            ) : (
+              <motion.div
+                key={link.path}
+                variants={{
+                  hidden: { opacity: 0, y: -10 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                }}
+              >
+                <Link
+                  to={link.path}
+                  className={`relative text-[12px] xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
+                    isActive(link.path) ? 'text-bwf-teal' : 'text-bwf-deep/70 hover:text-bwf-deep'
+                  }`}
+                >
+                  {link.name}
+                  <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-bwf-teal transition-transform duration-300 origin-left ${
+                    isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`} />
+                </Link>
+              </motion.div>
+            )
+          )}
+        </motion.div>
 
-        {/* Desktop Social Icons */}
-        <div className="hidden md:flex items-center gap-3 ml-4">
+        {/* SOCIAL ICONS - RIGHT (flex-shrink: 0) */}
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          className="hidden lg:flex flex-shrink-0 items-center justify-end gap-3"
+        >
           <a href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
             className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -105,11 +151,11 @@ export function Navbar() {
               <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
             </svg>
           </a>
-        </div>
+        </motion.div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className={`md:hidden p-2 z-50 relative transition-colors duration-300 ${isOpen ? 'text-bwf-ivory' : 'text-bwf-deep'}`}
+          className={`lg:hidden p-2 z-50 relative transition-colors duration-300 ${isOpen ? 'text-bwf-ivory' : 'text-bwf-deep'}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -125,7 +171,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="md:hidden fixed inset-0 bg-[#051315] z-40 overflow-hidden flex flex-col pt-24 pb-8 px-6"
+            className="lg:hidden fixed inset-0 bg-[#051315] z-40 overflow-hidden flex flex-col pt-24 pb-8 px-6"
           >
             <div className="absolute inset-0 bg-bwf-deep/20 backdrop-blur-2xl pointer-events-none" />
             
@@ -147,15 +193,27 @@ export function Navbar() {
                     open: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
                   }}
                 >
-                  <Link
-                    to={link.path}
-                    className={`font-display text-4xl sm:text-5xl tracking-wide transition-colors duration-300 block ${
-                      isActive(link.path) ? 'text-bwf-gold italic' : 'text-bwf-ivory hover:text-bwf-ivory/70'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`font-display text-4xl sm:text-5xl tracking-wide transition-colors duration-300 block text-bwf-ivory hover:text-bwf-ivory/70`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className={`font-display text-4xl sm:text-5xl tracking-wide transition-colors duration-300 block ${
+                        isActive(link.path) ? 'text-bwf-gold italic' : 'text-bwf-ivory hover:text-bwf-ivory/70'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               

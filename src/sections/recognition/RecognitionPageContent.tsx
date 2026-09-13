@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ChevronDown, ArrowRight, Award, Star, Medal } from 'lucide-react'
+import { ChevronDown, ArrowRight, Award, Star, Medal, LucideIcon } from 'lucide-react'
 import { recognitionData } from '../../data/recognition'
 
 /* ─── Animation Helpers ─── */
@@ -25,9 +25,12 @@ const staggerItem = {
 }
 
 /* ─── Premium SVG Seal Component ─── */
-function AwardSeal({ title, icon: Icon = Award }: { title: string, icon?: any }) {
-  // Pad the title to wrap around the circle beautifully
-  const paddedTitle = `${title} • `.repeat(3).substring(0, 70);
+function AwardSeal({ title, icon: Icon = Award }: { title: string, icon?: LucideIcon }) {
+  const single = `${title} • `;
+  let paddedTitle = single;
+  while (paddedTitle.length + single.length <= 75) {
+    paddedTitle += single;
+  }
   
   return (
     <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center shrink-0 mx-auto mb-10 group-hover:scale-105 transition-transform duration-700">
@@ -137,9 +140,9 @@ export function RecognitionPageContent() {
                   <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#B59A63]/30 m-4" />
                   
                   {/* Image Override OR SVG Seal */}
-                  {(award as any).imageUrl ? (
+                  {'imageUrl' in award ? (
                      <div className="w-32 h-32 md:w-40 md:h-40 mb-10 shrink-0 relative flex items-center justify-center">
-                       <img src={(award as any).imageUrl} alt={award.title} className="w-full h-full object-contain drop-shadow-lg" />
+                       <img src={(award as { imageUrl: string }).imageUrl} alt={award.title} className="w-full h-full object-contain drop-shadow-lg" />
                      </div>
                   ) : (
                     <AwardSeal title={award.title} icon={Icon} />

@@ -211,7 +211,7 @@ export const impactData = {
   cta: {
     heading: 'See where the journey continues.',
     links: [
-      { text: 'EXPLORE OUR WORK', url: '/work' },
+      { text: 'EXPLORE HIS WORK', url: '/work' },
       { text: 'READ THE JOURNEY', url: '/journey' },
       { text: 'CONNECT WITH BWF', url: '/contact' }
     ]

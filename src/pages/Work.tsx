@@ -4,7 +4,7 @@ import { PageTransition } from '../components/PageTransition'
 
 export default function Work() {
   useEffect(() => {
-    document.title = 'Our Work | Borderless World Foundation'
+    document.title = 'His Work | Borderless World Foundation'
   }, [])
 
   return (

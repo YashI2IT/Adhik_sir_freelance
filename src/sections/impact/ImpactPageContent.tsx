@@ -287,7 +287,7 @@ export function ImpactPageContent() {
               </h2>
               <p className="text-bwf-deep/60 text-[14px] leading-relaxed mb-8">{leadershipImpact.paragraph}</p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-8">
-                <span className="font-light text-[4.5rem] leading-none text-bwf-gold">{leadershipImpact.stat.value}</span>
+                <span className="font-light text-[3.5rem] md:text-[4.5rem] leading-none text-bwf-gold">{leadershipImpact.stat.value}</span>
                 <p className="text-[13px] text-bwf-deep/65 leading-relaxed max-w-[220px]">{leadershipImpact.stat.label}</p>
               </div>
               <div className="border-l-2 border-bwf-gold pl-5 py-1 space-y-5">
@@ -391,7 +391,7 @@ export function ImpactPageContent() {
                 {...fadeUp(i * 0.1)}
                 className={`pt-10 pb-8 ${i < 2 ? 'sm:border-r border-bwf-ivory/10 sm:pr-10' : ''} ${i > 0 ? 'sm:pl-10' : ''}`}
               >
-                <span className="font-display text-[3.5rem] leading-none text-bwf-gold block mb-3">{stat.value}</span>
+                <span className="font-light text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] leading-none text-bwf-gold block mb-3">{stat.value}</span>
                 <span className="text-[10px] font-bold tracking-widest uppercase text-bwf-ivory/80 block mb-1">{stat.label}</span>
                 <span className="text-[12px] text-bwf-ivory/40">{stat.context}</span>
               </motion.div>

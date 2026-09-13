@@ -401,7 +401,7 @@ export function AboutPageContent() {
 }
 
 /* ─── Responsive Editorial Timeline ───────────────── */
-function EvolutionTimeline({ steps }: { steps: any[] }) {
+function EvolutionTimeline({ steps }: { steps: { from: string, to: string }[] }) {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -431,7 +431,7 @@ function EvolutionTimeline({ steps }: { steps: any[] }) {
   )
 }
 
-function TimelineItem({ step, index }: { step: any, index: number }) {
+function TimelineItem({ step, index }: { step: { from: string, to: string }, index: number }) {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,

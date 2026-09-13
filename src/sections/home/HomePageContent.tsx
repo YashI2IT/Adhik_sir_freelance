@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { YouTubeEmbed } from '../../components/YouTubeEmbed'
+import { PressSection } from './PressSection'
 import { homeData } from '../../data/home'
 
 /* ─── Reusable fade-up motion props ─────────────────── */
@@ -52,7 +53,7 @@ const heroSlides = [
    MAIN EXPORT
 ════════════════════════════════════════════════════ */
 export function HomePageContent() {
-  const { hero, intro, impact, framework, workPreview, transformation, philosophy, recognition, engagement, videoGallery, finalCta } = homeData
+  const { hero, intro, impact, framework, journeyPreview, workPreview, transformation, philosophy, recognition, engagement, videoGallery, finalCta } = homeData
 
   /* ── Hero Slider State ── */
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -214,6 +215,57 @@ export function HomePageContent() {
         </div>
       </section>
 
+      {/* ═══ FRAMEWORK ═════════════════════════════════ */}
+      <section className="bg-bwf-ivory py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <motion.div {...fadeUp(0)} className="mb-16">
+            <Tag text="The Framework" />
+            <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] text-bwf-deep leading-tight max-w-2xl">
+              {framework.heading}
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {framework.stages.map((stage, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.1)} className="flex flex-col">
+                <span className="font-light text-4xl text-bwf-gold mb-4 border-b border-bwf-gold/30 pb-4">{stage.id}</span>
+                <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-deep mb-3">{stage.title}</h3>
+                <p className="text-[15px] font-light text-bwf-deep/70 leading-relaxed">{stage.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ JOURNEY PREVIEW ═══════════════════════════ */}
+      <section className="bg-[#051315] text-bwf-ivory py-24 md:py-32 border-t border-bwf-ivory/5">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <div className="grid lg:grid-cols-12 gap-16">
+            <motion.div {...fadeUp(0)} className="lg:col-span-5">
+              <Tag text="Timeline" />
+              <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] text-bwf-ivory leading-tight mb-8">
+                {journeyPreview.heading}
+              </h2>
+              <Link to="/journey" className="inline-block border-b border-bwf-gold text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-gold pb-1 hover:text-bwf-ivory hover:border-bwf-ivory transition-colors">
+                Explore Full Journey →
+              </Link>
+            </motion.div>
+            
+            <motion.div {...fadeUp(0.1)} className="lg:col-span-7">
+              <div className="relative border-l border-bwf-ivory/10 pl-6 md:pl-8 space-y-12">
+                {journeyPreview.milestones.map((m, i) => (
+                  <div key={i} className="relative">
+                    <span className="absolute -left-[31px] md:-left-[39px] top-1.5 w-3 h-3 rounded-full bg-bwf-gold" />
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-bwf-gold mb-2 block">{m.year}</span>
+                    <h3 className="font-display text-xl md:text-2xl text-bwf-ivory mb-2">{m.title}</h3>
+                    <p className="text-[14px] font-light text-bwf-ivory/60 leading-relaxed">{m.description}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ WORK PREVIEW ══════════════════════════════ */}
       <section className="bg-bwf-ivory py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
@@ -262,27 +314,6 @@ export function HomePageContent() {
         </div>
       </section>
 
-      {/* ═══ FRAMEWORK ═════════════════════════════════ */}
-      <section className="bg-bwf-ivory py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <motion.div {...fadeUp(0)} className="mb-16">
-            <Tag text="The Framework" />
-            <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] text-bwf-deep leading-tight max-w-2xl">
-              {framework.heading}
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {framework.stages.map((stage, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.1)} className="flex flex-col">
-                <span className="font-light text-4xl text-bwf-gold mb-4 border-b border-bwf-gold/30 pb-4">{stage.id}</span>
-                <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-deep mb-3">{stage.title}</h3>
-                <p className="text-[15px] font-light text-bwf-deep/70 leading-relaxed">{stage.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ═══ PHILOSOPHY GRID ═══════════════════════════ */}
       <section className="bg-bwf-deep text-bwf-ivory py-24 md:py-32 border-t border-bwf-ivory/5">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
@@ -309,6 +340,9 @@ export function HomePageContent() {
           </div>
         </div>
       </section>
+
+      {/* ═══ PRESS & MEDIA ═════════════════════════════ */}
+      <PressSection />
 
       {/* ═══ VIDEO GALLERY (IN HIS OWN WORDS) ══════════ */}
       <section className="bg-bwf-ivory py-24 md:py-32 border-t border-bwf-deep/5">

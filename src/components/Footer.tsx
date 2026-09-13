@@ -119,6 +119,7 @@ export function Footer() {
                 <NavLink to="/work">His Work</NavLink>
                 <NavLink to="/impact">His Impact</NavLink>
                 <NavLink to="/recognition">Recognition</NavLink>
+                <NavLink to="/heart-of-the-cause">The Heart of the Cause</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
               </ul>
             </motion.div>
@@ -130,7 +131,7 @@ export function Footer() {
             >
               <FooterHeading title="Connect" />
               <p className="text-bwf-ivory/50 text-[13px] mb-6 leading-relaxed tracking-wide">
-                Follow our work and stay connected with the community.
+                Follow his work and stay connected with the community.
               </p>
               <div className="flex gap-3">
                 <SocialIcon href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" label="Facebook">

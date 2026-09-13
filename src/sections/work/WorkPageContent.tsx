@@ -352,7 +352,7 @@ export function WorkPageContent() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8 max-w-5xl mx-auto">
             {impactSnapshot.stats.map((stat, i) => (
               <motion.div key={i} {...fadeUp(i * 0.05)} className="flex flex-col items-center">
-                <span className="font-light text-[3.5rem] md:text-[4.5rem] text-bwf-gold leading-none mb-3 block">
+                <span className="font-light text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] text-bwf-gold leading-none mb-3 block">
                   {stat.number}
                 </span>
                 <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-deep/60 max-w-[150px]">
