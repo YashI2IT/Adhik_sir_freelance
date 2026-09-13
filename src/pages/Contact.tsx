@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
 import { ContactPageContent } from '../sections/contact/ContactPageContent'
 import { PageTransition } from '../components/PageTransition'
+import { useSEO } from '../hooks/useSEO'
 
 export default function Contact() {
-  useEffect(() => {
-    document.title = 'Contact | Borderless World Foundation'
-  }, [])
+  useSEO({
+    title: 'Contact | Borderless World Foundation',
+    description: 'Connect with Adhik Kadam and the Borderless World Foundation for partnerships, speaking engagements, media, or general enquiries.',
+    canonicalPath: '/contact',
+  })
 
   return (
     <PageTransition>

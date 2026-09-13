@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
 import { AboutPageContent } from '../sections/about/AboutPageContent'
 import { PageTransition } from '../components/PageTransition'
+import { useSEO } from '../hooks/useSEO'
 
 export default function About() {
-  useEffect(() => {
-    document.title = 'About Adhik Kadam | Borderless World Foundation'
-  }, [])
+  useSEO({
+    title: 'About Adhik Kadam | Borderless World Foundation',
+    description: 'Learn about Adhik Kadam’s journey as a social entrepreneur and humanitarian, and the evolution of the Borderless World Foundation.',
+    canonicalPath: '/about',
+  })
 
   return (
     <PageTransition>

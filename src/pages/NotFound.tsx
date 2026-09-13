@@ -1,12 +1,14 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { useEffect } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { Link } from 'react-router-dom'
 import { PageTransition } from '../components/PageTransition'
 
 export default function NotFound() {
-  useEffect(() => {
-    document.title = 'Page Not Found | Borderless World Foundation'
-  }, [])
+  useSEO({
+    title: 'Page Not Found | Borderless World Foundation',
+    description: 'The page you are looking for does not exist.',
+    noindex: true
+  })
 
   // Parallax logic
   const mouseX = useMotionValue(0)

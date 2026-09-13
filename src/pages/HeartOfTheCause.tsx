@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { motion } from 'framer-motion'
 import { PageTransition } from '../components/PageTransition'
 
@@ -10,9 +10,11 @@ const fadeUp = (delay = 0) => ({
 })
 
 export default function HeartOfTheCause() {
-  useEffect(() => {
-    document.title = 'The Heart of the Cause | Adhik Kadam'
-  }, [])
+  useSEO({
+    title: 'The Heart of the Cause | Adhik Kadam',
+    description: 'Beyond programmes and institutions lies a simple belief: one human being can become a source of strength for another. Read Adhik Kadam’s core philosophy.',
+    canonicalPath: '/heart-of-the-cause',
+  })
 
   return (
     <PageTransition>

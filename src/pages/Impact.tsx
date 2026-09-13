@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
 import { ImpactPageContent } from '../sections/impact/ImpactPageContent'
 import { PageTransition } from '../components/PageTransition'
+import { useSEO } from '../hooks/useSEO'
 
 export default function Impact() {
-  useEffect(() => {
-    document.title = 'Impact | Borderless World Foundation'
-  }, [])
+  useSEO({
+    title: 'Impact | Borderless World Foundation',
+    description: 'Discover the quantifiable and generational impact of Adhik Kadam’s three decades of humanitarian work in conflict zones.',
+    canonicalPath: '/impact',
+  })
 
   return (
     <PageTransition>

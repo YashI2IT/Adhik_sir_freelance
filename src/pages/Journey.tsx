@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { JourneyHeroSection } from '../sections/journey/JourneyHeroSection'
 import { JourneyIntroSection } from '../sections/journey/JourneyIntroSection'
 import { MainTimelineSection } from '../sections/journey/MainTimelineSection'
@@ -10,9 +10,11 @@ import { JourneyCTASection } from '../sections/journey/JourneyCTASection'
 import { PageTransition } from '../components/PageTransition'
 
 export default function Journey() {
-  useEffect(() => {
-    document.title = 'The Journey | Borderless World Foundation'
-  }, [])
+  useSEO({
+    title: 'The Journey | Borderless World Foundation',
+    description: 'Follow Adhik Kadam’s journey from grassroots volunteering to building an institution for conflict-affected communities.',
+    canonicalPath: '/journey',
+  })
 
   return (
     <PageTransition>

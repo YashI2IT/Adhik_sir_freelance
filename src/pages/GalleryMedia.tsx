@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
 import { GalleryMediaContent } from '../sections/media/GalleryMediaContent'
 import { PageTransition } from '../components/PageTransition'
+import { useSEO } from '../hooks/useSEO'
 
 export default function GalleryMedia() {
-  useEffect(() => {
-    document.title = 'Gallery & Media | Philanthropist Adhik Kadam'
-  }, [])
+  useSEO({
+    title: 'Gallery & Media | Philanthropist Adhik Kadam',
+    description: 'Explore the official photo gallery, press features, and independent evidence of Adhik Kadam’s humanitarian work.',
+    canonicalPath: '/gallery-media',
+  })
 
   return (
     <PageTransition>

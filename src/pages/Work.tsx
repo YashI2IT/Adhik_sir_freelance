@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
 import { WorkPageContent } from '../sections/work/WorkPageContent'
 import { PageTransition } from '../components/PageTransition'
+import { useSEO } from '../hooks/useSEO'
 
 export default function Work() {
-  useEffect(() => {
-    document.title = 'His Work | Borderless World Foundation'
-  }, [])
+  useSEO({
+    title: 'His Work | Borderless World Foundation',
+    description: 'Explore Adhik Kadam’s work across healthcare, girls residential care, education, emergency response, and women empowerment.',
+    canonicalPath: '/work',
+  })
 
   return (
     <PageTransition>
