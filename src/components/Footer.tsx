@@ -121,6 +121,7 @@ export function Footer() {
                 <NavLink to="/recognition">Recognition</NavLink>
                 <NavLink to="/heart-of-the-cause">The Heart of the Cause</NavLink>
                 <NavLink to="/legacy">Legacy</NavLink>
+                <NavLink to="/inner-journey">The Inner Journey</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
               </ul>
             </motion.div>
