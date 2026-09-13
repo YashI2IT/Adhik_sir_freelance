@@ -71,8 +71,8 @@ export function Navbar() {
           className="flex-shrink-0 flex items-center z-50 relative"
         >
           <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
-            {/* Noticeably larger logo, slightly scaled down on lg to fit links */}
-            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[60px] lg:h-[64px] w-auto object-contain" />
+            {/* Noticeably larger logo */}
+            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[68px] lg:h-[76px] xl:h-[86px] w-auto object-contain" />
           </Link>
         </motion.div>
 
@@ -84,7 +84,7 @@ export function Navbar() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
           }}
-          className="hidden lg:flex flex-1 justify-center items-center gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 px-4"
+          className="hidden lg:flex flex-1 justify-center items-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-12 px-4"
         >
           {links.map((link) =>
             link.external ? (
