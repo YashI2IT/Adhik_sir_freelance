@@ -61,18 +61,18 @@ export function Navbar() {
           : 'bg-bwf-ivory border-b border-transparent'
       }`}
     >
-      <div className="w-full px-4 lg:px-6 xl:px-10 flex items-center justify-between h-20 md:h-28 transition-all duration-300">
+      <div className="w-full px-4 lg:px-6 xl:px-8 flex items-center justify-between h-20 md:h-28 transition-all duration-300 max-w-[100vw] overflow-hidden">
         
-        {/* LOGO - LEFT (flex-shrink: 0) */}
+        {/* LOGO - LEFT (fixed width area to balance center) */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-shrink-0 flex items-center z-50 relative"
+          className="flex-shrink-0 flex items-center z-50 relative lg:w-[150px] xl:w-[200px]"
         >
           <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
             {/* Noticeably larger logo */}
-            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[68px] lg:h-[76px] xl:h-[86px] w-auto object-contain" />
+            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[60px] lg:h-[68px] xl:h-[76px] w-auto object-contain" />
           </Link>
         </motion.div>
 
@@ -84,7 +84,7 @@ export function Navbar() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
           }}
-          className="hidden lg:flex flex-1 justify-center items-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-12 px-4"
+          className="hidden lg:flex flex-1 justify-center items-center gap-2 lg:gap-3 xl:gap-5 2xl:gap-6 px-1"
         >
           {links.map((link) =>
             link.external ? (
@@ -97,7 +97,7 @@ export function Navbar() {
                 href={link.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`relative text-[12px] xl:text-[13px] 2xl:text-[14px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
+                className={`relative text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
               >
                 {link.name}
                 <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-bwf-teal transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100`} />
@@ -112,7 +112,7 @@ export function Navbar() {
               >
                 <Link
                   to={link.path}
-                  className={`relative text-[12px] xl:text-[13px] 2xl:text-[14px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
+                  className={`relative text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
                     isActive(link.path) ? 'text-bwf-teal' : 'text-bwf-deep/70 hover:text-bwf-deep'
                   }`}
                 >
@@ -126,30 +126,30 @@ export function Navbar() {
           )}
         </motion.div>
 
-        {/* SOCIAL ICONS - RIGHT (flex-shrink: 0) */}
+        {/* SOCIAL ICONS - RIGHT (fixed width area to balance center) */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          className="hidden xl:flex flex-shrink-0 items-center justify-end gap-3"
+          className="hidden lg:flex flex-shrink-0 items-center justify-end gap-2 xl:gap-3 lg:w-[150px] xl:w-[200px]"
         >
           <a href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-            className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            className="w-7 h-7 xl:w-8 xl:h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
             </svg>
           </a>
           <a href="https://www.instagram.com/adhik.kadam777?stkn=bTJ6bDZvdW4weWp0" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-            className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            className="w-7 h-7 xl:w-8 xl:h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
             </svg>
           </a>
           <a href="https://x.com/adhikadhik" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
-            className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+            className="w-7 h-7 xl:w-8 xl:h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
             </svg>
           </a>
