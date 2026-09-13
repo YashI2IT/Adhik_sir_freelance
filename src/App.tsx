@@ -11,6 +11,7 @@ import Impact from './pages/Impact'
 import Contact from './pages/Contact'
 import Recognition from './pages/Recognition'
 import HeartOfTheCause from './pages/HeartOfTheCause'
+import Legacy from './pages/Legacy'
 import GalleryMedia from './pages/GalleryMedia'
 import NotFound from './pages/NotFound'
 
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
         <Route path="/impact" element={<Impact />} />
         <Route path="/recognition" element={<Recognition />} />
         <Route path="/heart-of-the-cause" element={<HeartOfTheCause />} />
+        <Route path="/legacy" element={<Legacy />} />
         <Route path="/gallery-media" element={<GalleryMedia />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />

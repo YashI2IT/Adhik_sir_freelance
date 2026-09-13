@@ -1,6 +1,7 @@
 import { useSEO } from '../hooks/useSEO'
 import { motion } from 'framer-motion'
 import { PageTransition } from '../components/PageTransition'
+import { Link } from 'react-router-dom'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -197,6 +198,18 @@ export default function HeartOfTheCause() {
               ]}
             />
             
+            {/* Link to Legacy Emerges */}
+            <div className="flex justify-center pt-16">
+              <Link 
+                to="/legacy"
+                className="group flex items-center gap-4 text-bwf-ivory/60 hover:text-bwf-gold transition-colors duration-500 uppercase tracking-[0.2em] text-xs font-bold"
+              >
+                <span className="w-8 h-[1px] bg-bwf-ivory/20 group-hover:bg-bwf-gold transition-colors duration-500" />
+                Explore Legacy Emerges
+                <span className="w-8 h-[1px] bg-bwf-ivory/20 group-hover:bg-bwf-gold transition-colors duration-500" />
+              </Link>
+            </div>
+
           </div>
         </section>
       </main>

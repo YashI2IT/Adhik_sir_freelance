@@ -21,6 +21,7 @@ export function Navbar() {
     { name: 'His Impact', path: '/impact' },
     { name: 'Recognition', path: '/recognition' },
     { name: 'The Heart of the Cause', path: '/heart-of-the-cause' },
+    { name: 'Legacy', path: '/legacy' },
     { name: 'Gallery & Media', path: '/gallery-media' },
     { name: 'Contact', path: '/contact' },
   ]
