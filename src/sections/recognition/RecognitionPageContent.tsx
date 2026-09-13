@@ -44,9 +44,9 @@ function AwardSeal({ title, icon: Icon = Award }: { title: string, icon?: Lucide
       
       {/* Rotating Curved Text */}
       <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full animate-[spin_40s_linear_infinite]">
-        <path id={pathId} d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+        <path id={pathId} d="M 50, 87 a 37,37 0 0,1 0,-74 a 37,37 0 0,1 0,74" fill="transparent" />
         <text className="text-[7.5px] font-bold tracking-[0.25em] uppercase fill-[#B59A63]/80" textAnchor="middle">
-          <textPath href={`#${pathId}`} startOffset="25%">
+          <textPath href={`#${pathId}`} startOffset="50%">
             {title}
           </textPath>
         </text>
