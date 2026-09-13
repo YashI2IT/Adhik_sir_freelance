@@ -61,14 +61,14 @@ export function Navbar() {
           : 'bg-bwf-ivory border-b border-transparent'
       }`}
     >
-      <div className="w-full px-4 lg:px-6 xl:px-8 flex items-center justify-between h-20 md:h-28 transition-all duration-300 max-w-[100vw] overflow-hidden">
+      <div className="w-full px-4 lg:px-6 xl:px-8 2xl:px-12 flex items-center justify-between h-20 md:h-28 transition-all duration-300">
         
-        {/* LOGO - LEFT (fixed width area to balance center) */}
+        {/* LOGO - LEFT */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-shrink-0 flex items-center z-50 relative lg:w-[150px] xl:w-[200px]"
+          className="flex-shrink-0 flex items-center z-50 relative"
         >
           <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
             {/* Noticeably larger logo */}
@@ -76,7 +76,7 @@ export function Navbar() {
           </Link>
         </motion.div>
 
-        {/* NAVIGATION - CENTER (flexible center area) */}
+        {/* NAVIGATION - CENTER */}
         <motion.div 
           initial="hidden"
           animate="visible"
@@ -84,7 +84,7 @@ export function Navbar() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
           }}
-          className="hidden lg:flex flex-1 justify-center items-center gap-2 lg:gap-3 xl:gap-5 2xl:gap-6 px-1"
+          className="hidden lg:flex flex-1 justify-center items-center gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 px-2"
         >
           {links.map((link) =>
             link.external ? (
@@ -97,7 +97,7 @@ export function Navbar() {
                 href={link.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`relative text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
+                className={`relative text-[11px] xl:text-[12px] 2xl:text-[14px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
               >
                 {link.name}
                 <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-bwf-teal transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100`} />
@@ -112,7 +112,7 @@ export function Navbar() {
               >
                 <Link
                   to={link.path}
-                  className={`relative text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
+                  className={`relative text-[11px] xl:text-[12px] 2xl:text-[14px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
                     isActive(link.path) ? 'text-bwf-teal' : 'text-bwf-deep/70 hover:text-bwf-deep'
                   }`}
                 >
@@ -126,12 +126,12 @@ export function Navbar() {
           )}
         </motion.div>
 
-        {/* SOCIAL ICONS - RIGHT (fixed width area to balance center) */}
+        {/* SOCIAL ICONS - RIGHT */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          className="hidden lg:flex flex-shrink-0 items-center justify-end gap-2 xl:gap-3 lg:w-[150px] xl:w-[200px]"
+          className="hidden lg:flex flex-shrink-0 items-center justify-end gap-3"
         >
           <a href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
             className="w-7 h-7 xl:w-8 xl:h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
