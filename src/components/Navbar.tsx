@@ -61,7 +61,7 @@ export function Navbar() {
           : 'bg-bwf-ivory border-b border-transparent'
       }`}
     >
-      <div className="w-full px-6 md:px-10 lg:px-12 xl:px-16 flex items-center justify-between h-20 md:h-28 transition-all duration-300">
+      <div className="w-full px-4 lg:px-6 xl:px-10 flex items-center justify-between h-20 md:h-28 transition-all duration-300">
         
         {/* LOGO - LEFT (flex-shrink: 0) */}
         <motion.div 
@@ -71,8 +71,8 @@ export function Navbar() {
           className="flex-shrink-0 flex items-center z-50 relative"
         >
           <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
-            {/* Noticeably larger logo */}
-            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[68px] lg:h-[76px] w-auto object-contain" />
+            {/* Noticeably larger logo, slightly scaled down on lg to fit links */}
+            <img src="/images/logo.png" alt="Adhik Kadam Logo" className="h-12 md:h-[60px] lg:h-[64px] w-auto object-contain" />
           </Link>
         </motion.div>
 
@@ -84,7 +84,7 @@ export function Navbar() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
           }}
-          className="hidden lg:flex flex-1 justify-center items-center gap-4 xl:gap-6 2xl:gap-8 px-4"
+          className="hidden lg:flex flex-1 justify-center items-center gap-2 xl:gap-4 2xl:gap-6 px-2"
         >
           {links.map((link) =>
             link.external ? (
@@ -97,7 +97,7 @@ export function Navbar() {
                 href={link.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`relative text-[12px] xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
+                className={`relative text-[11px] xl:text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap`}
               >
                 {link.name}
                 <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-bwf-teal transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100`} />
@@ -112,7 +112,7 @@ export function Navbar() {
               >
                 <Link
                   to={link.path}
-                  className={`relative text-[12px] xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
+                  className={`relative text-[11px] xl:text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 group whitespace-nowrap ${
                     isActive(link.path) ? 'text-bwf-teal' : 'text-bwf-deep/70 hover:text-bwf-deep'
                   }`}
                 >
