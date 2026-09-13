@@ -5,7 +5,7 @@ import { PageTransition } from '../components/PageTransition'
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-40px' },
+  viewport: { once: true, amount: 0.05 },
   transition: { duration: 0.7, ease: 'easeOut' as const, delay },
 })
 
@@ -70,7 +70,8 @@ export default function HeartOfTheCause() {
               title="Trust Has to Be Lived" 
               content={[
                 "When I began working in Kashmir, I was young, male, non-Kashmiri and non-Muslim, working with local Muslim girls during an intense period of armed conflict. Naturally, there were questions. There was suspicion about who I was, why I had come and what my intentions were. At times there were rumours and even threats.",
-                "I could understand that fear. Communities had lived through years of conflict and mistrust. I realised that I could not ask people to trust me simply because I believed my intentions were good. Trust cannot be demanded. It has to be lived.",
+                "I could understand that fear. Communities had lived through years of conflict and mistrust. I realised that I could not ask people to trust me simply because I believed my intentions were good.",
+                "Trust cannot be demanded. It has to be lived.",
                 "So I stayed. I lived with people, ate with families, listened to them, involved communities in the work and tried to remain transparent. And, most importantly, I tried not to leave when circumstances became difficult.",
                 "Slowly, questions became conversations. Conversations became relationships. Relationships became trust. And eventually, trust became responsibility."
               ]}
@@ -81,19 +82,31 @@ export default function HeartOfTheCause() {
               content={[
                 "Basera-e-Tabassum began in Kupwara in 2002 with two girls. But the thought was never simply to provide shelter. I wanted every girl to grow with the feeling that somebody believes in her.",
                 "Protection had to lead to education. Education had to open the door to higher education and skills. Opportunity had to lead to independence. And independence, one day, had to become responsibility towards another human being.",
-                "Today, girls who once came to us vulnerable are doctors, nurses, teachers, engineers, lawyers, social workers, professionals, entrepreneurs and breadwinners. Many studied outside Kashmir and experienced a much larger world, but remained connected to their roots and communities. Many have returned to serve.",
+                "Today, girls who once came to us vulnerable are doctors, nurses, teachers, engineers, lawyers, social workers, professionals, entrepreneurs and breadwinners.",
+                "Many studied outside Kashmir and experienced a much larger world, but remained connected to their roots and communities.",
+                "Many have returned to serve.",
                 "Some are running our homes. Some are involved in healthcare programmes. Some work on social issues within their communities. Some are managers, directors, Board members and trustees.",
-                "For me, this completes a circle: The hand that was once held becomes the hand that holds another."
+                "For me, this completes a circle:",
+                "The hand that was once held becomes the hand that holds another."
               ]}
             />
 
             <EditorialSection 
               title="The Silent Messengers of Peace" 
               content={[
-                "Over the years, another understanding became very deep within me. Every girl is not only an individual life being transformed. Many of these girls will become mothers. And a mother is often the first Guru of the next generation.",
-                "Before a child meets a schoolteacher, society or the larger world, the child experiences life through the mother. What she carries within herself can quietly travel into another generation. If she carries fear, fear can travel. If she carries prejudice, prejudice can travel. But if she has experienced dignity, confidence, compassion and trust, these too can travel.",
-                "That is why I see these women as silent messengers of peace. They may never attend a peace conference. They may never speak from a public platform. Nobody may ever call them peacebuilders.",
-                "But in the way they raise their children, practise their professions, support their families and respond to another person's pain, they can quietly change the social fabric of their communities. Perhaps some of the deepest peacebuilding happens this way—without ever being called peacebuilding."
+                "Over the years, another understanding became very deep within me.",
+                "Every girl is not only an individual life being transformed.",
+                "Many of these girls will become mothers.",
+                "And a mother is often the first Guru of the next generation.",
+                "Before a child meets a schoolteacher, society or the larger world, the child experiences life through the mother.",
+                "What she carries within herself can quietly travel into another generation.",
+                "If she carries fear, fear can travel.",
+                "If she carries prejudice, prejudice can travel.",
+                "But if she has experienced dignity, confidence, compassion and trust, these too can travel.",
+                "That is why I see these women as silent messengers of peace.",
+                "They may never attend a peace conference. They may never speak from a public platform. Nobody may ever call them peacebuilders.",
+                "But in the way they raise their children, practise their professions, support their families and respond to another person's pain, they can quietly change the social fabric of their communities.",
+                "Perhaps some of the deepest peacebuilding happens this way—without ever being called peacebuilding."
               ]}
             />
 
@@ -101,63 +114,88 @@ export default function HeartOfTheCause() {
               title="Compassion Must Find a Form" 
               content={[
                 "Love and compassion cannot remain only emotions. When another human being is suffering, compassion has to find a practical form.",
-                "Sometimes that form was a home for a vulnerable girl. During the Kargil War, it became food and community kitchens for displaced families. After the earthquake, it became relief and rehabilitation. During the Kashmir floods, it became rescue, food, doctors, medicines and ambulances.",
-                "When people in remote areas struggled to reach healthcare, it became Mobile Medical Units and critical-care ambulances. When communities living across Dal Lake could not be adequately reached by road, healthcare itself went onto the water through DALPARI.",
-                "The form kept changing because people's needs kept changing. The purpose never changed. To remain available to another human being."
+                "Sometimes that form was a home for a vulnerable girl.",
+                "During the Kargil War, it became food and community kitchens for displaced families.",
+                "After the earthquake, it became relief and rehabilitation.",
+                "During the Kashmir floods, it became rescue, food, doctors, medicines and ambulances.",
+                "When people in remote areas struggled to reach healthcare, it became Mobile Medical Units and critical-care ambulances.",
+                "When communities living across Dal Lake could not be adequately reached by road, healthcare itself went onto the water through DALPARI.",
+                "The form kept changing because people's needs kept changing.",
+                "The purpose never changed.",
+                "To remain available to another human being."
+              ]}
+            />
+
+            <EditorialSection 
+              title="Beyond Our Own Borders" 
+              content={[
+                "For me, the name Borderless World Foundation carries an inner meaning.",
+                "The most difficult borders are not always those drawn on maps.",
+                "There are borders between religions.",
+                "Between communities.",
+                "Between regions.",
+                "Between rich and poor.",
+                "Between “us” and “them.”",
+                "And sometimes the strongest border is our own ego—the idea that my identity, my suffering, my belief or my existence is separate from another's.",
+                "My understanding of Vasudhaiva Kutumbakam—the world is one family—comes from this.",
+                "It is easy to speak these words.",
+                "The real journey is to live them.",
+                "When a Hindu from Maharashtra can be accepted by a Muslim family in Kashmir; when people belonging to different faiths and regions can come together for a vulnerable child; when doctors, volunteers, communities, civil society, government institutions, the Army, security forces and ordinary citizens can stand together during a human crisis—something larger than an organisation is being created.",
+                "The border between “mine” and “yours” begins to become smaller."
               ]}
             />
 
             <EditorialSection 
               title="Service Is Not About Creating Dependence" 
               content={[
-                "I do not want people to remain dependent upon Adhik or BWF. If after decades of work the community still waits for somebody from outside to solve every problem, then somewhere our work remains incomplete.",
-                "I often tell our girls: “32 years ago, I came from Maharashtra to Kashmir to stand with you. But every time there will not be an Adhik coming from somewhere else. Tomorrow, you have to become that person for someone else.”",
-                "And today, I can see that happening. Girls who once needed someone to believe in them are believing in others. Those who needed education are educating others. Those who received healthcare opportunities are serving patients. Those who needed guidance are becoming mentors. Those who once lived within an institution are helping lead that institution.",
+                "I do not want people to remain dependent upon Adhik or BWF.",
+                "If after decades of work the community still waits for somebody from outside to solve every problem, then somewhere our work remains incomplete.",
+                "I often tell our girls:",
+                "“32 years ago, I came from Maharashtra to Kashmir to stand with you. But every time there will not be an Adhik coming from somewhere else. Tomorrow, you have to become that person for someone else.”",
+                "And today, I can see that happening.",
+                "Girls who once needed someone to believe in them are believing in others.",
+                "Those who needed education are educating others.",
+                "Those who received healthcare opportunities are serving patients.",
+                "Those who needed guidance are becoming mentors.",
+                "Those who once lived within an institution are helping lead that institution.",
                 "That is the movement I want to see continue."
               ]}
             />
 
             <EditorialSection 
-              title="My Role Is Also Changing" 
+              title="His Role Is Also Changing" 
               content={[
                 "There was a time when my responsibility was to start things, solve problems, mobilise people and remain physically present wherever I was needed.",
-                "Today, my responsibility is slowly changing. I have to learn to trust others with the journey. To give responsibility. To create space for younger people to make decisions. To allow them to make mistakes and learn. And eventually, to know when to move away from the centre.",
-                "I don't want to create another Adhik Kadam. Every person has their own journey, their own wisdom and their own way of serving. I simply want to help create the belief that each one of us has the capacity to become a source of light for another human being."
+                "Today, my responsibility is slowly changing.",
+                "I have to learn to trust others with the journey.",
+                "To give responsibility.",
+                "To create space for younger people to make decisions.",
+                "To allow them to make mistakes and learn.",
+                "And eventually, to know when to move away from the centre.",
+                "I don't want to create another Adhik Kadam.",
+                "Every person has their own journey, their own wisdom and their own way of serving.",
+                "I simply want to help create the belief that each one of us has the capacity to become a source of light for another human being."
               ]}
             />
 
             <EditorialSection 
               title="The Heart of the Cause" 
               content={[
-                "After all these years, if somebody asks me what is at the heart of this work, my answer is not Borderless World Foundation. It is not a building. It is not a programme. It is not an award. And it is certainly not Adhik Kadam.",
+                "After all these years, if somebody asks me what is at the heart of this work, my answer is not Borderless World Foundation.",
+                "It is not a building.",
+                "It is not a programme.",
+                "It is not an award.",
+                "And it is certainly not Adhik Kadam.",
                 "It is the relationship between one human being and another.",
-                "It is the moment when somebody else's pain stops being “their problem” and begins to touch something within us. It is the courage to remain when leaving would be easier. It is believing in a girl until she begins believing in herself. It is serving without asking which religion, region or identity a person belongs to.",
-                "It is understanding that compassion without action remains incomplete. And ultimately, it is learning that service is not about making ourselves important in another person's life. It is about helping them discover that they already carry strength within themselves."
+                "It is the moment when somebody else's pain stops being “their problem” and begins to touch something within us.",
+                "It is the courage to remain when leaving would be easier.",
+                "It is believing in a girl until she begins believing in herself.",
+                "It is serving without asking which religion, region or identity a person belongs to.",
+                "It is understanding that compassion without action remains incomplete.",
+                "And ultimately, it is learning that service is not about making ourselves important in another person's life.",
+                "It is about helping them discover that they already carry strength within themselves."
               ]}
             />
-
-            <EditorialSection 
-              title="Where Legacy Emerges" 
-              content={[
-                "I never started this journey thinking about legacy. If anything from my life has to remain, I don't want it to remain only in buildings, institutions or in the name of Adhik Kadam. I would rather see it living quietly in people.",
-                "In a girl who became independent. In a doctor who serves her own community. In a social worker who stands beside another vulnerable family. In a mother who teaches her child compassion rather than prejudice. In one human being who decides not to abandon another.",
-                "My Master gave me a beautiful way of understanding this: A drop fulfils its journey when it merges into the ocean. Once merged, the drop does not need to preserve its separate identity. But its journey does not disappear. It becomes part of the ocean, and through the natural movement of the ocean, new waves arise and find their own journey.",
-                "Perhaps our lives and our work should be like that. I don't want the future to carry my name. I would rather see the idea travel. From one heart to another. From one family to another. From one community to another. From one generation to the next.",
-                "If that happens, the drop has fulfilled its purpose. And perhaps that is where legacy truly emerges—not in preserving the person who began the journey, but in allowing the values to move naturally through countless lives."
-              ]}
-            />
-
-            {/* Final Emphasis */}
-            <motion.div {...fadeUp(0)} className="pt-16 pb-8 text-center border-t border-bwf-ivory/10">
-              <h3 className="font-display text-2xl md:text-3xl text-bwf-gold italic leading-relaxed mb-6">
-                One heart enriching another.<br/>
-                One human being taking responsibility for another.<br/>
-                One generation carrying compassion into the next.
-              </h3>
-              <p className="text-[12px] font-bold tracking-[0.3em] uppercase text-bwf-ivory/50">
-                And slowly, quietly, a Borderless World emerging within us.
-              </p>
-            </motion.div>
             
           </div>
         </section>
