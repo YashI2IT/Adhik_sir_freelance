@@ -166,15 +166,7 @@ export function Footer() {
             className="py-6 sm:py-5 border-t border-bwf-ivory/10 flex flex-col lg:flex-row justify-between items-center gap-5 sm:gap-4 text-center lg:text-left"
           >
             <p className="text-[11px] text-bwf-ivory/40 tracking-widest uppercase">
-              &copy; {currentYear}&nbsp;
-              <a
-                href="https://www.borderlessworldfoundation.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-bwf-gold transition-colors inline-block"
-              >
-                Borderless World Foundation
-              </a>
+              &copy; {currentYear} Philanthropist Adhik Kadam
             </p>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-5 text-[11px] text-bwf-ivory/40 tracking-wide font-medium">
               <button onClick={() => setLegalModal('privacy')} className="hover:text-bwf-ivory transition-colors">Privacy Policy</button>
