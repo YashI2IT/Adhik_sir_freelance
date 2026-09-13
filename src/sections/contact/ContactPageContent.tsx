@@ -1,9 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Globe, Send, ChevronDown, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, Phone, ChevronDown } from 'lucide-react'
 import { contactData } from '../../data/contact'
-import { useContactForm } from '../../hooks/useContactForm'
 
 /* ─── Animation helpers ─────────────────────────────── */
 const fadeUp = (delay = 0) => ({
@@ -12,47 +11,6 @@ const fadeUp = (delay = 0) => ({
   viewport: { once: true, amount: 0.05 },
   transition: { duration: 0.65, ease: 'easeOut' as const, delay },
 })
-
-/* ─── Floating label input ──────────────────────────── */
-function Field({
-  id, label, type = 'text', required = false, error, children, ...rest
-}: {
-  id: string; label: string; type?: string; required?: boolean; error?: string;
-  children?: React.ReactNode; [k: string]: unknown
-}) {
-  const base = `w-full px-0 pt-6 pb-2 bg-transparent border-0 border-b text-[15px] text-bwf-deep placeholder-transparent focus:outline-none focus:ring-0 transition-colors peer`
-  const borderCls = error ? 'border-red-400' : 'border-bwf-deep/20 focus:border-bwf-deep'
-  const labelCls = `absolute left-0 top-1 text-[10px] font-bold tracking-[0.15em] uppercase text-bwf-deep/50 transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-sm peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-normal peer-focus:top-1 peer-focus:text-[10px] peer-focus:font-bold peer-focus:tracking-[0.15em] peer-focus:uppercase`
-
-  return (
-    <div className="relative pt-4">
-      {children ? (
-        <>
-          <label htmlFor={id} className="block text-[10px] font-bold tracking-[0.15em] uppercase text-bwf-deep/50 mb-2">{label}{required && ' *'}</label>
-          {children}
-        </>
-      ) : (
-        <>
-          {type === 'textarea' ? (
-            <textarea
-              id={id} name={id} placeholder={label} rows={4}
-              className={`${base} ${borderCls} resize-none`}
-              {...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-            />
-          ) : (
-            <input
-              id={id} name={id} type={type} placeholder={label}
-              className={`${base} ${borderCls}`}
-              {...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
-            />
-          )}
-          <label htmlFor={id} className={labelCls}>{label}{required && ' *'}</label>
-        </>
-      )}
-      {error && <p className="mt-1 text-[11px] text-red-500 flex items-center gap-1"><AlertCircle size={10} />{error}</p>}
-    </div>
-  )
-}
 
 /* ─── Contact Image Slider ──────────────────────────── */
 function ContactImageSlider() {
@@ -105,15 +63,7 @@ function ContactImageSlider() {
 
 /* ─── Main export ───────────────────────────────────── */
 export function ContactPageContent() {
-  const { pathways, contactInfo, formOptions } = contactData
-  const {
-    formData, errors, isSubmitting, isSuccess, submitError,
-    handleChange, handleSubmit, resetForm
-  } = useContactForm()
-
-
-
-
+  const { pathways, contactInfo } = contactData
 
   return (
     <>
@@ -157,14 +107,7 @@ export function ContactPageContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-bwf-deep/10">
             {pathways.map((p, i) => (
               <motion.a
-                href="#contact-form"
-                onClick={() => {
-                  // Find the closest matching option in formOptions or just use the title if it matches exactly
-                  const match = formOptions.find(opt => opt.toLowerCase() === p.title.toLowerCase())
-                  if (match) {
-                    handleChange({ target: { name: 'enquiryType', value: match } } as React.ChangeEvent<HTMLInputElement>)
-                  }
-                }}
+                href={`mailto:${contactInfo.email}`}
                 key={i}
                 {...fadeUp(i * 0.08)}
                 className="bg-bwf-ivory p-8 md:p-10 group hover:bg-bwf-deep transition-colors duration-500 flex flex-col text-left cursor-pointer"
@@ -181,166 +124,28 @@ export function ContactPageContent() {
         </div>
       </section>
 
-      {/* ═══════════════ FORM + INFO ════════════════════ */}
-      <section className="bg-bwf-ivory py-16 md:py-24" id="contact-form">
+      {/* ═══════════════ CONTACT INFO ════════════════════ */}
+      <section className="bg-bwf-ivory py-16 md:py-24" id="contact-info">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 xl:gap-28">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 xl:gap-28 items-center">
 
-            {/* ── LEFT: Form ── */}
-            <div className="lg:col-span-7">
-              <motion.div {...fadeUp(0)} className="mb-10">
+            {/* ── LEFT: Info ── */}
+            <div className="flex flex-col gap-12">
+              <motion.div {...fadeUp(0)}>
                 <h2 className="font-display text-[clamp(1.8rem,4vw,2.8rem)] text-bwf-deep leading-tight mb-3">
-                  Send us a message.
+                  Connect with us.
                 </h2>
                 <p className="text-bwf-deep/55 text-[15px] leading-relaxed">
-                  Fill in the form and we'll respond within 2–3 working days.
+                  Reach out via email or phone for any enquiries, collaborations, or speaking invitations.
                 </p>
               </motion.div>
 
-              <motion.div {...fadeUp(0.1)}>
-                <AnimatePresence mode="wait">
-                  {isSuccess ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.97 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="py-16 text-center border border-bwf-deep/8 rounded-sm"
-                    >
-                      <div className="w-14 h-14 rounded-full bg-bwf-teal/10 flex items-center justify-center mx-auto mb-5">
-                        <CheckCircle size={24} className="text-bwf-teal" strokeWidth={1.5} />
-                      </div>
-                      <h3 className="font-display text-2xl text-bwf-deep mb-2">Message received.</h3>
-                      <p className="text-bwf-deep/60 text-[14px] mb-8">We'll be in touch with you shortly.</p>
-                      <button onClick={resetForm} className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-teal hover:text-bwf-deep transition-colors">
-                        Send another →
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSubmit}
-                      noValidate
-                      className="space-y-8"
-                    >
-                      {submitError && (
-                        <div className="p-4 bg-red-50 border border-red-100 rounded-sm flex items-start gap-3 text-[13px] text-red-700">
-                          <AlertCircle size={16} className="mt-0.5 shrink-0" />
-                          {submitError}
-                        </div>
-                      )}
-
-                      {/* Row 1 */}
-                      <div className="grid sm:grid-cols-2 gap-8">
-                        <Field id="fullName" label="Full Name" required
-                          value={formData.fullName} onChange={handleChange}
-                          error={errors.fullName} autoComplete="name"
-                        />
-                        <Field id="email" label="Email Address" type="email" required
-                          value={formData.email} onChange={handleChange}
-                          error={errors.email} autoComplete="email"
-                        />
-                      </div>
-
-                      {/* Row 2 */}
-                      <div className="grid sm:grid-cols-2 gap-8">
-                        <Field id="phone" label="Phone (optional)" type="tel"
-                          value={formData.phone} onChange={handleChange}
-                          autoComplete="tel"
-                        />
-                        <Field id="organisation" label="Organisation (optional)"
-                          value={formData.organisation} onChange={handleChange}
-                          autoComplete="organization"
-                        />
-                      </div>
-
-                      {/* Enquiry type chips */}
-                      <div>
-                        <p className="block text-[10px] font-bold tracking-[0.15em] uppercase text-bwf-deep/50 mb-4">Enquiry Type *</p>
-                        <div className="flex flex-wrap gap-2">
-                          {formOptions.map((opt) => (
-                            <button
-                              key={opt}
-                              type="button"
-                              onClick={() => {
-                                handleChange({ target: { name: 'enquiryType', value: opt } } as React.ChangeEvent<HTMLInputElement>)
-                              }}
-                              className={`px-4 py-2 rounded-full text-[12px] font-medium tracking-wide border transition-all duration-200 ${
-                                formData.enquiryType === opt
-                                  ? 'bg-bwf-deep text-bwf-ivory border-bwf-deep'
-                                  : 'bg-transparent text-bwf-deep/60 border-bwf-deep/20 hover:border-bwf-deep/50 hover:text-bwf-deep'
-                              }`}
-                            >
-                              {opt}
-                            </button>
-                          ))}
-                        </div>
-                        <AnimatePresence>
-                          {formData.enquiryType === 'Other' && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                              animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
-                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                              className="overflow-hidden"
-                            >
-                              <Field
-                                id="otherEnquiryDetail"
-                                label="Please specify your enquiry"
-                                required
-                                value={formData.otherEnquiryDetail || ''}
-                                onChange={handleChange}
-                                error={errors.otherEnquiryDetail}
-                              />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                        {errors.enquiryType && <p className="mt-1.5 text-[11px] text-red-500 flex items-center gap-1"><AlertCircle size={10} />{errors.enquiryType}</p>}
-                        {errors.otherEnquiryDetail && <p className="mt-1.5 text-[11px] text-red-500 flex items-center gap-1"><AlertCircle size={10} />{errors.otherEnquiryDetail}</p>}
-                      </div>
-
-                      {/* Message */}
-                      <Field id="message" label="Your Message" type="textarea" required
-                        value={formData.message} onChange={handleChange}
-                        error={errors.message}
-                      />
-
-                      {/* Submit */}
-                      <div className="flex items-center gap-6 pt-2">
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className={`inline-flex items-center gap-3 px-8 py-4 bg-bwf-deep text-bwf-ivory text-[12px] font-bold tracking-[0.2em] uppercase rounded-sm transition-all duration-300 ${
-                            isSubmitting ? 'opacity-60 cursor-not-allowed' : 'hover:bg-bwf-teal'
-                          }`}
-                        >
-                          {isSubmitting ? 'Sending…' : 'Send Enquiry'}
-                          <Send size={13} strokeWidth={2} />
-                        </button>
-                        <p className="text-[11px] text-bwf-deep/35 leading-relaxed">
-                          Your information is kept confidential.
-                        </p>
-                      </div>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </div>
-
-            {/* ── RIGHT: Info ── */}
-            <div className="lg:col-span-5 flex flex-col gap-10">
-
-              {/* Contact Details */}
               <motion.div {...fadeUp(0.15)}>
                 <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-bwf-gold mb-6">Contact Details</p>
                 <div className="space-y-6">
                   {[
                     { Icon: Mail, label: 'Email', value: contactInfo.email },
                     { Icon: Phone, label: 'Phone', value: contactInfo.phone },
-                    { Icon: MapPin, label: 'Address', value: contactInfo.address },
-                    { Icon: Globe, label: 'Website', value: contactInfo.website },
                   ].map(({ Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-4">
                       <div className="w-9 h-9 rounded-full border border-bwf-deep/10 flex items-center justify-center text-bwf-deep/40 shrink-0">
@@ -355,29 +160,27 @@ export function ContactPageContent() {
                 </div>
               </motion.div>
 
-              {/* Dynamic Image Slider */}
-              <motion.div {...fadeUp(0.2)}>
-                <ContactImageSlider />
-              </motion.div>
-
-              {/* Divider */}
-              <div className="h-px bg-bwf-deep/8" />
-
               {/* Speaking CTA card */}
               <motion.div {...fadeUp(0.25)} className="bg-bwf-deep p-8 rounded-sm text-bwf-ivory">
                 <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-bwf-gold mb-3">Speaking Invitations</p>
                 <h4 className="font-display text-xl mb-3 leading-snug">Invite Adhik Kadam to speak</h4>
                 <p className="text-bwf-ivory/70 text-[14px] md:text-[15px] leading-relaxed mb-6">
-                  For conferences, academic events, CSR programmes and public platforms — select "Speaking Invitation" in the enquiry form.
+                  For conferences, academic events, CSR programmes and public platforms, please reach out to us via email.
                 </p>
-                <button
-                  onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-gold hover:text-bwf-ivory transition-colors"
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="text-[11px] font-bold tracking-[0.2em] uppercase text-bwf-gold hover:text-bwf-ivory transition-colors inline-block"
                 >
                   Send a speaking request →
-                </button>
+                </a>
               </motion.div>
             </div>
+
+            {/* ── RIGHT: Image Slider ── */}
+            <motion.div {...fadeUp(0.2)} className="flex flex-col">
+              <ContactImageSlider />
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -404,13 +207,13 @@ export function ContactPageContent() {
         </div>
 
         <div className="relative z-10 grid md:grid-cols-2 border-t border-bwf-ivory/10">
-          <button
-            onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+          <a
+            href={`mailto:${contactInfo.email}`}
             className="flex items-center justify-center gap-4 py-16 px-8 text-bwf-ivory/80 hover:text-bwf-gold hover:bg-[#051315]/40 backdrop-blur-sm border-b md:border-b-0 md:border-r border-bwf-ivory/10 transition-all duration-500 group"
           >
             <span className="text-[11px] font-bold tracking-[0.25em] uppercase">Write to us</span>
-            <span className="group-hover:translate-y-[-2px] transition-transform">↑</span>
-          </button>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
           <Link
             to="/work"
             className="flex items-center justify-center gap-4 py-16 px-8 text-bwf-ivory/80 hover:text-bwf-gold hover:bg-[#051315]/40 backdrop-blur-sm transition-all duration-500 group"
