@@ -15,15 +15,15 @@ export function Navbar() {
 
   const links: NavLink[] = [
     { name: 'Home', path: '/' },
-    { name: 'About Adhik', path: '/about' },
-    { name: 'His Journey', path: '/journey' },
-    { name: 'His Work', path: '/work' },
-    { name: 'His Impact', path: '/impact' },
+    { name: 'About', path: '/about' },
+    { name: 'Journey', path: '/journey' },
+    { name: 'Work', path: '/work' },
+    { name: 'Impact', path: '/impact' },
     { name: 'Recognition', path: '/recognition' },
-    { name: 'The Heart of the Cause', path: '/heart-of-the-cause' },
+    { name: 'Heart of the Cause', path: '/heart-of-the-cause' },
     { name: 'Legacy', path: '/legacy' },
-    { name: 'The Inner Journey', path: '/inner-journey' },
-    { name: 'Gallery & Media', path: '/gallery-media' },
+    { name: 'Inner Journey', path: '/inner-journey' },
+    { name: 'Gallery', path: '/gallery-media' },
     { name: 'Contact', path: '/contact' },
   ]
 
@@ -131,7 +131,7 @@ export function Navbar() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          className="hidden lg:flex flex-shrink-0 items-center justify-end gap-3"
+          className="hidden xl:flex flex-shrink-0 items-center justify-end gap-3"
         >
           <a href="https://www.facebook.com/share/19VP8TJcXH/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
             className="w-8 h-8 rounded-full border border-bwf-deep/20 flex items-center justify-center text-bwf-deep/60 hover:bg-bwf-deep hover:text-bwf-ivory hover:border-bwf-deep transition-all duration-300">
