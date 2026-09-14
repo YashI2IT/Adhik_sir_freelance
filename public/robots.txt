@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.borderlessworldfoundation.org/sitemap.xml
+Sitemap: https://adhikkadam.com/sitemap.xml

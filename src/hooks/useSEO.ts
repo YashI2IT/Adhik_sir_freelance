@@ -24,7 +24,7 @@ export function useSEO({ title, description, canonicalPath, noindex = false }: S
     }
 
     // 3. Update Canonical Tag
-    const baseUrl = 'https://www.borderlessworldfoundation.org';
+    const baseUrl = 'https://adhikkadam.com';
     const canonicalUrl = canonicalPath ? `${baseUrl}${canonicalPath}` : baseUrl;
     
     let linkCanonical = document.querySelector('link[rel="canonical"]');
