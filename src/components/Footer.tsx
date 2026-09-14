@@ -105,6 +105,9 @@ export function Footer() {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About Adhik</NavLink>
                 <NavLink to="/journey">His Journey</NavLink>
+                <NavLink to="/work">Our Work</NavLink>
+                <NavLink to="/impact">Our Impact</NavLink>
+                <NavLink to="/recognition">Recognition</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
               </ul>
             </motion.div>
@@ -116,13 +119,12 @@ export function Footer() {
             >
               <FooterHeading title="Explore" />
               <ul className="flex flex-col gap-0.5">
-                <NavLink to="/work">His Work</NavLink>
-                <NavLink to="/impact">His Impact</NavLink>
-                <NavLink to="/recognition">Recognition</NavLink>
                 <NavLink to="/heart-of-the-cause">The Heart of the Cause</NavLink>
-                <NavLink to="/legacy">Legacy</NavLink>
                 <NavLink to="/inner-journey">The Inner Journey</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLink to="/curing-the-gash">Curing the Gash</NavLink>
+                <NavLink to="/daughters-return-to-their-soil">Daughters Return to Their Soil</NavLink>
+                <NavLink to="/legacy">Legacy</NavLink>
+                <NavLink to="/gallery-media">Gallery & Media</NavLink>
               </ul>
             </motion.div>
 

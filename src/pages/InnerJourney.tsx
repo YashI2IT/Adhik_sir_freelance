@@ -140,6 +140,33 @@ export default function InnerJourney() {
                   </p>
                 ))}
               </div>
+
+              {/* Varkari Media Integration */}
+              <motion.div {...fadeUp(0)} className="mt-24 space-y-8 md:space-y-12">
+                <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl relative bg-[#051315]">
+                  <video 
+                    controls 
+                    className="w-full h-full object-contain"
+                    preload="metadata"
+                    poster="/images/IMG_0000.jpeg"
+                  >
+                    <source src="/images/VDE-0000.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-lg group">
+                    <img src="/images/IMG_0000.jpeg" alt="Varkari Tradition" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+                  </div>
+                  <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-lg group">
+                    <img src="/images/IMG_0001.jpeg" alt="Varkari Devotion" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+                  </div>
+                  <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-lg group">
+                    <img src="/images/IMG_0002.jpeg" alt="Varkari Journey" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </section>
         )}

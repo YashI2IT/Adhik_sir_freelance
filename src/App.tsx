@@ -13,6 +13,8 @@ import Recognition from './pages/Recognition'
 import HeartOfTheCause from './pages/HeartOfTheCause'
 import Legacy from './pages/Legacy'
 import InnerJourney from './pages/InnerJourney'
+import CuringTheGash from './pages/CuringTheGash'
+import DaughtersReturn from './pages/DaughtersReturn'
 import GalleryMedia from './pages/GalleryMedia'
 import NotFound from './pages/NotFound'
 
@@ -30,6 +32,8 @@ function AnimatedRoutes() {
         <Route path="/heart-of-the-cause" element={<HeartOfTheCause />} />
         <Route path="/legacy" element={<Legacy />} />
         <Route path="/inner-journey" element={<InnerJourney />} />
+        <Route path="/curing-the-gash" element={<CuringTheGash />} />
+        <Route path="/daughters-return-to-their-soil" element={<DaughtersReturn />} />
         <Route path="/gallery-media" element={<GalleryMedia />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />

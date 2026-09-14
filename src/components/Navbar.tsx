@@ -13,19 +13,26 @@ export function Navbar() {
 
   type NavLink = { name: string; path: string; external?: boolean };
 
-  const links: NavLink[] = [
+  const primaryLinks: NavLink[] = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Journey', path: '/journey' },
-    { name: 'Work', path: '/work' },
-    { name: 'Impact', path: '/impact' },
+    { name: 'About Adhik', path: '/about' },
+    { name: 'His Journey', path: '/journey' },
+    { name: 'Our Work', path: '/work' },
+    { name: 'Our Impact', path: '/impact' },
     { name: 'Recognition', path: '/recognition' },
-    { name: 'Heart of the Cause', path: '/heart-of-the-cause' },
+  ]
+
+  const moreLinks: NavLink[] = [
+    { name: 'The Heart of the Cause', path: '/heart-of-the-cause' },
+    { name: 'The Inner Journey', path: '/inner-journey' },
+    { name: 'Curing the Gash', path: '/curing-the-gash' },
+    { name: 'Daughters Return to Their Soil', path: '/daughters-return-to-their-soil' },
     { name: 'Legacy', path: '/legacy' },
-    { name: 'Inner Journey', path: '/inner-journey' },
-    { name: 'Gallery', path: '/gallery-media' },
+    { name: 'Gallery & Media', path: '/gallery-media' },
     { name: 'Contact', path: '/contact' },
   ]
+
+  const allLinks = [...primaryLinks, ...moreLinks]
 
   const isActive = (path: string) => location.pathname === path
 
@@ -86,7 +93,7 @@ export function Navbar() {
           }}
           className="hidden lg:flex flex-1 justify-center items-center gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 px-2"
         >
-          {links.map((link) =>
+          {primaryLinks.map((link) =>
             link.external ? (
               <motion.a
                 variants={{
@@ -124,6 +131,32 @@ export function Navbar() {
               </motion.div>
             )
           )}
+          
+          {/* Dropdown for More links */}
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0, y: -10 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+            }}
+            className="relative group"
+          >
+            <button className="flex items-center gap-1 relative text-[11px] xl:text-[12px] 2xl:text-[14px] font-medium tracking-wide transition-colors duration-300 text-bwf-deep/70 hover:text-bwf-deep whitespace-nowrap py-4">
+              More <span className="text-[8px] opacity-70">▼</span>
+            </button>
+            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-64 bg-bwf-ivory border border-bwf-deep/10 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden flex flex-col py-2">
+              {moreLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`px-5 py-3 text-[12px] xl:text-[13px] font-medium transition-colors hover:bg-bwf-deep/5 ${
+                    isActive(link.path) ? 'text-bwf-teal' : 'text-bwf-deep/80 hover:text-bwf-deep'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* SOCIAL ICONS - RIGHT */}
@@ -187,7 +220,7 @@ export function Navbar() {
               }}
               className="relative z-10 flex flex-col gap-6 mt-6 h-full overflow-y-auto"
             >
-              {links.map((link) => (
+              {allLinks.map((link) => (
                 <motion.div
                   key={link.path}
                   variants={{
@@ -200,7 +233,7 @@ export function Navbar() {
                       href={link.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`font-display text-4xl sm:text-5xl tracking-wide transition-colors duration-300 block text-bwf-ivory hover:text-bwf-ivory/70`}
+                      className={`font-display text-3xl sm:text-4xl tracking-wide transition-colors duration-300 block text-bwf-ivory hover:text-bwf-ivory/70`}
                       onClick={() => setIsOpen(false)}
                     >
                       {link.name}
@@ -208,7 +241,7 @@ export function Navbar() {
                   ) : (
                     <Link
                       to={link.path}
-                      className={`font-display text-4xl sm:text-5xl tracking-wide transition-colors duration-300 block ${
+                      className={`font-display text-3xl sm:text-4xl tracking-wide transition-colors duration-300 block ${
                         isActive(link.path) ? 'text-bwf-gold italic' : 'text-bwf-ivory hover:text-bwf-ivory/70'
                       }`}
                       onClick={() => setIsOpen(false)}
