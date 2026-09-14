@@ -91,13 +91,16 @@ export default function DaughtersReturn() {
 
         {/* CONTENT */}
         
+        {/* 1. INTRODUCTION - Editorial Drop Cap Style */}
         {intro && (
           <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-            <div className="max-w-3xl mx-auto">
-              <SectionHeading title={intro.heading} />
-              <div className="space-y-8 mt-16">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16">
+              <div className="md:w-1/3">
+                <SectionHeading title={intro.heading} />
+              </div>
+              <div className="md:w-2/3 space-y-8">
                 {intro.content?.map((para, i) => (
-                  <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
+                  <p key={i} className={`text-[18px] leading-[1.9] text-[#0D343A]/80 ${i === 0 ? 'first-letter:text-6xl first-letter:font-display first-letter:text-bwf-gold first-letter:mr-2 first-letter:float-left' : ''}`}>
                     {para}
                   </p>
                 ))}
@@ -106,59 +109,75 @@ export default function DaughtersReturn() {
           </section>
         )}
 
-        {part1 && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-bwf-ivory">
-            <div className="max-w-3xl mx-auto">
-              <SectionHeading title={part1.heading} />
-              <div className="space-y-8 mt-16">
-                {part1.content?.map((para, i) => (
-                  <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
-                    {para}
-                  </p>
-                ))}
+        {/* 2. SPLIT LAYOUT: PART I & FEATURE IMAGE */}
+        <section className="bg-bwf-ivory border-y border-bwf-deep/10">
+          <div className="grid md:grid-cols-2">
+            <motion.div {...fadeUp(0)} className="py-32 px-6 md:px-12 lg:px-16 lg:pr-24 flex flex-col justify-center">
+              <div className="max-w-xl ml-auto">
+                {part1 && (
+                  <>
+                    <h2 className="font-display text-3xl md:text-4xl text-[#12636B] mb-10 pb-6 border-b border-[#12636B]/10 inline-block pr-16">
+                      {part1.heading}
+                    </h2>
+                    <div className="space-y-8 mt-6">
+                      {part1.content?.map((para, i) => (
+                        <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
-            </div>
-          </section>
-        )}
-
-        {/* Feature Image Grid */}
-        <section className="py-16 px-6 md:px-12 lg:px-16 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="aspect-[4/3] rounded-xl overflow-hidden group">
-              <img src="/images/IMG_8484.jpg" alt="Basera-e-Tabassum" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
-            </div>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden group">
-              <img src="/images/IMG_8741.jpg" alt="Daughters of Kupwara" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+            </motion.div>
+            <div className="h-[50vh] md:h-auto relative overflow-hidden group">
+              <img src="/images/IMG_8484.jpg" alt="Leaving Home" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" loading="lazy" />
+              <div className="absolute inset-0 bg-bwf-deep/20 group-hover:bg-transparent transition-colors duration-1000" />
             </div>
           </div>
         </section>
 
-        {part2 && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-bwf-ivory">
-            <div className="max-w-3xl mx-auto">
-              <SectionHeading title={part2.heading} />
-              <div className="space-y-8 mt-16">
-                {part2.content?.map((para, i) => (
-                  <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
-                    {para}
-                  </p>
-                ))}
-              </div>
+        {/* 3. SPLIT LAYOUT: FEATURE IMAGE & PART II */}
+        <section className="bg-white">
+          <div className="grid md:grid-cols-2">
+            <div className="h-[50vh] md:h-auto relative overflow-hidden group order-2 md:order-1">
+              <img src="/images/IMG_8741.jpg" alt="Independence" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" loading="lazy" />
+              <div className="absolute inset-0 bg-bwf-deep/20 group-hover:bg-transparent transition-colors duration-1000" />
             </div>
-          </section>
-        )}
+            <motion.div {...fadeUp(0)} className="py-32 px-6 md:px-12 lg:px-16 lg:pl-24 flex flex-col justify-center order-1 md:order-2">
+              <div className="max-w-xl mr-auto">
+                {part2 && (
+                  <>
+                    <h2 className="font-display text-3xl md:text-4xl text-[#12636B] mb-10 pb-6 border-b border-[#12636B]/10 inline-block pr-16">
+                      {part2.heading}
+                    </h2>
+                    <div className="space-y-8 mt-6">
+                      {part2.content?.map((para, i) => (
+                        <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
+        {/* 4. RETURNING WITH PURPOSE */}
         {part3 && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#051315] text-bwf-ivory">
-            <div className="max-w-3xl mx-auto">
+          <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#051315] text-bwf-ivory relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-bwf-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+            <div className="max-w-4xl mx-auto relative z-10 text-center">
               <motion.div {...fadeUp(0)}>
-                <h2 className="font-display text-4xl md:text-5xl text-bwf-gold mb-10 pb-6 border-b border-bwf-gold/10 inline-block pr-16">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-bwf-gold mb-16 pb-8 border-b border-bwf-gold/20 inline-block px-12">
                   {part3.heading}
                 </h2>
               </motion.div>
-              <div className="space-y-8 mt-16">
+              <div className="space-y-10 mt-8 text-left md:text-center max-w-3xl mx-auto">
                 {part3.content?.map((para, i) => (
-                  <p key={i} className="text-[18px] leading-[1.9] text-bwf-ivory/80">
+                  <p key={i} className="text-[20px] md:text-[22px] font-light leading-[1.9] text-bwf-ivory/90">
                     {para}
                   </p>
                 ))}
@@ -167,17 +186,20 @@ export default function DaughtersReturn() {
           </section>
         )}
 
+        {/* 5. PHILOSOPHY QUOTE */}
         {philosophy && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-            <div className="max-w-3xl mx-auto text-center">
-              <motion.div {...fadeUp(0)} className="mb-20">
-                <h3 className="font-display text-3xl md:text-5xl text-bwf-deep italic leading-relaxed text-center">
-                  “{philosophy.quote}”
+          <section className="py-40 px-6 md:px-12 lg:px-16 bg-[#F7F6F1]">
+            <div className="max-w-4xl mx-auto text-center">
+              <motion.div {...fadeUp(0)} className="mb-20 relative">
+                <span className="absolute -top-16 left-1/2 -translate-x-1/2 text-[120px] font-display text-bwf-gold/20 leading-none">“</span>
+                <h3 className="font-display text-3xl md:text-5xl lg:text-6xl text-bwf-deep italic leading-tight text-center relative z-10">
+                  {philosophy.quote}
                 </h3>
               </motion.div>
-              <div className="space-y-8 text-left">
-                {philosophy.content?.map((para, i) => (
-                  <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
+              <div className="w-24 h-[1px] bg-bwf-gold mx-auto mb-16" />
+              <div className="space-y-8 text-left max-w-2xl mx-auto">
+                {philosophy.content?.slice(0, 2).map((para, i) => (
+                  <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/70 text-center">
                     {para}
                   </p>
                 ))}
