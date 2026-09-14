@@ -31,8 +31,8 @@ const navItems: NavItem[] = [
   {
     name: 'Work & Impact',
     children: [
-      { name: 'Our Work', path: '/work' },
-      { name: 'Our Impact', path: '/impact' },
+      { name: 'His Work', path: '/work' },
+      { name: 'His Impact', path: '/impact' },
     ],
   },
   { name: 'Recognition', path: '/recognition' },
@@ -43,7 +43,7 @@ const navItems: NavItem[] = [
       { name: 'From Service to Witnessing', path: '/from-service-to-witnessing' },
       { name: 'Curing the Gash', path: '/curing-the-gash' },
       { name: 'Daughters Return to Their Soil', path: '/daughters-return-to-their-soil' },
-      { name: 'Legacy', path: '/legacy' },
+      { name: 'Legacy Emerged', path: '/legacy' },
     ],
   },
   { name: 'Gallery & Media', path: '/gallery-media' },
