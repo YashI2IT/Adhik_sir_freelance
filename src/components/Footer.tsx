@@ -105,8 +105,8 @@ export function Footer() {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About Adhik</NavLink>
                 <NavLink to="/journey">His Journey</NavLink>
-                <NavLink to="/work">Our Work</NavLink>
-                <NavLink to="/impact">Our Impact</NavLink>
+                <NavLink to="/work">His Work</NavLink>
+                <NavLink to="/impact">His Impact</NavLink>
                 <NavLink to="/recognition">Recognition</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
               </ul>
@@ -123,7 +123,7 @@ export function Footer() {
                 <NavLink to="/inner-journey">The Inner Journey</NavLink>
                 <NavLink to="/curing-the-gash">Curing the Gash</NavLink>
                 <NavLink to="/daughters-return-to-their-soil">Daughters Return to Their Soil</NavLink>
-                <NavLink to="/legacy">Legacy</NavLink>
+                <NavLink to="/legacy">Legacy Emerged</NavLink>
                 <NavLink to="/gallery-media">Gallery & Media</NavLink>
               </ul>
             </motion.div>
