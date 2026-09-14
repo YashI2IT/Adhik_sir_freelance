@@ -56,12 +56,12 @@ export default function InnerJourney() {
             <img 
               src="/images/IMG_8787.jpg" 
               alt="Inner Journey Landscape" 
-              className="w-full h-full object-cover mix-blend-overlay grayscale"
+              className="w-full h-full object-cover object-[center_30%] mix-blend-overlay grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/80 to-transparent" />
           </motion.div>
 
-          <div className="max-w-5xl mx-auto relative z-10 text-center mt-20 text-bwf-ivory">
+          <div className="max-w-5xl mx-auto relative z-10 text-center mt-32 text-bwf-ivory">
             <motion.p {...fadeUp(0)} className="text-[11px] font-bold tracking-[0.3em] uppercase text-bwf-gold mb-10">
               {innerJourneyContent.hero.eyebrow}
             </motion.p>
