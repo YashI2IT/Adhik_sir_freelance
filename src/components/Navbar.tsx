@@ -143,6 +143,7 @@ export function Navbar() {
           {navItems.map((item) => {
             const hasChildren = !!item.children
             const active = isActive(item.path) || isChildActive(item.children)
+            const isHovered = expandedMenu === item.name
 
             return (
               <motion.div
@@ -151,7 +152,9 @@ export function Navbar() {
                   hidden: { opacity: 0, y: -10 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
                 }}
-                className="relative group"
+                className="relative"
+                onMouseEnter={() => hasChildren && setExpandedMenu(item.name)}
+                onMouseLeave={() => hasChildren && setExpandedMenu(null)}
               >
                 {hasChildren ? (
                   // Dropdown Trigger
@@ -160,14 +163,15 @@ export function Navbar() {
                       active ? 'text-[#12636B]' : 'text-[#0D343A]/70 hover:text-[#0D343A]'
                     }`}
                     aria-haspopup="true"
-                    aria-expanded="false"
+                    aria-expanded={isHovered}
+                    onClick={() => setExpandedMenu(isHovered ? null : item.name)}
                   >
                     {item.name}
-                    <ChevronDown size={12} className={`transition-transform duration-300 group-hover:-rotate-180 ${active ? 'text-[#12636B]' : 'opacity-70'}`} />
+                    <ChevronDown size={12} className={`transition-transform duration-300 ${isHovered ? '-rotate-180' : ''} ${active ? 'text-[#12636B]' : 'opacity-70'}`} />
                     
                     {/* Active Indicator Line */}
                     <span className={`absolute bottom-4 left-0 w-full h-[1px] bg-[#12636B] transition-transform duration-300 origin-left ${
-                      active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      active ? 'scale-x-100' : 'scale-x-0'
                     }`} />
                   </button>
                 ) : (
@@ -177,7 +181,7 @@ export function Navbar() {
                       href={item.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`relative flex py-6 text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#12636B] rounded-sm ${
+                      className={`relative flex py-6 text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#12636B] rounded-sm group ${
                         active ? 'text-[#12636B]' : 'text-[#0D343A]/70 hover:text-[#0D343A]'
                       }`}
                     >
@@ -189,7 +193,7 @@ export function Navbar() {
                   ) : (
                     <Link
                       to={item.path!}
-                      className={`relative flex py-6 text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#12636B] rounded-sm ${
+                      className={`relative flex py-6 text-[12px] 2xl:text-[13px] font-medium tracking-wide transition-colors duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#12636B] rounded-sm group ${
                         active ? 'text-[#12636B]' : 'text-[#0D343A]/70 hover:text-[#0D343A]'
                       }`}
                     >
@@ -203,25 +207,36 @@ export function Navbar() {
 
                 {/* Dropdown Menu */}
                 {hasChildren && (
-                  <div className="absolute top-[80%] left-1/2 -translate-x-1/2 mt-2 min-w-[240px] bg-[#F7F6F1] border border-[#0D343A]/5 shadow-[0_10px_40px_-10px_rgba(13,52,58,0.1)] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible focus-within:opacity-100 focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 flex flex-col py-3 z-50">
-                    <div className="absolute -top-3 left-0 w-full h-4 bg-transparent" /> {/* Invisible bridge to prevent hover loss */}
-                    {item.children?.map((child) => {
-                      const isChildActive = location.pathname === child.path
-                      return (
-                        <Link
-                          key={child.path}
-                          to={child.path}
-                          className={`px-6 py-3 text-[13px] font-medium transition-colors focus:outline-none focus:bg-[#0D343A]/5 whitespace-nowrap ${
-                            isChildActive 
-                              ? 'text-[#12636B] bg-[#12636B]/5' 
-                              : 'text-[#0D343A]/70 hover:text-[#0D343A] hover:bg-[#0D343A]/5'
-                          }`}
-                        >
-                          {child.name}
-                        </Link>
-                      )
-                    })}
-                  </div>
+                  <AnimatePresence>
+                    {isHovered && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 5 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-[80%] left-1/2 -translate-x-1/2 mt-2 min-w-[220px] bg-white border border-[#0D343A]/10 shadow-[0_4px_24px_-8px_rgba(13,52,58,0.08)] rounded-md flex flex-col py-2 z-50"
+                      >
+                        <div className="absolute -top-3 left-0 w-full h-4 bg-transparent" /> {/* Invisible bridge */}
+                        {item.children?.map((child) => {
+                          const isChildActive = location.pathname === child.path
+                          return (
+                            <Link
+                              key={child.path}
+                              to={child.path}
+                              onClick={() => setExpandedMenu(null)}
+                              className={`px-5 py-2.5 text-[13px] font-medium transition-all focus:outline-none whitespace-nowrap flex items-center ${
+                                isChildActive 
+                                  ? 'text-[#12636B]' 
+                                  : 'text-[#0D343A]/70 hover:text-[#12636B] hover:translate-x-1'
+                              }`}
+                            >
+                              {child.name}
+                            </Link>
+                          )
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 )}
               </motion.div>
             )
