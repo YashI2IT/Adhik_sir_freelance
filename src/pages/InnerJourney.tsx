@@ -112,7 +112,7 @@ export default function InnerJourney() {
             </motion.div>
             
             <motion.div {...fadeUp(0.2)} className="py-16 text-center">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#12636B] italic leading-tight">
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#051315] italic leading-tight">
                 “{innerJourneyContent.opening[3]}”
               </h2>
             </motion.div>
@@ -167,7 +167,7 @@ export default function InnerJourney() {
 
         {/* 5. SECTION: WHEN MAHARASHTRA MET KASHMIR */}
         {maharashtraKashmir && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-white border-t border-[#12636B]/10">
+          <section className="py-32 px-6 md:px-12 lg:px-16 bg-white border-t border-[#051315]/10">
             <div className="max-w-3xl mx-auto">
               <SectionHeading title={maharashtraKashmir.heading} />
               
@@ -180,10 +180,10 @@ export default function InnerJourney() {
               </div>
 
               {/* The Four Questions Sequence */}
-              <motion.div {...fadeUp(0)} className="my-24 py-16 border-y border-[#12636B]/20">
+              <motion.div {...fadeUp(0)} className="my-24 py-16 border-y border-[#051315]/20">
                 <div className="space-y-12">
                   {[6, 7, 8, 9].map((idx) => (
-                    <h3 key={idx} className="font-display text-3xl md:text-4xl text-[#12636B] text-center italic">
+                    <h3 key={idx} className="font-display text-3xl md:text-4xl text-[#051315] text-center italic">
                       {maharashtraKashmir.content[idx]}
                     </h3>
                   ))}
@@ -203,7 +203,7 @@ export default function InnerJourney() {
 
         {/* 6. SECTION: TWO LANDSCAPES, ONE SEARCH */}
         {twoLandscapes && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#12636B] text-[#F7F6F1]">
+          <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#051315] text-[#F7F6F1]">
             <div className="max-w-4xl mx-auto">
               <motion.div {...fadeUp(0)} className="text-center mb-24">
                 <h2 className="font-display text-4xl md:text-5xl text-[#B59A63] mb-8">
@@ -292,7 +292,7 @@ export default function InnerJourney() {
                 {lalDed.content.map((para, i) => {
                   if (i === 5) {
                     return (
-                      <motion.p key={i} {...fadeUp(0)} className="font-display text-3xl md:text-4xl text-[#12636B] italic py-8 border-l-2 border-[#B59A63] pl-8 my-12">
+                      <motion.p key={i} {...fadeUp(0)} className="font-display text-3xl md:text-4xl text-[#051315] italic py-8 border-l-2 border-[#B59A63] pl-8 my-12">
                         {para}
                       </motion.p>
                     )
@@ -323,10 +323,10 @@ export default function InnerJourney() {
               </div>
 
               {/* Strong Visual Emphasis for Nature Sequence */}
-              <motion.div {...fadeUp(0)} className="my-20 py-16 border-y border-[#12636B]/20 text-center">
+              <motion.div {...fadeUp(0)} className="my-20 py-16 border-y border-[#051315]/20 text-center">
                 <div className="space-y-6">
                   {[3, 4, 5].map((idx) => (
-                    <h3 key={idx} className="font-display text-4xl md:text-5xl text-[#12636B]">
+                    <h3 key={idx} className="font-display text-4xl md:text-5xl text-[#051315]">
                       {nature.content[idx]}
                     </h3>
                   ))}
@@ -340,7 +340,7 @@ export default function InnerJourney() {
                 {nature.content.slice(7).map((para, i) => {
                   if (i === 11) { // The final question
                     return (
-                      <motion.h3 key={i} {...fadeUp(0)} className="font-display text-3xl md:text-4xl text-[#12636B] italic text-center py-12 mt-12">
+                      <motion.h3 key={i} {...fadeUp(0)} className="font-display text-3xl md:text-4xl text-[#051315] italic text-center py-12 mt-12">
                         “{para}”
                       </motion.h3>
                     )
@@ -369,7 +369,7 @@ export default function InnerJourney() {
           <section className="py-32 px-6 md:px-12 lg:px-16 bg-white overflow-hidden relative">
             <div className="max-w-3xl mx-auto relative z-10">
               <div className="text-center mb-16">
-                <h2 className="font-display text-4xl md:text-5xl text-[#12636B] mb-12">
+                <h2 className="font-display text-4xl md:text-5xl text-[#051315] mb-12">
                   {dropOcean.heading}
                 </h2>
               </div>
@@ -403,11 +403,11 @@ export default function InnerJourney() {
                       className="absolute w-48 h-48 border-[1px] border-[#4AAEAE] rounded-full"
                     />
                   ))}
-                  <div className="w-3 h-3 bg-[#12636B] rounded-full shadow-[0_0_20px_rgba(18,99,107,0.5)]" />
+                  <div className="w-3 h-3 bg-[#051315] rounded-full shadow-[0_0_20px_rgba(18,99,107,0.5)]" />
                 </div>
                 
                 <motion.div {...fadeUp(0)} className="relative z-10 max-w-xl mx-auto bg-white/60 backdrop-blur-md p-8 text-center">
-                  <h3 className="font-display text-3xl md:text-4xl text-[#12636B] italic mb-6">
+                  <h3 className="font-display text-3xl md:text-4xl text-[#051315] italic mb-6">
                     {dropOcean.content[4]}
                   </h3>
                   <p className="text-[20px] font-display text-[#0D343A]/60">
@@ -446,13 +446,13 @@ export default function InnerJourney() {
               {/* Progression Sequence */}
               <motion.div {...fadeUp(0)} className="my-20 py-16 pl-8 border-l border-[#B59A63]/50">
                 <div className="space-y-6">
-                  <h3 className="font-display text-3xl text-[#12636B] mb-8">{serviceMedium.content[3]}</h3>
+                  <h3 className="font-display text-3xl text-[#051315] mb-8">{serviceMedium.content[3]}</h3>
                   {[4, 5, 6, 7, 8].map((idx) => (
                     <p key={idx} className="text-[20px] md:text-[22px] text-[#0D343A]/70 font-light">
                       {serviceMedium.content[idx]}
                     </p>
                   ))}
-                  <p className="text-[22px] md:text-[26px] font-display text-[#12636B] italic mt-12">
+                  <p className="text-[22px] md:text-[26px] font-display text-[#051315] italic mt-12">
                     {serviceMedium.content[9]}
                   </p>
                 </div>
@@ -474,7 +474,7 @@ export default function InnerJourney() {
           <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-20">
-                <motion.div {...fadeUp(0)} className="flex items-center justify-center gap-6 font-display text-3xl md:text-5xl text-[#12636B] uppercase tracking-widest">
+                <motion.div {...fadeUp(0)} className="flex items-center justify-center gap-6 font-display text-3xl md:text-5xl text-[#051315] uppercase tracking-widest">
                   <span>Doing</span>
                   <span className="w-12 h-[1px] bg-[#B59A63]" />
                   <span>Being</span>
@@ -489,10 +489,10 @@ export default function InnerJourney() {
                 ))}
               </div>
 
-              <motion.div {...fadeUp(0)} className="my-24 py-16 border-y border-[#12636B]/10">
+              <motion.div {...fadeUp(0)} className="my-24 py-16 border-y border-[#051315]/10">
                 <div className="space-y-12">
                   {[4, 5, 6, 7].map((idx) => (
-                    <h3 key={idx} className="font-display text-3xl md:text-4xl text-[#12636B] text-center italic">
+                    <h3 key={idx} className="font-display text-3xl md:text-4xl text-[#051315] text-center italic">
                       {doingToBeing.content[idx]}
                     </h3>
                   ))}
@@ -525,11 +525,11 @@ export default function InnerJourney() {
               </div>
 
               {/* Major Emphasis */}
-              <motion.div {...fadeUp(0)} className="mt-24 pt-16 border-t border-[#12636B]/20 text-center">
+              <motion.div {...fadeUp(0)} className="mt-24 pt-16 border-t border-[#051315]/20 text-center">
                 <p className="text-[14px] uppercase tracking-widest text-[#B59A63] font-bold mb-8">
                   {centre.content[8]}
                 </p>
-                <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#12636B] italic leading-tight">
+                <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#051315] italic leading-tight">
                   “{centre.content[9]}”
                 </h3>
               </motion.div>
@@ -542,7 +542,7 @@ export default function InnerJourney() {
           <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="font-display text-4xl md:text-5xl text-[#12636B] mb-12">
+                <h2 className="font-display text-4xl md:text-5xl text-[#051315] mb-12">
                   {ownership.heading}
                 </h2>
               </div>
@@ -551,7 +551,7 @@ export default function InnerJourney() {
                 <p className="text-[18px] leading-[1.9] text-[#0D343A]/80">
                   {ownership.content[0]}
                 </p>
-                <p className="text-[20px] md:text-[22px] font-display text-[#12636B] italic mt-8">
+                <p className="text-[20px] md:text-[22px] font-display text-[#051315] italic mt-8">
                   {ownership.content[1]}
                 </p>
               </div>
@@ -559,7 +559,7 @@ export default function InnerJourney() {
               {/* Strong Editorial 'Not my...' Sequence */}
               <motion.div {...fadeUp(0)} className="my-24 max-w-2xl mx-auto space-y-12">
                 {[2, 3, 4, 5].map((idx) => (
-                  <p key={idx} className="text-[22px] md:text-[26px] font-display text-[#12636B] leading-relaxed">
+                  <p key={idx} className="text-[22px] md:text-[26px] font-display text-[#051315] leading-relaxed">
                     {ownership.content[idx]}
                   </p>
                 ))}
@@ -585,7 +585,7 @@ export default function InnerJourney() {
         )}
 
         {/* 16. FINAL CLOSING */}
-        <section className="py-48 px-6 md:px-12 lg:px-16 bg-[#155A8A] text-[#F7F6F1] text-center overflow-hidden relative">
+        <section className="py-48 px-6 md:px-12 lg:px-16 bg-[#051315] text-[#F7F6F1] text-center overflow-hidden relative">
           <div className="absolute inset-0 z-0 opacity-10">
              <div className="absolute inset-0 bg-gradient-to-t from-[#0D343A] to-transparent" />
           </div>
@@ -632,7 +632,7 @@ export default function InnerJourney() {
 function SectionHeading({ title }: { title: string }) {
   return (
     <motion.div {...fadeUp(0)}>
-      <h2 className="font-display text-4xl md:text-5xl text-[#12636B] mb-10 pb-6 border-b border-[#12636B]/10 inline-block pr-16">
+      <h2 className="font-display text-4xl md:text-5xl text-[#051315] mb-10 pb-6 border-b border-[#051315]/10 inline-block pr-16">
         {title}
       </h2>
     </motion.div>
