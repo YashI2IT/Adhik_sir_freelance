@@ -133,8 +133,6 @@ export const curingTheGashContent = {
         "/images/curing/image7.png",
         "/images/curing/image6.png",
         "/images/curing/image10.png",
-        "/images/curing/image8.png",
-        "/images/curing/image9.png",
         "/images/curing/image11.png",
         "/images/curing/image12.png",
         "/images/curing/image13.png",
