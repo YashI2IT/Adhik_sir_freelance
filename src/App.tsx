@@ -14,6 +14,7 @@ import HeartOfTheCause from './pages/HeartOfTheCause'
 import Legacy from './pages/Legacy'
 import InnerJourney from './pages/InnerJourney'
 import CuringTheGash from './pages/CuringTheGash'
+import ServiceToWitnessing from './pages/ServiceToWitnessing'
 import DaughtersReturn from './pages/DaughtersReturn'
 import GalleryMedia from './pages/GalleryMedia'
 import NotFound from './pages/NotFound'
@@ -33,6 +34,7 @@ function AnimatedRoutes() {
         <Route path="/legacy" element={<Legacy />} />
         <Route path="/inner-journey" element={<InnerJourney />} />
         <Route path="/curing-the-gash" element={<CuringTheGash />} />
+        <Route path="/from-service-to-witnessing" element={<ServiceToWitnessing />} />
         <Route path="/daughters-return-to-their-soil" element={<DaughtersReturn />} />
         <Route path="/gallery-media" element={<GalleryMedia />} />
         <Route path="/contact" element={<Contact />} />

@@ -26,6 +26,7 @@ export function Navbar() {
     { name: 'The Heart of the Cause', path: '/heart-of-the-cause' },
     { name: 'The Inner Journey', path: '/inner-journey' },
     { name: 'Curing the Gash', path: '/curing-the-gash' },
+    { name: 'From Service to Witnessing', path: '/from-service-to-witnessing' },
     { name: 'Daughters Return to Their Soil', path: '/daughters-return-to-their-soil' },
     { name: 'Legacy', path: '/legacy' },
     { name: 'Gallery & Media', path: '/gallery-media' },
