@@ -154,6 +154,12 @@ export default function InnerJourney() {
                     Your browser does not support the video tag.
                   </video>
                 </div>
+                
+                <div className="max-w-xl mx-auto mt-12">
+                  <div className="aspect-[4/5] md:aspect-square rounded-xl overflow-hidden shadow-2xl group">
+                    <img src="/images/IMG_0000.jpeg" alt="Varkari Tradition" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+                  </div>
+                </div>
               </motion.div>
             </div>
           </section>
