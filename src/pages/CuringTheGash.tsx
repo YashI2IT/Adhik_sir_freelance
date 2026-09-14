@@ -51,16 +51,16 @@ export default function CuringTheGash() {
         {/* HERO */}
         <section ref={heroRef} className="relative h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
           <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-40">
-            {/* Using an authentic documentary image */}
+            {/* Using the original cover image from the document */}
             <img 
-              src="/images/IMG_8758.jpg" 
+              src="/images/curing/image2.png" 
               alt="Curing the Gash" 
               className="w-full h-full object-cover mix-blend-overlay grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/80 to-transparent" />
           </motion.div>
 
-          <div className="max-w-5xl mx-auto relative z-10 text-center mt-20 text-bwf-ivory">
+          <div className="max-w-5xl mx-auto relative z-10 text-center text-bwf-ivory pb-32">
             <motion.p {...fadeUp(0)} className="text-[11px] font-bold tracking-[0.3em] uppercase text-bwf-gold mb-10">
               {curingTheGashContent.hero.eyebrow}
             </motion.p>
@@ -203,7 +203,7 @@ export default function CuringTheGash() {
               </div>
               
               <motion.div {...fadeUp(0.1)} className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+                <table className="w-full text-left border-collapse min-w-[600px]">
                   <thead>
                     <tr className="border-b-2 border-bwf-deep">
                       <th className="py-4 px-6 text-[11px] uppercase tracking-widest text-bwf-deep/60 font-bold w-1/4">Date</th>
@@ -215,7 +215,7 @@ export default function CuringTheGash() {
                     {theSurgeries.table?.map((row, i) => (
                       <tr key={i} className="border-b border-bwf-deep/10 hover:bg-bwf-ivory/50 transition-colors">
                         <td className="py-6 px-6 text-[14px] font-semibold text-bwf-deep">{row.date}</td>
-                        <td className="py-6 px-6 text-[16px] text-bwf-deep/80">{row.team}</td>
+                        <td className="py-6 px-6 text-[16px] text-bwf-deep/80 leading-relaxed">{row.team}</td>
                         <td className="py-6 px-6 text-[24px] font-display text-bwf-teal text-right font-semibold">{row.surgeries}</td>
                       </tr>
                     ))}
