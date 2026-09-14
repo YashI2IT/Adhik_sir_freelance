@@ -210,28 +210,44 @@ export function Navbar() {
                   <AnimatePresence>
                     {isHovered && (
                       <motion.div 
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 5 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-[80%] left-1/2 -translate-x-1/2 mt-2 min-w-[220px] bg-white border border-[#0D343A]/10 shadow-[0_4px_24px_-8px_rgba(13,52,58,0.08)] rounded-md flex flex-col py-2 z-50"
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        variants={{
+                          hidden: { opacity: 0, y: 5, transition: { staggerChildren: 0.02, staggerDirection: -1 } },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.2, staggerChildren: 0.04, delayChildren: 0.05 } }
+                        }}
+                        className="absolute top-[80%] left-1/2 -translate-x-1/2 mt-2 min-w-[240px] bg-white border border-[#0D343A]/10 shadow-[0_10px_30px_-10px_rgba(13,52,58,0.1)] rounded-md flex flex-col z-50 overflow-hidden"
                       >
                         <div className="absolute -top-3 left-0 w-full h-4 bg-transparent" /> {/* Invisible bridge */}
-                        {item.children?.map((child) => {
+                        {item.children?.map((child, index) => {
                           const isChildActive = location.pathname === child.path
                           return (
-                            <Link
+                            <motion.div
                               key={child.path}
-                              to={child.path}
-                              onClick={() => setExpandedMenu(null)}
-                              className={`px-5 py-2.5 text-[13px] font-medium transition-all focus:outline-none whitespace-nowrap flex items-center ${
-                                isChildActive 
-                                  ? 'text-[#12636B]' 
-                                  : 'text-[#0D343A]/70 hover:text-[#12636B] hover:translate-x-1'
-                              }`}
+                              variants={{
+                                hidden: { opacity: 0, x: -10 },
+                                visible: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } }
+                              }}
+                              className={`border-b border-[#0D343A]/5 last:border-none`}
                             >
-                              {child.name}
-                            </Link>
+                              <Link
+                                to={child.path}
+                                onClick={() => setExpandedMenu(null)}
+                                className={`group flex items-center justify-between px-6 py-4 text-[13px] font-medium transition-all duration-300 focus:outline-none ${
+                                  isChildActive 
+                                    ? 'text-[#12636B] bg-[#0D343A]/[0.02]' 
+                                    : 'text-[#0D343A]/70 hover:text-[#12636B] hover:bg-[#0D343A]/[0.02]'
+                                }`}
+                              >
+                                <span className={`transition-transform duration-300 ${isChildActive ? 'translate-x-1' : 'group-hover:translate-x-1'}`}>
+                                  {child.name}
+                                </span>
+                                <span className={`w-1.5 h-1.5 rounded-full bg-[#12636B] transition-all duration-300 ${
+                                  isChildActive ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
+                                }`} />
+                              </Link>
+                            </motion.div>
                           )
                         })}
                       </motion.div>
