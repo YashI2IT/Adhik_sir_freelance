@@ -51,7 +51,7 @@ export default function ServiceToWitnessing() {
         <section ref={heroRef} className="relative h-screen flex flex-col justify-end pb-32 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
           <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-40">
             <img 
-              src="/images/IMG_8787.jpg" 
+              src="/images/IMG_8773.jpg" 
               alt="Himalayan Landscape" 
               className="w-full h-full object-cover object-[center_30%] mix-blend-overlay grayscale"
             />
@@ -205,19 +205,30 @@ export default function ServiceToWitnessing() {
           </section>
         )}
 
-        {/* IMAGE 1: Transitioning away from ownership */}
+        {/* IMAGES: The Journey (Grouped as requested) */}
         <section className="bg-[#051315] pb-32">
-          <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
-            <motion.div {...fadeUp(0)} className="aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-xl">
-              <img 
-                src="/images/IMG_0001.jpeg" 
-                alt="Adhik Kadam in contemplation" 
-                loading="lazy"
-                className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
-              />
-            </motion.div>
+          <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <motion.div {...fadeUp(0)} className="rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/images/IMG_0001.jpeg" 
+                  alt="Adhik Kadam in contemplation" 
+                  loading="lazy"
+                  className="w-full h-auto object-contain grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
+                />
+              </motion.div>
+              <motion.div {...fadeUp(0.1)} className="rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/images/IMG_0002.jpeg" 
+                  alt="Observing the journey" 
+                  loading="lazy"
+                  className="w-full h-auto object-contain grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
+                />
+              </motion.div>
+            </div>
+            
             {itIsHappening && (
-              <div className="max-w-3xl mx-auto mt-16 space-y-8 text-center">
+              <div className="max-w-3xl mx-auto mt-24 space-y-8 text-center text-white">
                 <p className="text-[22px] md:text-[26px] font-display text-white/90 italic leading-relaxed">
                   {itIsHappening.content[3]}
                 </p>
@@ -327,19 +338,7 @@ export default function ServiceToWitnessing() {
           </section>
         )}
 
-        {/* IMAGE 2: The Drop and the Ocean / Becoming a Witness */}
-        <section className="bg-[#051315]">
-          <div className="w-full">
-            <motion.div {...fadeUp(0)} className="h-[60vh] md:h-[80vh] overflow-hidden">
-              <img 
-                src="/images/IMG_0002.jpeg" 
-                alt="Observing the journey" 
-                loading="lazy"
-                className="w-full h-full object-cover object-[center_10%] grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
-              />
-            </motion.div>
-          </div>
-        </section>
+
 
         {/* Remaining of Drop and Ocean / Becoming Witness */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#051315] text-[#F7F6F1]">
