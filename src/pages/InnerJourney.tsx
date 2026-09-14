@@ -50,7 +50,7 @@ export default function InnerJourney() {
       <main className="bg-[#F7F6F1] text-[#0D343A] min-h-screen font-light">
         
         {/* 2. CINEMATIC HERO */}
-        <section ref={heroRef} className="relative h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
+        <section ref={heroRef} className="relative h-screen flex flex-col justify-end pb-32 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
           <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-40">
             {/* Using an authentic Kashmir landscape/spiritual image from repo if possible, else a generic repo image */}
             <img 
@@ -61,15 +61,15 @@ export default function InnerJourney() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/80 to-transparent" />
           </motion.div>
 
-          <div className="max-w-5xl mx-auto relative z-10 text-center mt-32 text-bwf-ivory">
-            <motion.p {...fadeUp(0)} className="text-[11px] font-bold tracking-[0.3em] uppercase text-bwf-gold mb-10">
+          <div className="max-w-5xl mx-auto relative z-10 text-center text-bwf-ivory">
+            <motion.p {...fadeUp(0)} className="text-[11px] font-bold tracking-[0.3em] uppercase text-bwf-gold mb-8">
               {innerJourneyContent.hero.eyebrow}
             </motion.p>
-            <motion.h1 {...fadeUp(0.1)} className="font-display text-[clamp(4rem,10vw,8rem)] leading-[0.9] tracking-tight mb-12">
+            <motion.h1 {...fadeUp(0.1)} className="font-display text-[clamp(4rem,10vw,8rem)] leading-[0.9] tracking-tight mb-8">
               The Inner <span className="text-bwf-gold italic">Journey</span>
             </motion.h1>
 
-            <motion.div {...fadeUp(0.2)} className="max-w-2xl mx-auto">
+            <motion.div {...fadeUp(0.2)} className="max-w-2xl mx-auto mb-16">
               <p className="text-[18px] md:text-[22px] font-light text-bwf-ivory/80 leading-[1.8] italic">
                 {innerJourneyContent.hero.subtitle}
               </p>
@@ -81,7 +81,7 @@ export default function InnerJourney() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-bwf-gold hover:text-bwf-ivory transition-colors z-20 group"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-bwf-gold hover:text-bwf-ivory transition-colors z-20 group"
           >
             <span className="text-[10px] tracking-[0.2em] uppercase font-bold">Begin the journey</span>
             <div className="w-[1px] h-12 bg-bwf-gold/30 relative overflow-hidden">
