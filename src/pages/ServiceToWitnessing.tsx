@@ -335,7 +335,7 @@ export default function ServiceToWitnessing() {
                 src="/images/IMG_0002.jpeg" 
                 alt="Observing the journey" 
                 loading="lazy"
-                className="w-full h-full object-cover object-[center_30%] grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-full object-cover object-[center_10%] grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
               />
             </motion.div>
           </div>
