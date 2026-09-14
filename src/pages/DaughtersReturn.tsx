@@ -61,7 +61,7 @@ export default function DaughtersReturn() {
               Daughters Return <br/><span className="text-bwf-gold italic">to Their Soil</span>
             </motion.h1>
 
-            <motion.div {...fadeUp(0.2)} className="max-w-2xl mx-auto space-y-6">
+            <motion.div {...fadeUp(0.2)} className="max-w-2xl mx-auto space-y-6 pb-24">
               <p className="text-[18px] md:text-[22px] font-light text-bwf-ivory/80 leading-[1.8] italic">
                 {daughtersReturnContent.hero.subtitle}
               </p>
