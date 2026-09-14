@@ -46,7 +46,7 @@ export default function DaughtersReturn() {
           <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-40">
             {/* Authentic documentary image from the project if possible */}
             <img 
-              src="/images/IMG_8741.jpg" 
+              src="/images/IMG_8458.jpg" 
               alt="Daughters Return to Their Soil" 
               className="w-full h-full object-cover mix-blend-overlay grayscale"
             />
@@ -109,10 +109,10 @@ export default function DaughtersReturn() {
           </section>
         )}
 
-        {/* 2. SPLIT LAYOUT: PART I & FEATURE IMAGE */}
+        {/* 2. SPLIT LAYOUT: PART I & TYPOGRAPHY */}
         <section className="bg-bwf-ivory border-y border-bwf-deep/10">
           <div className="grid md:grid-cols-2">
-            <motion.div {...fadeUp(0)} className="py-32 px-6 md:px-12 lg:px-16 lg:pr-24 flex flex-col justify-center">
+            <motion.div {...fadeUp(0)} className="py-32 px-6 md:px-12 lg:px-16 lg:pr-24 flex flex-col justify-center border-b md:border-b-0 md:border-r border-bwf-deep/10">
               <div className="max-w-xl ml-auto">
                 {part1 && (
                   <>
@@ -130,20 +130,28 @@ export default function DaughtersReturn() {
                 )}
               </div>
             </motion.div>
-            <div className="h-[50vh] md:h-auto relative overflow-hidden group">
-              <img src="/images/IMG_8484.jpg" alt="Leaving Home" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-bwf-deep/20 group-hover:bg-transparent transition-colors duration-1000" />
-            </div>
+            <motion.div {...fadeUp(0.2)} className="h-full min-h-[40vh] flex flex-col items-center justify-center p-12 bg-white relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#12636B 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+              <p className="font-display text-5xl md:text-6xl text-bwf-deep/20 text-center leading-tight italic max-w-lg relative z-10">
+                Stepping out of the protective environment meant confronting a complex world.
+              </p>
+            </motion.div>
           </div>
         </section>
 
-        {/* 3. SPLIT LAYOUT: FEATURE IMAGE & PART II */}
+        {/* 3. SPLIT LAYOUT: TYPOGRAPHY & PART II */}
         <section className="bg-white">
           <div className="grid md:grid-cols-2">
-            <div className="h-[50vh] md:h-auto relative overflow-hidden group order-2 md:order-1">
-              <img src="/images/IMG_8741.jpg" alt="Independence" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-bwf-deep/20 group-hover:bg-transparent transition-colors duration-1000" />
-            </div>
+            <motion.div {...fadeUp(0.2)} className="h-full min-h-[40vh] flex flex-col items-center justify-center p-12 bg-bwf-ivory relative overflow-hidden order-2 md:order-1 border-t md:border-t-0 md:border-r border-bwf-deep/10">
+              <div className="w-32 h-32 rounded-full border border-bwf-gold/30 flex items-center justify-center mb-8">
+                <div className="w-24 h-24 rounded-full border border-bwf-gold/50 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-bwf-gold/10" />
+                </div>
+              </div>
+              <p className="font-display text-4xl md:text-5xl text-bwf-gold text-center leading-tight italic max-w-md relative z-10">
+                The responsibility of a parent does not end when a child turns eighteen.
+              </p>
+            </motion.div>
             <motion.div {...fadeUp(0)} className="py-32 px-6 md:px-12 lg:px-16 lg:pl-24 flex flex-col justify-center order-1 md:order-2">
               <div className="max-w-xl mr-auto">
                 {part2 && (
