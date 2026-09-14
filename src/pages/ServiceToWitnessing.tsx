@@ -208,13 +208,13 @@ export default function ServiceToWitnessing() {
         {/* IMAGES: The Journey (Grouped as requested) */}
         <section className="bg-[#051315] pb-32">
           <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <motion.div {...fadeUp(0)} className="rounded-xl overflow-hidden shadow-2xl">
                 <img 
                   src="/images/IMG_0001.jpeg" 
                   alt="Adhik Kadam in contemplation" 
                   loading="lazy"
-                  className="w-full h-auto object-contain grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
               <motion.div {...fadeUp(0.1)} className="rounded-xl overflow-hidden shadow-2xl">
@@ -222,7 +222,7 @@ export default function ServiceToWitnessing() {
                   src="/images/IMG_0002.jpeg" 
                   alt="Observing the journey" 
                   loading="lazy"
-                  className="w-full h-auto object-contain grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
             </div>
