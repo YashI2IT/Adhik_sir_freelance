@@ -108,11 +108,48 @@ export const curingTheGashContent = {
       id: "news-coverage",
       heading: "Documented Coverage",
       links: [
+        { title: "Pellet guns causing ‘genocide’ in Kashmir", url: "http://cnskashmir.com/pellet-guns-causing-genocide-in-kashmir/" },
         { title: "Disastrous situation in Kashmir, says India's leading retina surgeon", url: "http://kashmirreader.com/2016/07/30/disastrous-situation-in-kashmir-says-indias-leading-retina-surgeon/" },
-        { title: "CM interacts with ophthalmic surgeons", url: "https://kashmirobserver.net/2016/city-news/mehbooba-interacts-ophthalmic-surgeons-8961" },
+        { title: "Mehbooba interacts with ophthalmic surgeons", url: "https://kashmirobserver.net/2016/city-news/mehbooba-interacts-ophthalmic-surgeons-8961" },
         { title: "Mumbai doctors perform 46 eye surgeries in 3 days in Kashmir", url: "http://www.dailyexcelsior.com/mumbai-doctors-perform-46-eye-surgeries-in-3-days-in-kashmir/" },
         { title: "Eye injuries by pellets are severe here than in other conflict-hit regions: Dr Natarajan", url: "http://www.knskashmir.com/news.aspx?news=Eye-injuries-by-pellets-are-severe-here-than-in-other-conflict-hit-regions--Dr-Natarajan-9680" },
+        { title: "CM interacts with ophthalmic surgeons, seeks update on condition of injured", url: "http://www.dailyexcelsior.com/cm-interacts-with-ophthalmic-surgeons-seeks-update-on-condition-of-injured/" },
+        { title: "Large scale eye injuries by pellets is a disaster: Dr Natarajan", url: "http://www.risingkashmir.com/news/large-scale-eye-injuries-by-pellets-is-disaster-dr-natarajan" },
+        { title: "Expert doctors from Mumbai conduct surgeries on pellet injured at SMHS", url: "http://www.knskashmir.com/archives/news.aspx?news=Expert-doctors-from-Mumbai-conduct-surgeries-on-pellet-injured-at-SMHS-9595" },
+        { title: "Day 20: Attention Pellet victims, call Borderless World Foundation for treatment", url: "http://www.kashmirlife.net/day20-attention-pellet-victims-call-borderless-world-foundation-for-treatment-112632/" },
+        { title: "BWF conducts retinal surgeries at SMHS hospital", url: "http://jknewsservice.com/bwf-conducts-retinal-surgeries-at-smhs-hospital/" },
+        { title: "Outside doctors conduct 24 major retinal surgeries at SMHS", url: "http://m.greaterkashmir.com/news/kashmir/outside-doctors-conduct-24-major-retinal-surgeries-at-smhs/224141.html" },
+        { title: "24 surgeries in 24 hours: Mumbai ophthalmologist infuses hopes in Kashmir's pellet victims", url: "http://m.ibtimes.co.in/24-surgeries-24-hours-mumbai-ophthalmologist-infuses-hopes-kashmirs-pellet-victims-688170" },
+        { title: "Chennai surgeon comes to aid of pellet victims", url: "http://www.tribuneindia.com/mobi/news/jammu-kashmir/chennai-surgeon-comes-to-aid-of-pellet-victims/272662.html" },
         { title: "Humanity sans borders: Mumbai surgeons treat Kashmir's pellet gun victims", url: "http://www.deccanchronicle.com/nation/current-affairs/280716/humanity-sans-borders-mumbai-surgeons-treat-kashmirs-pellet-gun-victims.html" }
+      ]
+    },
+    {
+      id: "gallery",
+      heading: "Intervention Gallery",
+      images: [
+        "/images/curing/image5.png",
+        "/images/curing/image4.png",
+        "/images/curing/image7.png",
+        "/images/curing/image6.png",
+        "/images/curing/image10.png",
+        "/images/curing/image8.png",
+        "/images/curing/image9.png",
+        "/images/curing/image11.png",
+        "/images/curing/image12.png",
+        "/images/curing/image13.png",
+        "/images/curing/image14.png",
+        "/images/curing/image15.png",
+        "/images/curing/image16.png"
+      ]
+    },
+    {
+      id: "follow-ups-gallery",
+      heading: "During Follow ups",
+      images: [
+        "/images/curing/image17.png",
+        "/images/curing/image18.png",
+        "/images/curing/image1.png"
       ]
     }
   ]

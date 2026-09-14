@@ -40,6 +40,8 @@ export default function CuringTheGash() {
   const inshaMalik = getSection('insha-malik')
   const beyondTheatre = getSection('beyond-operating-theatre')
   const followUp = getSection('follow-up')
+  const gallery = getSection('gallery')
+  const followUpGallery = getSection('follow-ups-gallery')
   const newsCoverage = getSection('news-coverage')
 
   return (
@@ -294,15 +296,30 @@ export default function CuringTheGash() {
           </div>
         </section>
 
-        {followUp && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-            <div className="max-w-3xl mx-auto">
-              <SectionHeading title={followUp.heading} />
-              <div className="space-y-8 mt-16">
-                {followUp.content?.map((para, i) => (
-                  <p key={i} className="text-[18px] leading-[1.9] text-[#0D343A]/80">
-                    {para}
-                  </p>
+        {gallery && (
+          <section className="py-24 px-6 md:px-12 lg:px-16 bg-white border-t border-bwf-deep/10">
+            <div className="max-w-7xl mx-auto">
+              <SectionHeading title={gallery.heading} />
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-16">
+                {gallery.images?.map((src, i) => (
+                  <motion.div key={i} {...fadeUp(i * 0.05)} className="aspect-square rounded-xl overflow-hidden group">
+                    <img src={src} alt={`Intervention Image ${i + 1}`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {followUpGallery && (
+          <section className="py-24 px-6 md:px-12 lg:px-16 bg-bwf-ivory">
+            <div className="max-w-7xl mx-auto">
+              <SectionHeading title={followUpGallery.heading} />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                {followUpGallery.images?.map((src, i) => (
+                  <motion.div key={i} {...fadeUp(i * 0.1)} className="aspect-[4/3] rounded-xl overflow-hidden group">
+                    <img src={src} alt={`Follow Up Image ${i + 1}`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" loading="lazy" />
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -310,23 +327,27 @@ export default function CuringTheGash() {
         )}
 
         {newsCoverage && (
-          <section className="py-32 px-6 md:px-12 lg:px-16 bg-bwf-ivory border-t border-bwf-deep/10">
-            <div className="max-w-3xl mx-auto">
-              <SectionHeading title={newsCoverage.heading} />
+          <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#051315] text-bwf-ivory">
+            <div className="max-w-4xl mx-auto">
+              <motion.div {...fadeUp(0)}>
+                <h2 className="font-display text-4xl md:text-5xl text-bwf-gold mb-16 pb-6 border-b border-bwf-gold/10 inline-block pr-16">
+                  {newsCoverage.heading}
+                </h2>
+              </motion.div>
               
-              <ul className="mt-16 space-y-6">
+              <ul className="space-y-4">
                 {newsCoverage.links?.map((link, i) => (
-                  <motion.li key={i} {...fadeUp(i * 0.1)}>
+                  <motion.li key={i} {...fadeUp(i * 0.05)}>
                     <a 
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col sm:flex-row sm:items-center justify-between p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-bwf-deep/5 hover:border-bwf-teal/30 transition-all duration-300"
+                      className="group flex flex-col md:flex-row md:items-center justify-between p-6 bg-white/5 rounded-xl border border-white/5 hover:border-bwf-gold/30 hover:bg-white/10 transition-all duration-300"
                     >
-                      <span className="text-[16px] md:text-[18px] text-bwf-deep group-hover:text-bwf-teal font-medium transition-colors pr-6">
+                      <span className="text-[16px] md:text-[18px] text-bwf-ivory/80 group-hover:text-bwf-gold font-light transition-colors pr-6">
                         {link.title}
                       </span>
-                      <span className="text-bwf-teal mt-4 sm:mt-0 flex-shrink-0 group-hover:translate-x-1 transition-transform">
+                      <span className="text-bwf-gold mt-4 md:mt-0 flex-shrink-0 group-hover:translate-x-1 transition-transform">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M5 12h14"></path>
                           <path d="m12 5 7 7-7 7"></path>
