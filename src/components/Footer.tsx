@@ -112,12 +112,12 @@ export function Footer() {
               </ul>
             </motion.div>
 
-            {/* ── Explore ─────────────────────── */}
+            {/* ── Reflections ─────────────────────── */}
             <motion.div
               variants={itemVariants}
               className="py-10 lg:py-12 lg:px-8 border-b sm:border-b-0 border-bwf-ivory/10 sm:border-r"
             >
-              <FooterHeading title="Explore" />
+              <FooterHeading title="Reflections" />
               <ul className="flex flex-col gap-0.5">
                 <NavLink to="/heart-of-the-cause">The Heart of the Cause</NavLink>
                 <NavLink to="/inner-journey">The Inner Journey</NavLink>

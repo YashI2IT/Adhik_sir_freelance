@@ -37,7 +37,7 @@ const navItems: NavItem[] = [
   },
   { name: 'Recognition', path: '/recognition' },
   {
-    name: 'Stories',
+    name: 'Reflections',
     children: [
       { name: 'The Heart of the Cause', path: '/heart-of-the-cause' },
       { name: 'From Service to Witnessing', path: '/from-service-to-witnessing' },
