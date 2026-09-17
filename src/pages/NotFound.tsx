@@ -5,7 +5,7 @@ import { PageTransition } from '../components/PageTransition'
 
 export default function NotFound() {
   useSEO({
-    title: 'Page Not Found | Borderless World Foundation',
+    title: 'Page Not Found | Adhik Kadam',
     description: 'The page you are looking for does not exist.',
     noindex: true
   })

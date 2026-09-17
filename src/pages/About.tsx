@@ -4,7 +4,7 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function About() {
   useSEO({
-    title: 'About Adhik Kadam | Borderless World Foundation',
+    title: 'About Adhik | Adhik Kadam',
     description: 'Learn about Adhik Kadam’s journey as a social entrepreneur and humanitarian, and the evolution of the Borderless World Foundation.',
     canonicalPath: '/about',
   })

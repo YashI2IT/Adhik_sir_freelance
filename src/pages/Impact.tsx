@@ -4,7 +4,7 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function Impact() {
   useSEO({
-    title: 'Impact | Borderless World Foundation',
+    title: 'His Impact | Adhik Kadam',
     description: 'Discover the quantifiable and generational impact of Adhik Kadam’s three decades of humanitarian work in conflict zones.',
     canonicalPath: '/impact',
   })

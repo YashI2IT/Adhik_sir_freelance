@@ -35,6 +35,42 @@ export const mediaData = {
     supporting: 'A selection of independent coverage and public references documenting the journey, humanitarian work, healthcare initiatives and social impact.',
     articles: [
       {
+        publisher: 'Global Kashmir',
+        logo: 'https://www.borderlessworldfoundation.org/assets/images/x.jpg',
+        date: 'February 4, 2025',
+        title: 'Opinion | The Sacred Duty of NGOs—Guarding Against Ego',
+        excerpt: 'Non-Governmental Organizations (NGOs) are built on the foundation of selfless service, compassion, and the pursuit of social justice. They exist to uplift communities.',
+        url: 'https://globalkashmir.net/opinion-the-sacred-duty-of-ngos-guarding-against-ego/',
+        type: 'article'
+      },
+      {
+        publisher: 'Global Kashmir',
+        logo: 'https://www.borderlessworldfoundation.org/assets/images/x.jpg',
+        date: 'January 24, 2025',
+        title: 'Opinion | Adhik Kadam: The Unsung Hero Behind Kashmiri Orphan Girls\' Empowerment Wins India\'s Best Social Change Award 2024',
+        excerpt: 'Adhik Kadam’s journey from Pune, Maharashtra, to the conflict-ridden Kashmir Valley in 1997 is nothing short of extraordinary. At a time when militancy was at its peak...',
+        url: 'https://globalkashmir.net/opinion-adhik-kadam-the-unsung-hero-behind-kashmiri-orphan-girls-empowerment-wins-indias-best-social-change-award-2024/',
+        type: 'article'
+      },
+      {
+        publisher: 'Global Kashmir',
+        logo: 'https://www.borderlessworldfoundation.org/assets/images/x.jpg',
+        date: 'February 27, 2025',
+        title: 'Opinion | The Silent Power of Thought: A Sufi Perspective on Inner Transformation',
+        excerpt: 'Adhik Kadam is the founder of the Borderless World Foundation, working for the rehabilitation and empowerment of orphaned girls and marginalized communities.',
+        url: 'https://globalkashmir.net/opinion-the-silent-power-of-thought-a-sufi-perspective-on-inner-transformation/',
+        type: 'article'
+      },
+      {
+        publisher: 'Orato World',
+        logo: 'https://www.borderlessworldfoundation.org/assets/images/x.jpg',
+        date: 'August 20, 2023',
+        title: 'Terrorists held me hostage and death littered the streets, but I keep fighting for the women and children who suffer',
+        excerpt: 'While traveling from Kupwara to Srinagar, a sudden explosion rocked the highway. The sound deafened my ears as I tried to make sense of what was happening.',
+        url: 'https://orato.world/2023/08/20/terrorists-held-me-hostage-and-death-littered-the-streets-but-i-keep-fighting-for-the-women-and-children-who-suffer/',
+        type: 'article'
+      },
+      {
         publisher: 'Awaz The Voice',
         logo: 'https://www.borderlessworldfoundation.org/assets/images/azad.svg',
         date: 'August 20, 2023',
@@ -81,6 +117,28 @@ export const mediaData = {
       }
     ] as FeaturedMedia[]
   },
+  featuredVideos: {
+    eyebrow: 'FEATURED VIDEOS',
+    heading: 'Watch the journey',
+    supporting: 'Documentaries, interviews and public addresses highlighting the work of Borderless World Foundation.',
+    videos: [
+      {
+        id: 'tZSHkcDA3os',
+        title: 'Relevance Of Gandhi today a conversation with Adhik Kadam',
+        url: 'https://m.youtube.com/watch?v=tZSHkcDA3os'
+      },
+      {
+        id: 'vQi849Jmp8k',
+        title: 'Basera e Tabassum Destination Happiness adhik kadam',
+        url: 'https://m.youtube.com/watch?v=vQi849Jmp8k'
+      },
+      {
+        id: 'hWnzmgJGrE0',
+        title: 'adhik kadam Talking at Rotary, USA',
+        url: 'https://youtu.be/hWnzmgJGrE0'
+      }
+    ]
+  },
   evidence: {
     eyebrow: 'INDEPENDENT EVIDENCE',
     heading: 'More coverage and public references',
@@ -104,7 +162,8 @@ export const mediaData = {
       { id: 17, publisher: 'YourStory', url: 'https://yourstory.com/2017/10/mir-musharraf-mubeena-khan-kashmir-menstruation', type: 'article' },
       { id: 18, publisher: 'Brut', url: 'https://www.brut.media/in/articles/adhik-kadam-the-man-who-brought-a-hospital-to-dal-lake-force-for-good-hero', type: 'article' },
       { id: 19, publisher: 'YouTube', url: 'https://www.youtube.com/watch?v=RWiJiNgUyGQ&t=2s', type: 'video' },
-      { id: 20, publisher: 'YouTube', url: 'https://youtu.be/94rjx_o5oow?si=gbRZHuk5Dkx9LR-I', type: 'video' }
+      { id: 20, publisher: 'YouTube', url: 'https://youtu.be/94rjx_o5oow?si=gbRZHuk5Dkx9LR-I', type: 'video' },
+      { id: 21, publisher: 'Vinod Narayan', url: 'https://vinodnarayan.com/2015/10/25/indriveview-with-adhik-kadam-from-borderless-world-foundation/', type: 'article' }
     ] as IndependentEvidence[]
   }
 };

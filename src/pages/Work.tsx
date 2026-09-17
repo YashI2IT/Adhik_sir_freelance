@@ -4,7 +4,7 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function Work() {
   useSEO({
-    title: 'His Work | Borderless World Foundation',
+    title: 'His Work | Adhik Kadam',
     description: 'Explore Adhik Kadam’s work across healthcare, girls residential care, education, emergency response, and women empowerment.',
     canonicalPath: '/work',
   })

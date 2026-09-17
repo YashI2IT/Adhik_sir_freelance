@@ -4,7 +4,7 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function Contact() {
   useSEO({
-    title: 'Contact | Borderless World Foundation',
+    title: 'Contact | Adhik Kadam',
     description: 'Connect with Adhik Kadam and the Borderless World Foundation for partnerships, speaking engagements, media, or general enquiries.',
     canonicalPath: '/contact',
   })

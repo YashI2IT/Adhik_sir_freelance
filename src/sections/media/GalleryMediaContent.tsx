@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { mediaData, FeaturedMedia, IndependentEvidence } from '../../data/mediaCoverage'
+import { YouTubeEmbed } from '../../components/YouTubeEmbed'
 
 /* ─── Animation helpers ─────────────────────────────── */
 const fadeUp = (delay = 0) => ({
@@ -121,6 +122,35 @@ function FeaturedMediaGrid() {
   )
 }
 
+function FeaturedVideosGrid() {
+  return (
+    <section className="bg-bwf-deep text-bwf-ivory py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <motion.div {...fadeUp(0)} className="mb-16 text-center md:text-left">
+          <SectionTag text={mediaData.featuredVideos.eyebrow} />
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] text-bwf-ivory leading-tight max-w-3xl mb-6">
+            {mediaData.featuredVideos.heading}
+          </h2>
+          <p className="text-[16px] font-light text-bwf-ivory/70 max-w-2xl leading-relaxed mx-auto md:mx-0">
+            {mediaData.featuredVideos.supporting}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {mediaData.featuredVideos.videos.map((video, i) => (
+            <motion.div key={video.id} {...fadeUp(i * 0.1)} className="flex flex-col h-full">
+              <YouTubeEmbed url={`https://www.youtube.com/embed/${video.id}`} title={video.title} />
+              <h3 className="font-display text-xl text-bwf-ivory mt-6 mb-2 group-hover:text-bwf-gold transition-colors">
+                {video.title}
+              </h3>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function EvidenceItem({ item }: { item: IndependentEvidence }) {
   const isVideo = item.type === 'video';
   return (
@@ -169,6 +199,7 @@ export function GalleryMediaContent() {
     <main>
       <MediaHero />
       <GalleryCTA />
+      <FeaturedVideosGrid />
       <FeaturedMediaGrid />
       <EvidenceList />
     </main>
