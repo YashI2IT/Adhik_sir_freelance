@@ -225,8 +225,8 @@ export default function TheCourageToStay() {
               <p>Our study recorded more than 1,000 orphaned children there.</p>
             </div>
 
-            <motion.div {...fadeUp(0)} className="w-full aspect-[21/9] rounded-xl overflow-hidden shadow-2xl my-32">
-               <img src="/images/IMG_1888.jpg" alt="Research field notes" className="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-700" />
+            <motion.div {...fadeUp(0)} className="w-full aspect-[16/9] md:aspect-[4/3] lg:aspect-[16/10] rounded-xl overflow-hidden shadow-2xl my-32">
+               <img src="/images/IMG_1888.jpg" alt="Research field notes" className="w-full h-full object-cover object-top grayscale opacity-90 hover:grayscale-0 transition-all duration-700" />
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
