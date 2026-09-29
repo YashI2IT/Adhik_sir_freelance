@@ -385,39 +385,7 @@ export default function TheCourageToStay() {
               <p className="font-display text-4xl text-[#B59A63] pt-12 uppercase tracking-widest">DAL PARI <span className="text-2xl font-light text-[#0D343A]/60 italic lowercase">healthcare on water.</span></p>
             </div>
 
-            {/* IMPACT NUMBERS */}
-            <div className="py-32 bg-[#051315] rounded-3xl text-[#F7F6F1] px-8 md:px-16 shadow-2xl relative overflow-hidden">
-              {/* Subtle background glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#B59A63]/20 via-[#051315]/0 to-transparent z-0" />
-              
-              <div className="relative z-10">
-                <h3 className="font-display text-5xl text-center mb-24 text-[#B59A63] italic">THE NUMBERS GREW.</h3>
-                
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 gap-x-8 text-center mb-16">
-                  {[
-                    { label: "Girls supported", value: "0,000+" },
-                    { label: "Patients treated", value: "0,00,000+" },
-                    { label: "Villages reached", value: "000+" },
-                    { label: "Ambulances", value: "00" },
-                    { label: "Homes established", value: "0" },
-                    { label: "Students graduating", value: "000+" },
-                    { label: "Families rebuilding", value: "0,000+" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex flex-col items-center">
-                      <span className="font-display text-5xl md:text-6xl text-white mb-4">{item.value}</span>
-                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#B59A63]">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <p className="text-center text-white/30 text-xs tracking-widest uppercase mt-8">* Verified historical impact figures are currently being compiled.</p>
 
-                <div className="space-y-6 text-[20px] md:text-[24px] leading-[1.9] text-white/80 text-center border-t border-white/10 pt-24 mt-24 max-w-3xl mx-auto">
-                  <p>But numbers are not the deepest measure of change.</p>
-                  <p className="font-display text-4xl text-[#B59A63] italic pt-4">There is another measure.</p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
