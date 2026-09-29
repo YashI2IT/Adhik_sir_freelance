@@ -26,6 +26,7 @@ const navItems: NavItem[] = [
     children: [
       { name: 'His Journey', path: '/journey' },
       { name: 'The Inner Journey', path: '/inner-journey' },
+      { name: 'The Courage to Stay', path: '/the-courage-to-stay' },
     ],
   },
   {
