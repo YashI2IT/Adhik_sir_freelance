@@ -154,6 +154,7 @@ export default function TheCourageToStay() {
             <TimelineEvent year="1997" title="I CROSSED INTO THE VALLEY.">
               <p>I entered Kashmir.</p>
               <p>I wanted to understand. But understanding Kashmir from a distance and living among its people were two very different things.</p>
+              <motion.img {...fadeUp(0)} src="/images/IMG_0001.jpeg" alt="Kashmir Journey" className="w-full aspect-[4/3] object-cover rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>Gradually, Kashmir began teaching me something that no university could have taught me.</p>
               <div className="mt-12 pt-8 pl-8 border-l-2 border-[#B59A63] space-y-4 font-display text-2xl text-[#051315]">
                 <p>Listen before speaking.</p>
@@ -195,7 +196,7 @@ export default function TheCourageToStay() {
                 <p>I had the opportunity to work on a study on “Children Affected by Armed Conflict”, associated with UNICEF, alongside Padma Shri Balraj Puri, founder of the Institute of Jammu and Kashmir Affairs.</p>
                 <p>The work took me deeper into the consequences of conflict on children and families. We travelled. We met families. We listened. We gathered information.</p>
                 <p>And behind the vocabulary of militancy, security, politics and conflict, another reality emerged.</p>
-                
+                <motion.img {...fadeUp(0)} src="/images/IMG_0002.jpeg" alt="Children in Kashmir" className="w-full aspect-[16/9] object-[center_30%] object-cover rounded-xl shadow-lg my-12" />
                 <h3 className="font-display text-5xl text-[#051315] py-12 text-center tracking-widest">CHILDREN.</h3>
                 
                 <div className="grid md:grid-cols-2 gap-8 text-lg bg-white p-12 rounded-xl shadow-sm border border-[#051315]/5">
@@ -274,6 +275,7 @@ export default function TheCourageToStay() {
               <p>In Kupwara, a small beginning was taking shape.</p>
               <p>There was no grand institution. No large building. No major donor. No blueprint for what it would eventually become.</p>
               <p>There were girls who needed security, education, affection and the possibility of a future. And there was a decision.</p>
+              <motion.img {...fadeUp(0)} src="/images/IMG_8483.jpg" alt="Girls of Basera-e-Tabassum" className="w-full aspect-[3/2] object-cover rounded-xl shadow-lg my-10 opacity-90 hover:opacity-100 transition-opacity duration-500" />
               <p className="font-display text-3xl text-white pt-4 pb-8">Basera-e-Tabassum— <span className="italic text-[#B59A63]">“The Abode of Smiles”</span> —began as a home for vulnerable girls.</p>
               
               <div className="pt-12 mt-12 border-t border-white/10">
@@ -328,6 +330,7 @@ export default function TheCourageToStay() {
 
             <TimelineEvent year="2014" title="THEN KASHMIR WENT UNDER WATER." dark>
               <p>The floods devastated large parts of the Valley. I experienced the disaster personally.</p>
+              <motion.img {...fadeUp(0)} src="/images/IMG_8050.jpg" alt="Relief Work" className="w-full aspect-[4/3] object-cover rounded-xl shadow-lg my-10 opacity-80" />
               <p>After reaching safety, the work began again. Community kitchens. Relief. Coordination. Support.</p>
               <p className="font-display text-2xl text-[#B59A63] pt-8 mt-8 border-t border-white/10">When people know you will remain after the crisis, relief becomes relationship.</p>
             </TimelineEvent>
