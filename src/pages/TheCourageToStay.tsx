@@ -2,7 +2,6 @@ import { useSEO } from '../hooks/useSEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { PageTransition } from '../components/PageTransition'
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -11,13 +10,48 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.8, ease: 'easeOut' as const, delay },
 })
 
-function SectionHeading({ title }: { title: string }) {
+function SectionHeading({ title, className = "" }: { title: string, className?: string }) {
   return (
-    <motion.div {...fadeUp(0)}>
+    <motion.div {...fadeUp(0)} className={className}>
       <h2 className="font-display text-4xl md:text-5xl text-[#051315] mb-10 pb-6 border-b border-[#051315]/10 inline-block pr-16">
         {title}
       </h2>
     </motion.div>
+  )
+}
+
+function TimelineEvent({ year, title, children, dark = false }: { year: string, title: string, children: React.ReactNode, dark?: boolean }) {
+  const textColor = dark ? 'text-white' : 'text-[#051315]'
+  const subtitleColor = dark ? 'text-[#B59A63]' : 'text-[#B59A63]'
+  const bodyColor = dark ? 'text-white/70' : 'text-[#0D343A]/80'
+  const borderColor = dark ? 'border-white/10' : 'border-[#051315]/10'
+
+  return (
+    <motion.div {...fadeUp(0)} className={`grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 pt-16 border-t ${borderColor}`}>
+      <div className="md:sticky md:top-32 h-fit">
+        <h2 className={`font-display text-5xl md:text-6xl ${textColor} mb-4 tracking-tight`}>{year}</h2>
+        <div className={`w-12 h-1 bg-[#B59A63] mb-8`}/>
+        <h3 className={`font-display text-2xl md:text-3xl italic ${subtitleColor} leading-relaxed`}>{title}</h3>
+      </div>
+      <div className={`space-y-8 text-[18px] md:text-[20px] leading-[1.9] ${bodyColor} font-light`}>
+        {children}
+      </div>
+    </motion.div>
+  )
+}
+
+function ParallaxDivider({ src }: { src: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
+  
+  return (
+    <div ref={ref} className="h-[60vh] w-full overflow-hidden relative my-32">
+      <motion.div style={{ y }} className="absolute inset-[-20%] w-[140%] h-[140%]">
+        <img src={src} alt="Divider" className="w-full h-full object-cover object-center grayscale opacity-80" />
+      </motion.div>
+      <div className="absolute inset-0 bg-[#051315]/30 mix-blend-multiply" />
+    </div>
   )
 }
 
@@ -51,7 +85,7 @@ export default function TheCourageToStay() {
               alt="Kashmir Landscape" 
               className="w-full h-full object-cover object-[center_30%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/60 to-[#051315]/20" />
           </motion.div>
 
           <div className="max-w-5xl mx-auto relative z-10 text-center text-[#F7F6F1]">
@@ -92,113 +126,88 @@ export default function TheCourageToStay() {
 
         {/* 2. THE BEGINNING / TIMELINE */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-          <div className="max-w-3xl mx-auto text-center mb-24">
-            <motion.h2 {...fadeUp(0)} className="font-display text-4xl md:text-5xl text-[#051315] italic">
+          <div className="max-w-6xl mx-auto text-center mb-32">
+            <motion.h2 {...fadeUp(0)} className="font-display text-5xl md:text-6xl text-[#051315] italic">
               CHANGE BEGINS WITH ME.
             </motion.h2>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-24">
-            {/* 1995 */}
-            <motion.div {...fadeUp(0.1)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-[#051315] mb-2">1995</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">I CAME WITH QUESTIONS.</h3>
+          <div className="max-w-5xl mx-auto space-y-32">
+            <TimelineEvent year="1995" title="I CAME WITH QUESTIONS.">
+              <p className="first-letter:text-6xl first-letter:font-display first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:text-[#B59A63]">
+                I was eighteen. I came from Pune to Jammu not as a social worker.
+              </p>
+              <p>I had no organisation. No funding. No project. And certainly no idea that Kashmir would become the defining journey of my life.</p>
+              <p>I was a student of Political Science trying to understand Kashmir beyond books, newspapers and political narratives.</p>
+              <p>I met displaced Kashmiri Pandit families living away from their homes. I travelled towards border communities in Rajouri and Poonch. I listened.</p>
+              <p>And for the first time, conflict stopped being a subject I was studying. It had faces. It had families. It had memories. It had children.</p>
               
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80 font-light">
-                <p>I was eighteen.</p>
-                <p>I came from Pune to Jammu not as a social worker.</p>
-                <p>I had no organisation.</p>
-                <p>No funding.</p>
-                <p>No project.</p>
-                <p>And certainly no idea that Kashmir would become the defining journey of my life.</p>
-                <p>I was a student of Political Science trying to understand Kashmir beyond books, newspapers and political narratives.</p>
-                <p>I met displaced Kashmiri Pandit families living away from their homes.</p>
-                <p>I travelled towards border communities in Rajouri and Poonch.</p>
-                <p>I listened.</p>
-                <p>And for the first time, conflict stopped being a subject I was studying.</p>
-                <p>It had faces. It had families. It had memories. It had children.</p>
-                
-                <div className="py-8 my-8 border-y border-[#051315]/10 text-center pr-8">
-                  <p className="font-display text-2xl md:text-3xl text-[#051315] leading-relaxed">
-                    One question began following me:
-                    <br/><br/>
-                    <span className="italic text-[#B59A63]">What happens to ordinary human beings when history, politics and conflict enter their homes?</span>
-                  </p>
-                </div>
+              <div className="py-12 my-12 border-y border-[#051315]/10">
+                <p className="font-display text-2xl md:text-3xl text-[#051315] leading-relaxed">
+                  One question began following me:
+                  <br/><br/>
+                  <span className="italic text-[#B59A63]">What happens to ordinary human beings when history, politics and conflict enter their homes?</span>
+                </p>
               </div>
-            </motion.div>
+            </TimelineEvent>
 
-            {/* 1997 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-[#051315] mb-2">1997</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">I CROSSED INTO THE VALLEY.</h3>
-              
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80 font-light">
-                <p>I entered Kashmir.</p>
-                <p>I wanted to understand.</p>
-                <p>But understanding Kashmir from a distance and living among its people were two very different things.</p>
-                <p>Gradually, Kashmir began teaching me something that no university could have taught me.</p>
-                <div className="mt-8 pt-8 space-y-4 font-display text-2xl text-[#051315]">
-                  <p>Listen before speaking.</p>
-                  <p>Enter people's lives before trying to enter their problems.</p>
-                  <p>Never demand trust.</p>
-                  <p>Earn it.</p>
-                  <p className="italic text-[#B59A63]">And earning trust takes time.</p>
-                </div>
+            <TimelineEvent year="1997" title="I CROSSED INTO THE VALLEY.">
+              <p>I entered Kashmir.</p>
+              <p>I wanted to understand. But understanding Kashmir from a distance and living among its people were two very different things.</p>
+              <p>Gradually, Kashmir began teaching me something that no university could have taught me.</p>
+              <div className="mt-12 pt-8 pl-8 border-l-2 border-[#B59A63] space-y-4 font-display text-2xl text-[#051315]">
+                <p>Listen before speaking.</p>
+                <p>Enter people's lives before trying to enter their problems.</p>
+                <p>Never demand trust. Earn it.</p>
+                <p className="italic text-[#B59A63]">And earning trust takes time.</p>
               </div>
-            </motion.div>
+            </TimelineEvent>
 
-            {/* 1999 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-[#051315] mb-2">1999</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">THEN I WITNESSED WAR.</h3>
-              
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80 font-light">
-                <p>The Kargil conflict displaced families and disrupted ordinary life.</p>
-                <p>I worked among affected communities around Gagangir and Sonamarg.</p>
-                <p>Community kitchens were organised. Children needed spaces to continue learning. Families needed support.</p>
-                <p>Sometimes they simply needed someone willing to remain beside them.</p>
-                <p>Something was changing inside me.</p>
-                <p>I had come to Kashmir to understand conflict.</p>
-                <p>But increasingly, I was encountering the human consequences of conflict.</p>
-                <p className="font-display text-2xl text-[#051315] italic py-6">Once suffering enters your consciousness, remaining only a spectator becomes difficult.</p>
-              </div>
-            </motion.div>
+            <TimelineEvent year="1999" title="THEN I WITNESSED WAR.">
+              <p>The Kargil conflict displaced families and disrupted ordinary life.</p>
+              <p>I worked among affected communities around Gagangir and Sonamarg.</p>
+              <p>Community kitchens were organised. Children needed spaces to continue learning. Families needed support. Sometimes they simply needed someone willing to remain beside them.</p>
+              <p>Something was changing inside me.</p>
+              <p>I had come to Kashmir to understand conflict. But increasingly, I was encountering the human consequences of conflict.</p>
+              <p className="font-display text-2xl text-[#051315] italic py-8 border-t border-[#051315]/10 mt-8">
+                Once suffering enters your consciousness, remaining only a spectator becomes difficult.
+              </p>
+            </TimelineEvent>
           </div>
         </section>
 
+        <ParallaxDivider src="/images/IMG_8773.jpg" />
+
         {/* 3. UNDERSTANDING */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#F7F6F1]">
-          <div className="max-w-3xl mx-auto space-y-16">
-            <SectionHeading title="From Relief to Understanding." />
+          <div className="max-w-4xl mx-auto space-y-16">
+            <SectionHeading title="From Relief to Understanding." className="text-center w-full" />
             
-            <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
+            <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80 text-center">
               <p>By then, I had witnessed displacement.</p>
               <p>I had seen border communities living with uncertainty.</p>
               <p>I had worked during war.</p>
               <p>But much of what I was doing was still responding to what was immediately visible.</p>
-              <p>Then came an experience that changed the direction of my life.</p>
+              <p className="text-2xl font-display text-[#051315] italic py-8">Then came an experience that changed the direction of my life.</p>
             </div>
 
-            <div className="pt-16">
-              <p className="text-[14px] uppercase tracking-[0.2em] text-[#B59A63] font-bold mb-8">CHILDREN AFFECTED BY ARMED CONFLICT</p>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
+            <div className="pt-24 mt-24 border-t border-[#051315]/10">
+              <p className="text-[14px] uppercase tracking-[0.2em] text-[#B59A63] font-bold mb-8 text-center">CHILDREN AFFECTED BY ARMED CONFLICT</p>
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
                 <p>I had the opportunity to work on a study on “Children Affected by Armed Conflict”, associated with UNICEF, alongside Padma Shri Balraj Puri, founder of the Institute of Jammu and Kashmir Affairs.</p>
-                <p>The work took me deeper into the consequences of conflict on children and families.</p>
-                <p>We travelled. We met families. We listened. We gathered information.</p>
+                <p>The work took me deeper into the consequences of conflict on children and families. We travelled. We met families. We listened. We gathered information.</p>
                 <p>And behind the vocabulary of militancy, security, politics and conflict, another reality emerged.</p>
                 
-                <h3 className="font-display text-4xl text-[#051315] py-8">CHILDREN.</h3>
+                <h3 className="font-display text-5xl text-[#051315] py-12 text-center tracking-widest">CHILDREN.</h3>
                 
-                <p>Children who had lost fathers.</p>
-                <p>Children who had lost mothers.</p>
-                <p>Children growing up with widowed mothers.</p>
-                <p>Children whose education had been interrupted.</p>
-                <p>Children living in economically fragile households.</p>
-                <p>Children growing up surrounded by uncertainty.</p>
+                <div className="grid md:grid-cols-2 gap-8 text-lg bg-white p-12 rounded-xl shadow-sm border border-[#051315]/5">
+                  <p>Children who had lost fathers.</p>
+                  <p>Children who had lost mothers.</p>
+                  <p>Children growing up with widowed mothers.</p>
+                  <p>Children whose education had been interrupted.</p>
+                  <p>Children living in economically fragile households.</p>
+                  <p>Children growing up surrounded by uncertainty.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -206,76 +215,54 @@ export default function TheCourageToStay() {
 
         {/* 4. DARDPORA / KUPWARA */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-          <div className="max-w-3xl mx-auto space-y-12">
-            <h3 className="font-display text-4xl text-[#051315]">THEN I REACHED KUPWARA.</h3>
+          <div className="max-w-5xl mx-auto">
+            <h3 className="font-display text-5xl text-[#051315] mb-12 text-center">THEN I REACHED KUPWARA.</h3>
             
-            <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
+            <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80 text-center max-w-3xl mx-auto">
               <p>The findings confronted me with a scale of vulnerability I had never imagined.</p>
               <p>Our field study indicated that Kupwara district alone had more than 24,000 orphaned children.</p>
               <p>And then there was one village that remained deeply etched in my mind.</p>
-              <p className="font-display text-5xl italic text-[#B59A63] py-6">DARDPORA.</p>
+              <p className="font-display text-6xl italic text-[#B59A63] py-12">DARDPORA.</p>
               <p>Our study recorded more than 1,000 orphaned children there.</p>
             </div>
-          </div>
 
-          <motion.div {...fadeUp(0)} className="max-w-5xl mx-auto my-24">
-             <div className="w-full aspect-video rounded-md overflow-hidden shadow-2xl relative">
-                <img src="/images/IMG_1888.jpg" alt="Research field notes" className="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-700" />
-             </div>
-          </motion.div>
+            <motion.div {...fadeUp(0)} className="w-full aspect-[21/9] rounded-xl overflow-hidden shadow-2xl my-32">
+               <img src="/images/IMG_1888.jpg" alt="Research field notes" className="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-700" />
+            </motion.div>
 
-          <div className="max-w-3xl mx-auto space-y-12">
-            <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
-              <p>These were not merely numbers in a survey.</p>
-              <p>Every number represented a childhood. A family. A story. A future.</p>
-              
-              <div className="py-12 border-y border-[#051315]/10 my-12 text-center">
-                <p className="font-display text-2xl text-[#0D343A]/60">And suddenly the question was no longer:</p>
-                <p className="font-display text-3xl italic text-[#051315] my-4">How many?</p>
-                <p className="font-display text-2xl text-[#0D343A]/60 mt-8 mb-4">It became:</p>
-                <p className="font-display text-4xl text-[#B59A63]">WHAT HAPPENS TO THEM NEXT?</p>
-              </div>
-            </div>
-
-            <div className="pt-8">
-              <SectionHeading title="The Study Changed My Question." />
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80 mt-8">
-                <p>Until then I had been asking:</p>
-                <p className="italic font-display text-2xl text-[#051315]">What can I do during a crisis?</p>
+            <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
+                <h3 className="font-display text-4xl text-[#051315] mb-8">THE STUDY CHANGED MY QUESTION.</h3>
+                <p>These were not merely numbers in a survey. Every number represented a childhood. A family. A story. A future.</p>
+                <p>Until then I had been asking: <br/><span className="italic font-display text-2xl text-[#051315]">What can I do during a crisis?</span></p>
                 <p>The research forced me to ask something much harder.</p>
-                
-                <div className="pl-6 border-l border-[#B59A63] py-4 my-8 space-y-4">
-                  <p className="font-display text-2xl text-[#051315]">What happens to a child after the crisis becomes old news?</p>
-                  <p className="font-display text-2xl text-[#051315]">Who remains when emergency relief ends?</p>
-                  <p className="font-display text-2xl text-[#051315]">Who protects her education?</p>
-                  <p className="font-display text-2xl text-[#051315]">Who supports a widowed mother?</p>
-                  <p className="font-display text-2xl text-[#051315]">Who prevents vulnerability from becoming exploitation?</p>
-                  <p className="font-display text-2xl text-[#B59A63] italic">Who remains until that child becomes capable of standing independently?</p>
+                <div className="pl-6 border-l-2 border-[#B59A63] py-2 space-y-4 font-display text-xl md:text-2xl text-[#051315]">
+                  <p>What happens to a child after the crisis becomes old news?</p>
+                  <p>Who remains when emergency relief ends?</p>
+                  <p>Who protects her education?</p>
+                  <p>Who supports a widowed mother?</p>
+                  <p className="text-[#B59A63] italic mt-4">Who remains until that child becomes capable of standing independently?</p>
                 </div>
               </div>
-            </div>
-            
-            <div className="pt-16">
-              <h3 className="font-display text-4xl text-[#051315] mb-8">ONE REALITY TROUBLED ME MOST.<br/><span className="italic text-[#B59A63]">THE VULNERABILITY OF GIRLS.</span></h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
-                <p>In fragile families affected by conflict, girls could face multiple layers of vulnerability.</p>
-                <p>Loss of parental protection. Interrupted education. Economic insecurity. Social pressure. Limited opportunities. And uncertainty about their own future.</p>
-                <p className="font-display text-2xl text-[#051315] pt-8">Temporary relief would never be enough.</p>
-                <p>These girls needed something different.</p>
-                <p>Long-term accompaniment. A safe home. Education. Healthcare. Protection. Skills. Confidence. Opportunity.</p>
-                <p className="font-display text-3xl text-[#B59A63] pt-6 uppercase tracking-widest">And eventually—<br/>INDEPENDENCE.</p>
+
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80 bg-[#F7F6F1] p-10 md:p-16 rounded-2xl">
+                <h3 className="font-display text-3xl text-[#051315] mb-8 leading-snug">
+                  ONE REALITY TROUBLED ME MOST.<br/>
+                  <span className="italic text-[#B59A63]">THE VULNERABILITY OF GIRLS.</span>
+                </h3>
+                <p>In fragile families affected by conflict, girls could face multiple layers of vulnerability: Loss of parental protection. Interrupted education. Economic insecurity. Social pressure.</p>
+                <p className="font-display text-xl text-[#051315] py-4 border-y border-[#051315]/10">Temporary relief would never be enough.</p>
+                <p>These girls needed something different. Long-term accompaniment. A safe home. Education. Healthcare. Protection.</p>
+                <p className="font-display text-3xl text-[#B59A63] pt-6 uppercase tracking-widest text-center">INDEPENDENCE.</p>
               </div>
             </div>
 
-            <div className="pt-24 text-center">
-              <h3 className="font-display text-4xl text-[#051315] italic mb-8">KNOWLEDGE CREATED RESPONSIBILITY.</h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80 max-w-2xl mx-auto">
-                <p>The study had begun as an attempt to understand the consequences of armed conflict on children.</p>
-                <p>For me, it became something much more personal.</p>
-                <p>I could no longer look at these children merely as subjects of research.</p>
-                <p>Once you know, you have a choice.</p>
-                <p>You can document the suffering. You can discuss it. You can move on.</p>
-                <p className="font-display text-5xl text-[#B59A63] pt-12">Or—<br/>YOU CAN STAY.</p>
+            <div className="mt-48 text-center max-w-3xl mx-auto">
+              <h3 className="font-display text-4xl md:text-5xl text-[#051315] italic mb-12">KNOWLEDGE CREATED RESPONSIBILITY.</h3>
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
+                <p>The study had begun as an attempt to understand the consequences of armed conflict on children. For me, it became something much more personal.</p>
+                <p>Once you know, you have a choice. You can document the suffering. You can discuss it. You can move on.</p>
+                <p className="font-display text-6xl text-[#B59A63] pt-16 uppercase tracking-widest">OR YOU CAN STAY.</p>
               </div>
             </div>
           </div>
@@ -283,222 +270,152 @@ export default function TheCourageToStay() {
 
         {/* 5. BASERA-E-TABASSUM & TIMELINE */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#051315] text-[#F7F6F1]">
-          <div className="max-w-3xl mx-auto space-y-24">
+          <div className="max-w-5xl mx-auto space-y-32">
             
-            {/* 2002 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-white mb-2">2002</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">TWO GIRLS.<br/>ONE BEGINNING.</h3>
+            <TimelineEvent year="2002" title="TWO GIRLS. ONE BEGINNING." dark>
+              <p>In Kupwara, a small beginning was taking shape.</p>
+              <p>There was no grand institution. No large building. No major donor. No blueprint for what it would eventually become.</p>
+              <p>There were girls who needed security, education, affection and the possibility of a future. And there was a decision.</p>
+              <p className="font-display text-3xl text-white pt-4 pb-8">Basera-e-Tabassum— <span className="italic text-[#B59A63]">“The Abode of Smiles”</span> —began as a home for vulnerable girls.</p>
               
-              <div className="space-y-6 text-[18px] leading-[1.9] text-white/70 font-light">
-                <p>In Kupwara, a small beginning was taking shape.</p>
-                <p>There was no grand institution. No large building. No major donor. No blueprint for what it would eventually become.</p>
-                <p>There were girls who needed security, education, affection and the possibility of a future.</p>
-                <p>And there was a decision.</p>
-                <p className="font-display text-4xl text-white pt-4">STAY.</p>
-                <p className="pt-4">Basera-e-Tabassum— <span className="italic text-[#B59A63]">“The Abode of Smiles”</span> —began as a home for vulnerable girls.</p>
-                <p>What began with a few children gradually became a lifelong responsibility.</p>
-                
-                <h3 className="font-display text-3xl text-white pt-16 mb-6">NOT AN ORPHANAGE.<br/>A HOME.</h3>
+              <div className="pt-12 mt-12 border-t border-white/10">
+                <h3 className="font-display text-2xl text-white mb-6 uppercase tracking-widest">NOT AN ORPHANAGE. A HOME.</h3>
                 <p>A child does not only need food and shelter. She needs belonging. She needs education. She needs confidence. She needs someone who believes in her.</p>
-                <p>And eventually, she needs the freedom to build a life of her own.</p>
-                <p>Our responsibility could not simply end when a girl turned eighteen.</p>
-                <p>It had to continue until dependency became independence.</p>
+                <p className="mt-4">Our responsibility could not simply end when a girl turned eighteen. It had to continue until dependency became independence.</p>
+              </div>
 
-                <div className="py-16 my-16 border-y border-white/10">
-                  <h3 className="font-display text-3xl italic text-[#B59A63] mb-12 text-center">OUR JOURNEY FOUND THREE WORDS.</h3>
-                  <div className="space-y-12">
-                    <div className="text-center">
-                      <p className="font-display text-3xl text-white mb-2 tracking-widest uppercase">RESCUE.</p>
-                      <p className="text-white/60">When a human life faces immediate crisis or vulnerability.</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="font-display text-3xl text-white mb-2 tracking-widest uppercase">REBUILD.</p>
-                      <p className="text-white/60">Through shelter, education, healthcare, skills and opportunity.</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="font-display text-3xl text-white mb-2 tracking-widest uppercase">REVIVE.</p>
-                      <p className="text-white/60">Until dignity, confidence and independence return.</p>
-                    </div>
+              <div className="py-12 mt-12 bg-white/5 rounded-2xl p-8 md:p-12 border border-white/10 text-center">
+                <h3 className="font-display text-2xl italic text-[#B59A63] mb-12">OUR JOURNEY FOUND THREE WORDS.</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                  <div>
+                    <p className="font-display text-2xl text-white mb-4 tracking-widest uppercase">RESCUE.</p>
+                    <p className="text-white/60 text-base">When a human life faces immediate crisis.</p>
                   </div>
-                  <div className="mt-16 pt-8 border-t border-white/10 text-center">
-                    <p className="font-display text-2xl text-[#B59A63] tracking-widest">RESCUE → REBUILD → REVIVE</p>
+                  <div>
+                    <p className="font-display text-2xl text-white mb-4 tracking-widest uppercase">REBUILD.</p>
+                    <p className="text-white/60 text-base">Through shelter, education, healthcare & skills.</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-2xl text-white mb-4 tracking-widest uppercase">REVIVE.</p>
+                    <p className="text-white/60 text-base">Until dignity and independence return.</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </TimelineEvent>
 
-            {/* 2005 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-white mb-2">2005</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">WHEN THE EARTH SHOOK.</h3>
-              
-              <div className="space-y-6 text-[18px] leading-[1.9] text-white/70 font-light">
-                <p>The Kashmir earthquake brought another humanitarian emergency.</p>
-                <p>Homes collapsed. Communities were displaced. Families were suddenly exposed to enormous uncertainty.</p>
-                <p>Relief was necessary.</p>
-                <p>But by then we had understood something important.</p>
-                <p className="font-display text-2xl text-white">Emergency response becomes stronger when relationships already exist before the emergency.</p>
-                <p>We were not arriving in Kashmir.</p>
-                <p className="font-display text-4xl text-[#B59A63] italic pt-6">WE WERE ALREADY THERE.</p>
-              </div>
-            </motion.div>
+            <TimelineEvent year="2005" title="WHEN THE EARTH SHOOK." dark>
+              <p>The Kashmir earthquake brought another humanitarian emergency.</p>
+              <p>Homes collapsed. Communities were displaced. Families were suddenly exposed to enormous uncertainty. Relief was necessary.</p>
+              <p className="font-display text-2xl text-white py-6 border-y border-white/10 my-8">Emergency response becomes stronger when relationships already exist before the emergency.</p>
+              <p>We were not arriving in Kashmir.</p>
+              <p className="font-display text-4xl text-[#B59A63] italic pt-4">WE WERE ALREADY THERE.</p>
+            </TimelineEvent>
 
-            {/* 2012 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-white mb-2">2012</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">A DIFFERENT KIND OF STORM.</h3>
+            <TimelineEvent year="2012" title="A DIFFERENT KIND OF STORM." dark>
+              <p>Following public recognition of my work in Maharashtra, Marathi newspaper articles about me and our work began circulating in Kashmir.</p>
+              <p>In places where very few people could read Marathi, these articles were presented alongside serious allegations questioning my intentions and the work being done with vulnerable girls.</p>
+              <p className="font-display text-2xl text-[#B59A63] py-4">MISINFORMATION COULD BECOME DANGEROUS.</p>
+              <p>I was from Maharashtra. I could have returned home. I could have said: <span className="italic">“I tried.”</span></p>
               
-              <div className="space-y-6 text-[18px] leading-[1.9] text-white/70 font-light">
-                <p>Following public recognition of my work in Maharashtra, Marathi newspaper articles about me and our work began circulating in Kashmir.</p>
-                <p>But they were being used in an entirely different context.</p>
-                <p>In places where very few people could read Marathi, these articles were presented alongside serious allegations and narratives questioning my intentions and the work being done with vulnerable girls.</p>
-                <p>Statements circulated. Complaints followed. Rumours travelled. Suspicion was created.</p>
-                <p>In an already volatile environment, misinformation was not simply uncomfortable.</p>
-                <p className="font-display text-2xl text-[#B59A63]">IT COULD BECOME DANGEROUS.</p>
-                
-                <h3 className="font-display text-3xl text-white pt-12 pb-6">THE EASIEST DECISION<br/>WAS TO LEAVE.</h3>
-                <p>I was from Maharashtra. I could have returned home. I could have said: <span className="italic">“I tried.”</span></p>
-                <p>But there was another question.</p>
+              <div className="pl-6 border-l-2 border-[#B59A63] py-4 my-8 font-display text-xl text-white space-y-4">
                 <p>What would leaving tell the girls who had trusted us?</p>
                 <p>What would it tell the families who had placed their daughters in our care?</p>
-                <p>What would happen to years of relationships built quietly within these communities?</p>
-                <p className="font-display text-2xl text-white py-6">Someone else's narrative could not become the reason I abandoned the people who had trusted me.</p>
-                <p className="font-display text-5xl text-[#B59A63] italic pb-6">SO I STAYED.</p>
-                <p>Not to fight anyone. Not to win an argument. Not to prove that I was right.</p>
-                <p>Simply to continue the work.</p>
-
-                <h3 className="font-display text-3xl text-white pt-12 pb-6">TRUST WAS OUR REAL INFRASTRUCTURE.</h3>
-                <p>Buildings can be constructed with money. Vehicles can be purchased. Projects can be funded.</p>
-                <p>But trust cannot be bought.</p>
-                <p>It took years. Living together. Eating together. Celebrating together. Grieving together. Making mistakes. Learning. Returning. And staying.</p>
-                <p className="font-display text-2xl text-[#B59A63] pt-6 uppercase tracking-widest">PRESENCE BECAME OUR STRONGEST INSTITUTION.</p>
+                <p>Someone else's narrative could not become the reason I abandoned the people who had trusted me.</p>
               </div>
-            </motion.div>
-
-            {/* 2014 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-white mb-2">2014</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">THEN KASHMIR WENT UNDER WATER.</h3>
               
-              <div className="space-y-6 text-[18px] leading-[1.9] text-white/70 font-light">
-                <p>The floods devastated large parts of the Valley.</p>
-                <p>I experienced the disaster personally.</p>
-                <p>After reaching safety, the work began again. Community kitchens. Relief. Coordination. Support.</p>
-                <p>Once again, crisis reinforced something we had already learned.</p>
-                <p className="font-display text-2xl text-white">When people know you will remain after the crisis, relief becomes relationship.</p>
-              </div>
-            </motion.div>
+              <p className="font-display text-5xl text-[#B59A63] italic py-8">SO I STAYED.</p>
+              <p>Not to fight anyone. Simply to continue the work.</p>
+              <p className="mt-8 font-display text-2xl text-white border-t border-white/10 pt-8">Buildings can be constructed with money. But trust cannot be bought. Presence became our strongest institution.</p>
+            </TimelineEvent>
 
-            {/* 2016 */}
-            <motion.div {...fadeUp(0)} className="border-l border-[#B59A63]/50 pl-8 md:pl-12 relative">
-              <div className="absolute top-0 left-[-6px] w-3 h-3 rounded-full bg-[#B59A63]" />
-              <h2 className="font-display text-4xl text-white mb-2">2016</h2>
-              <h3 className="font-display text-3xl italic text-[#B59A63] mb-12">A GENERATION WAS HURTING.</h3>
+            <TimelineEvent year="2014" title="THEN KASHMIR WENT UNDER WATER." dark>
+              <p>The floods devastated large parts of the Valley. I experienced the disaster personally.</p>
+              <p>After reaching safety, the work began again. Community kitchens. Relief. Coordination. Support.</p>
+              <p className="font-display text-2xl text-[#B59A63] pt-8 mt-8 border-t border-white/10">When people know you will remain after the crisis, relief becomes relationship.</p>
+            </TimelineEvent>
+
+            <TimelineEvent year="2016" title="A GENERATION WAS HURTING." dark>
+              <p>During the unrest of 2016, many young people suffered serious eye injuries.</p>
+              <p className="font-display text-3xl text-[#B59A63] py-8">WHAT HAPPENS TO A YOUNG PERSON IF DARKNESS BECOMES PERMANENT?</p>
+              <p>A teenager may have sixty or seventy years of life ahead. Could we simply watch?</p>
+              <p className="font-display text-2xl text-white mt-8 mb-4">A WOUNDED EYE DOES NOT HAVE AN IDEOLOGY.</p>
+              <p>We began reaching out. Doctors. Ophthalmologists. Eye surgeons. Hospitals. The purpose was simple: Find the best possible medical help wherever it existed.</p>
+              <p className="mt-4">Not every battle against injury can be won. But every human being deserves our best effort.</p>
               
-              <div className="space-y-6 text-[18px] leading-[1.9] text-white/70 font-light">
-                <p>During the unrest of 2016, many young people suffered serious eye injuries.</p>
-                <p>There were political arguments everywhere. But beyond every argument stood a profoundly human question.</p>
-                <p className="font-display text-3xl text-[#B59A63] py-8">WHAT HAPPENS TO A YOUNG PERSON<br/>IF DARKNESS BECOMES PERMANENT?</p>
-                <p>A teenager may have sixty or seventy years of life ahead.</p>
-                <p>Education. Livelihood. Relationships. Family. Dreams.</p>
-                <p>Could we simply watch?</p>
-
-                <h3 className="font-display text-3xl text-white pt-12 pb-6">A WOUNDED EYE<br/>DOES NOT HAVE AN IDEOLOGY.</h3>
-                <p>We began reaching out. Doctors. Ophthalmologists. Eye surgeons. Hospitals. Friends. Volunteers. Networks across India.</p>
-                <p>The purpose was simple: <span className="text-white font-display text-xl">Find the best possible medical help wherever it existed.</span></p>
-                <p>Specialists were mobilised. Difficult cases needed specialised intervention. Patients were connected with medical expertise outside Kashmir.</p>
-                <p>Among them was Insha Malik, who had suffered devastating injuries to both eyes. She was taken to Aditya Jyot Eye Hospital in Mumbai in the hope that advanced medical intervention could help.</p>
-                <p>Not every battle against injury can be won. But every human being deserves our best effort.</p>
-                
-                <div className="py-12 my-12 border-y border-white/10 text-center">
-                  <h3 className="font-display text-3xl italic text-white mb-8">HUMANITY CANNOT ASK<br/>WHICH SIDE AN INJURED PERSON BELONGS TO.</h3>
-                  <p>Pain has no religion. A wounded child has no ideology. Compassion cannot wait for political agreement.</p>
-                  <p className="font-display text-3xl text-[#B59A63] pt-8 uppercase">HUMANITY MUST ARRIVE FIRST.</p>
-                </div>
+              <div className="py-12 mt-12 bg-[#B59A63]/10 rounded-2xl p-8 md:p-12 text-center">
+                <h3 className="font-display text-3xl italic text-white mb-6">HUMANITY CANNOT ASK WHICH SIDE AN INJURED PERSON BELONGS TO.</h3>
+                <p className="text-white/80">Pain has no religion. A wounded child has no ideology. Compassion cannot wait for political agreement.</p>
+                <p className="font-display text-3xl text-[#B59A63] pt-8 uppercase tracking-widest">HUMANITY MUST ARRIVE FIRST.</p>
               </div>
-            </motion.div>
+            </TimelineEvent>
           </div>
         </section>
 
         {/* 6. ECOSYSTEM OF CARE & IMPACT */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-24">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-[#B59A63] font-bold mb-4">The Journey Kept Expanding</h3>
-              <h2 className="font-display text-5xl md:text-6xl text-[#051315]">FROM A HOME<br/><span className="italic text-[#B59A63]">TO AN ECOSYSTEM OF CARE.</span></h2>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-32">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-[#B59A63] font-bold mb-6">The Journey Kept Expanding</h3>
+              <h2 className="font-display text-5xl md:text-7xl text-[#051315]">FROM A HOME<br/><span className="italic text-[#B59A63]">TO AN ECOSYSTEM.</span></h2>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12 text-[18px] leading-[1.9] text-[#0D343A]/80 mb-24">
-              <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80 mb-32 items-center">
+              <div className="space-y-6">
                 <p>The girls taught us about education.</p>
                 <p>Remote villages taught us about healthcare.</p>
                 <p>Emergencies taught us about preparedness.</p>
                 <p>Mountains taught us about access.</p>
                 <p>Conflict taught us about patience.</p>
-                <p>And every limitation forced us to find another way.</p>
+                <p className="font-display text-3xl text-[#051315] pt-6 border-t border-[#051315]/10 mt-8">And every limitation forced us to find another way.</p>
               </div>
-              <div className="bg-[#F7F6F1] p-8 rounded-lg">
-                <ul className="grid grid-cols-2 gap-y-4 gap-x-8 text-sm uppercase tracking-widest text-[#051315]">
-                  <li>Residential care.</li>
-                  <li>Education.</li>
-                  <li>Higher education.</li>
-                  <li>Healthcare.</li>
-                  <li>Skills.</li>
-                  <li>Livelihoods.</li>
-                  <li>Mobile Units.</li>
-                  <li>Ambulances.</li>
-                  <li className="col-span-2">Community development.</li>
+              <div className="bg-[#F7F6F1] p-12 rounded-2xl shadow-inner border border-[#051315]/5">
+                <ul className="grid grid-cols-1 gap-y-6 text-base md:text-lg font-display uppercase tracking-widest text-[#051315]">
+                  <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-[#B59A63]"/>Residential care & Education.</li>
+                  <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-[#B59A63]"/>Healthcare & Ambulances.</li>
+                  <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-[#B59A63]"/>Skills & Livelihoods.</li>
+                  <li className="flex items-center gap-4"><div className="w-2 h-2 rounded-full bg-[#B59A63]"/>Community development.</li>
                 </ul>
               </div>
             </div>
 
-            <div className="text-center pb-24 border-b border-[#051315]/10">
-              <p className="text-[20px] text-[#0D343A]/80 mb-6">What began as a response to vulnerable girls gradually evolved into an ecosystem built around one principle:</p>
-              <p className="font-display text-4xl font-bold text-[#B59A63]">HUMAN DIGNITY.</p>
-            </div>
-
-            <div className="py-24 max-w-3xl mx-auto">
+            <div className="py-24 my-24 border-y border-[#051315]/10 max-w-4xl mx-auto text-center">
               <h3 className="font-display text-4xl text-[#051315] italic mb-8">HEALTHCARE HAD TO TRAVEL.</h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
-                <p>We encountered another simple reality. Many people living in remote areas were not reaching hospitals.</p>
-                <p>So we changed the question.</p>
-                <p>Instead of asking: <span className="italic">Why aren't patients reaching healthcare?</span></p>
-                <p className="font-display text-2xl text-[#051315]">We asked: WHY CAN'T HEALTHCARE REACH THEM?</p>
-                <p>Mobile Medical Units began travelling into underserved communities. Ambulances reached difficult terrain. Healthcare moved towards people.</p>
-                <p>And on Dal Lake, even the water became a road.</p>
-                <p className="font-display text-3xl text-[#B59A63] pt-6 uppercase tracking-widest">DAL PARI<br/><span className="text-xl font-light text-[#0D343A]/60">Healthcare on Water.</span></p>
-              </div>
+              <p className="text-[18px] md:text-[20px] text-[#0D343A]/80 mb-8">Instead of asking why patients weren't reaching healthcare, we asked: <br/><span className="font-display text-2xl text-[#051315]">WHY CAN'T HEALTHCARE REACH THEM?</span></p>
+              <p className="text-[18px] md:text-[20px] text-[#0D343A]/80">Mobile Medical Units began travelling into underserved communities. And on Dal Lake, even the water became a road.</p>
+              <p className="font-display text-4xl text-[#B59A63] pt-12 uppercase tracking-widest">DAL PARI <span className="text-2xl font-light text-[#0D343A]/60 italic lowercase">healthcare on water.</span></p>
             </div>
 
             {/* IMPACT NUMBERS */}
-            <div className="py-24 bg-[#051315] rounded-3xl text-[#F7F6F1] px-8 md:px-16 my-16 shadow-2xl">
-              <h3 className="font-display text-4xl text-center mb-16 text-[#B59A63]">THE NUMBERS GREW.</h3>
+            <div className="py-32 bg-[#051315] rounded-3xl text-[#F7F6F1] px-8 md:px-16 shadow-2xl relative overflow-hidden">
+              {/* Subtle background glow */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#B59A63]/20 via-[#051315]/0 to-transparent z-0" />
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-y-16 gap-x-8 text-center mb-16">
-                {[
-                  { label: "Girls supported", value: "0,000+" },
-                  { label: "Patients treated", value: "0,00,000+" },
-                  { label: "Villages reached", value: "000+" },
-                  { label: "Ambulances deployed", value: "00" },
-                  { label: "Homes established", value: "0" },
-                  { label: "Students graduating", value: "000+" },
-                  { label: "Families rebuilding", value: "0,000+" },
-                ].map((item, i) => (
-                  <div key={i} className="flex flex-col items-center">
-                    <span className="font-display text-4xl md:text-5xl text-[#B59A63] mb-4">{item.value}</span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">{item.label}</span>
-                  </div>
-                ))}
-              </div>
+              <div className="relative z-10">
+                <h3 className="font-display text-5xl text-center mb-24 text-[#B59A63] italic">THE NUMBERS GREW.</h3>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 gap-x-8 text-center mb-16">
+                  {[
+                    { label: "Girls supported", value: "0,000+" },
+                    { label: "Patients treated", value: "0,00,000+" },
+                    { label: "Villages reached", value: "000+" },
+                    { label: "Ambulances", value: "00" },
+                    { label: "Homes established", value: "0" },
+                    { label: "Students graduating", value: "000+" },
+                    { label: "Families rebuilding", value: "0,000+" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex flex-col items-center">
+                      <span className="font-display text-5xl md:text-6xl text-white mb-4">{item.value}</span>
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#B59A63]">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <p className="text-center text-white/30 text-xs tracking-widest uppercase mt-8">* Verified historical impact figures are currently being compiled.</p>
 
-              <div className="space-y-6 text-[20px] leading-[1.9] text-white/80 text-center border-t border-white/10 pt-16 max-w-2xl mx-auto">
-                <p>But numbers are not the deepest measure of change.</p>
-                <p className="font-display text-3xl text-[#B59A63] italic">There is another measure.</p>
+                <div className="space-y-6 text-[20px] md:text-[24px] leading-[1.9] text-white/80 text-center border-t border-white/10 pt-24 mt-24 max-w-3xl mx-auto">
+                  <p>But numbers are not the deepest measure of change.</p>
+                  <p className="font-display text-4xl text-[#B59A63] italic pt-4">There is another measure.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -506,35 +423,34 @@ export default function TheCourageToStay() {
 
         {/* 7. ALUMNAE & CIRCLE OF CHANGE */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#F7F6F1]">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="font-display text-4xl md:text-5xl text-[#051315] mb-16 leading-tight">
-              WHEN THE PERSON<br/>YOU ONCE SERVED<br/><span className="text-[#B59A63] italic">STANDS BESIDE YOU AS A LEADER.</span>
+          <div className="max-w-4xl mx-auto text-center space-y-16">
+            <h3 className="font-display text-5xl md:text-6xl text-[#051315] leading-tight">
+              WHEN THE PERSON YOU ONCE SERVED<br/><span className="text-[#B59A63] italic">STANDS BESIDE YOU AS A LEADER.</span>
             </h3>
             
-            <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
+            <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
               <p>Girls who entered our homes as vulnerable children grew up.</p>
-              <p>They studied. They graduated. They became doctors. Nurses. Teachers. Lawyers. Government employees. Professionals. Entrepreneurs. Breadwinners. Mothers. Community leaders.</p>
-              <p>And some returned.</p>
-              <p>Not as beneficiaries.</p>
-              <div className="py-8 my-8 border-y border-[#051315]/10 font-display text-3xl md:text-4xl text-[#051315] space-y-4">
-                <p>AS COLLEAGUES.</p>
-                <p>AS PROFESSIONALS.</p>
-                <p>AS LEADERS.</p>
+              <p>They studied. They graduated. They became doctors, nurses, teachers, lawyers, professionals, breadwinners, mothers, and community leaders.</p>
+              <p>And some returned. Not as beneficiaries.</p>
+              <div className="py-12 my-12 border-y border-[#051315]/10 font-display text-4xl text-[#051315] space-y-4">
+                <p>AS COLLEAGUES. AS PROFESSIONALS. AS LEADERS.</p>
               </div>
             </div>
 
-            <div className="pt-16">
-              <h3 className="font-display text-4xl italic text-[#B59A63] mb-8">THE CIRCLE OF CHANGE.</h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
+            <div className="pt-16 max-w-3xl mx-auto">
+              <h3 className="font-display text-4xl italic text-[#B59A63] mb-12">THE CIRCLE OF CHANGE.</h3>
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
                 <p>If someone permanently remains a beneficiary, something in the development process remains unfinished.</p>
-                <p className="font-display text-2xl text-[#051315]">Real transformation begins when—</p>
-                <div className="pl-6 border-l-2 border-[#B59A63] space-y-4 my-8">
-                  <p>The beneficiary becomes a stakeholder.</p>
-                  <p>The stakeholder becomes a leader.</p>
-                  <p>And the leader begins creating opportunities for somebody else.</p>
+                <div className="bg-white p-10 rounded-2xl shadow-sm text-left my-12 border border-[#051315]/5">
+                  <p className="font-display text-2xl text-[#051315] mb-6">Real transformation begins when—</p>
+                  <ul className="space-y-4 pl-6 border-l-2 border-[#B59A63]">
+                    <li>The beneficiary becomes a stakeholder.</li>
+                    <li>The stakeholder becomes a leader.</li>
+                    <li>And the leader begins creating opportunities for somebody else.</li>
+                  </ul>
                 </div>
                 <p>Today, many of the people carrying this work forward understand vulnerability not because they studied it—</p>
-                <p className="font-display text-3xl text-[#051315] pt-6 uppercase tracking-widest">BUT BECAUSE THEY LIVED IT.</p>
+                <p className="font-display text-4xl text-[#051315] pt-8 uppercase tracking-widest">BUT BECAUSE THEY LIVED IT.</p>
               </div>
             </div>
           </div>
@@ -542,52 +458,40 @@ export default function TheCourageToStay() {
 
         {/* 8. FIVE WORDS (VISUAL PIECE) */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
-          <motion.div {...fadeUp(0)} className="py-24 px-8 md:px-16 bg-[#051315] text-[#F7F6F1] max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
-            {/* Ambient background effect */}
+          <motion.div {...fadeUp(0)} className="py-32 px-8 md:px-24 bg-[#051315] text-[#F7F6F1] max-w-5xl mx-auto rounded-3xl shadow-2xl relative overflow-hidden">
             <div className="absolute inset-0 z-0 opacity-20">
                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#B59A63]/40 via-[#051315] to-[#051315]" />
             </div>
 
             <div className="relative z-10">
-              <h3 className="font-display text-3xl md:text-5xl text-[#B59A63] mb-12 text-center leading-tight">
+              <h3 className="font-display text-4xl md:text-5xl text-[#B59A63] mb-16 text-center leading-tight">
                 I BEGAN THIS JOURNEY<br/>TRYING TO UNDERSTAND KASHMIR.
               </h3>
               
-              <div className="space-y-6 text-[18px] leading-[1.9] text-white/80 text-center max-w-2xl mx-auto">
+              <div className="space-y-6 text-[18px] md:text-[20px] leading-[1.9] text-white/80 text-center max-w-3xl mx-auto">
                 <p>Three decades later, Kashmir has taught me more than I could ever have imagined.</p>
-                <p>It taught me that service begins with listening.</p>
-                <p>That trust takes years.</p>
-                <p>That institutions are not buildings.</p>
-                <p>That compassion needs courage.</p>
-                <p className="font-display text-2xl text-white pt-4">That sometimes the most important thing you can do is simply refuse to leave.</p>
+                <p>It taught me that service begins with listening. That trust takes years. That institutions are not buildings. That compassion needs courage.</p>
+                <p className="font-display text-3xl text-white pt-8 border-t border-white/10 mt-8">That sometimes the most important thing you can do is simply refuse to leave.</p>
               </div>
 
-              <div className="text-center mt-32 mb-20 border-t border-white/10 pt-16">
-                <p className="text-sm tracking-[0.3em] uppercase text-white/40 mb-4 font-bold">THREE DECADES.</p>
-                <h3 className="font-display text-6xl text-[#B59A63] italic">FIVE WORDS.</h3>
+              <div className="text-center mt-32 mb-24">
+                <p className="text-sm tracking-[0.3em] uppercase text-white/40 mb-6 font-bold">THREE DECADES.</p>
+                <h3 className="font-display text-7xl text-[#B59A63] italic">FIVE WORDS.</h3>
               </div>
 
-              <div className="space-y-16 max-w-xl mx-auto pb-8">
-                <div className="text-center">
-                  <h4 className="font-display text-4xl text-white mb-4 tracking-widest uppercase">LISTEN.</h4>
-                  <p className="text-[#B59A63] text-xl font-light">Before deciding what people need.</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="font-display text-4xl text-white mb-4 tracking-widest uppercase">STAY.</h4>
-                  <p className="text-[#B59A63] text-xl font-light">Long enough to understand what the problem really is.</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="font-display text-4xl text-white mb-4 tracking-widest uppercase">TRUST.</h4>
-                  <p className="text-[#B59A63] text-xl font-light">People with their own transformation.</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="font-display text-4xl text-white mb-4 tracking-widest uppercase">SERVE.</h4>
-                  <p className="text-[#B59A63] text-xl font-light">Without making yourself the centre of their story.</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="font-display text-4xl text-white mb-4 tracking-widest uppercase">BELONG.</h4>
-                  <p className="text-[#B59A63] text-xl font-light">Until there is no longer an "us" and "them."</p>
-                </div>
+              <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto pb-8 text-center md:text-left">
+                {[
+                  { word: "LISTEN.", desc: "Before deciding what people need." },
+                  { word: "STAY.", desc: "Long enough to understand what the problem really is." },
+                  { word: "TRUST.", desc: "People with their own transformation." },
+                  { word: "SERVE.", desc: "Without making yourself the centre of their story." },
+                  { word: "BELONG.", desc: "Until there is no longer an 'us' and 'them.'" }
+                ].map((item, i) => (
+                  <div key={i} className={`space-y-2 ${i === 4 ? 'md:col-span-2 md:text-center' : ''}`}>
+                    <h4 className="font-display text-4xl text-white tracking-widest uppercase">{item.word}</h4>
+                    <p className="text-[#B59A63] text-xl font-light">{item.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -595,102 +499,79 @@ export default function TheCourageToStay() {
 
         {/* 9. REFLECTION & SERVICE TO WITNESSING */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#F7F6F1]">
-          <div className="max-w-3xl mx-auto space-y-24">
+          <div className="max-w-4xl mx-auto space-y-32 text-center md:text-left">
             
-            <div>
-              <h3 className="font-display text-4xl italic text-[#051315] mb-12">
-                PERHAPS I WAS ASKING<br/>THE WRONG QUESTION.
+            <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start">
+              <h3 className="font-display text-4xl md:text-5xl italic text-[#051315] md:sticky md:top-32">
+                PERHAPS I WAS ASKING THE WRONG QUESTION.
               </h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
-                <p>For years people have asked me: <span className="italic font-display text-xl text-[#051315]">“What have you done for Kashmir?”</span></p>
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
+                <p>For years people have asked me: <span className="italic font-display text-2xl text-[#051315]">“What have you done for Kashmir?”</span></p>
                 <p>After three decades, I find myself asking something very different.</p>
                 <div className="py-12 my-12 border-y border-[#051315]/10 text-center">
-                  <p className="font-display text-4xl md:text-5xl text-[#B59A63] leading-tight">WHAT HAS KASHMIR<br/>DONE TO ME?</p>
+                  <p className="font-display text-5xl md:text-6xl text-[#B59A63] leading-tight">WHAT HAS KASHMIR<br/>DONE TO ME?</p>
                 </div>
                 <p>It gave direction to an eighteen-year-old searching for meaning.</p>
-                <p>It taught me patience. It tested my convictions. It broke many of my assumptions.</p>
-                <p>It introduced me to suffering.</p>
-                <p>But it also introduced me to extraordinary courage. Friendship. Generosity. Faith. Love. And belonging.</p>
+                <p>It taught me patience. It tested my convictions. It broke many of my assumptions. It introduced me to suffering.</p>
+                <p className="font-display text-2xl text-[#051315]">But it also introduced me to extraordinary courage. Friendship. Generosity. Faith. Love. And belonging.</p>
                 
-                <div className="pt-16 mt-16 border-t border-[#051315]/10 text-center">
-                  <p className="text-[18px] text-[#0D343A]/60 uppercase tracking-widest mb-8">Somewhere during this journey—</p>
-                  <p className="font-display text-4xl md:text-5xl text-[#051315] leading-tight mb-8">KASHMIR STOPPED BEING<br/>THE PLACE WHERE I WORKED.</p>
-                  <p className="font-display text-4xl md:text-5xl text-[#B59A63] italic leading-tight">IT BECAME A PLACE<br/>WHERE I BELONGED.</p>
+                <div className="pt-12 mt-12 border-t border-[#051315]/10">
+                  <p className="font-display text-3xl md:text-4xl text-[#051315] leading-tight mb-4">KASHMIR STOPPED BEING THE PLACE WHERE I WORKED.</p>
+                  <p className="font-display text-4xl md:text-5xl text-[#B59A63] italic leading-tight">IT BECAME A PLACE WHERE I BELONGED.</p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-16 border-t border-[#051315]/10">
-              <h3 className="font-display text-4xl text-[#051315] mb-12">FROM SERVICE<br/><span className="text-[#B59A63] italic">TO WITNESSING.</span></h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
-                <p>When I was young, I thought service meant helping another person.</p>
-                <p>Later, I thought it meant solving problems.</p>
-                <p>Then I understood that sustainable change means creating systems through which people rebuild their own lives.</p>
+            <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start border-t border-[#051315]/10 pt-32">
+              <h3 className="font-display text-4xl md:text-5xl text-[#051315] md:sticky md:top-32">FROM SERVICE<br/><span className="text-[#B59A63] italic">TO WITNESSING.</span></h3>
+              <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
+                <p>When I was young, I thought service meant helping another person. Later, I thought it meant solving problems. Then I understood that sustainable change means creating systems through which people rebuild their own lives.</p>
                 <p>Today, I understand service somewhat differently.</p>
-                <div className="pl-6 border-l-2 border-[#B59A63] space-y-4 my-8 font-display text-2xl text-[#051315]">
-                  <p>Service is also about witnessing.</p>
-                  <p>Being present.</p>
-                  <p>Walking beside another human being without always believing you have the answer.</p>
+                <div className="bg-white p-10 rounded-2xl shadow-sm my-8 border border-[#051315]/5">
+                  <p className="font-display text-2xl text-[#051315] leading-relaxed">Service is also about witnessing. Being present. Walking beside another human being without always believing you have the answer.</p>
                 </div>
-                <p className="font-display text-3xl text-[#B59A63] pt-8 uppercase tracking-widest">And allowing that encounter—<br/>TO TRANSFORM YOU TOO.</p>
+                <p className="font-display text-3xl text-[#B59A63] pt-4 uppercase tracking-widest text-center">And allowing that encounter TO TRANSFORM YOU TOO.</p>
               </div>
             </div>
 
-            <div className="pt-16 border-t border-[#051315]/10">
-              <h3 className="font-display text-4xl text-[#051315] mb-12 leading-tight">THE FUTURE IS NOT ABOUT<br/><span className="text-[#B59A63] italic">MAKING BWF BIGGER.</span></h3>
-              <div className="space-y-6 text-[18px] leading-[1.9] text-[#0D343A]/80">
-                <p>The deeper questions are different.</p>
-                <div className="pl-6 border-l-2 border-[#B59A63] space-y-4 my-8 font-display text-xl md:text-2xl text-[#051315]">
-                  <p>Can we build institutions that eventually need less of their founders?</p>
-                  <p>Can children once considered vulnerable become tomorrow's institution-builders?</p>
-                  <p>Can communities become owners of their own solutions?</p>
-                  <p>Can compassion become infrastructure?</p>
-                  <p>Can service create leadership rather than dependency?</p>
-                  <p>Can today's beneficiary become tomorrow's changemaker?</p>
-                </div>
-                <p className="font-display text-3xl text-[#B59A63] italic pt-8 text-center">THAT IS THE FUTURE<br/>WE ARE TRYING TO BUILD.</p>
-              </div>
-            </div>
           </div>
         </section>
 
         {/* 10. CLOSING SECTION */}
         <section className="py-48 px-6 md:px-12 lg:px-16 bg-white text-center relative overflow-hidden">
-          <div className="max-w-4xl mx-auto relative z-10">
-            <h3 className="font-display text-5xl md:text-6xl text-[#051315] mb-16 leading-tight">
+          <div className="max-w-5xl mx-auto relative z-10">
+            <h3 className="font-display text-5xl md:text-7xl text-[#051315] mb-24 leading-tight">
               CHANGE DOES NOT ALWAYS<br/><span className="text-[#B59A63] italic">BEGIN WITH POWER.</span>
             </h3>
             
-            <div className="space-y-8 text-[20px] leading-[2] text-[#0D343A]/80 max-w-2xl mx-auto font-light">
+            <div className="space-y-8 text-[20px] md:text-[24px] leading-[2] text-[#0D343A]/80 max-w-4xl mx-auto font-light">
               <p>Sometimes it begins with an eighteen-year-old asking a question.</p>
               <p>With a journey into an unfamiliar land.</p>
-              <p>With a survey that changes the person conducting it.</p>
               <p>With two girls needing a home.</p>
               <p>With someone opening a community kitchen.</p>
               <p>With a doctor answering a telephone call.</p>
-              <p>With a young woman refusing to allow her circumstances to define her future.</p>
               <p>Or simply—</p>
-              <p className="font-display text-2xl text-[#051315]">with somebody deciding to stay when leaving would have been easier.</p>
+              <p className="font-display text-4xl text-[#051315] py-8">with somebody deciding to stay when leaving would have been easier.</p>
               
               <div className="py-24 my-24 border-y border-[#051315]/10">
-                <p className="font-display text-5xl md:text-6xl text-[#B59A63] tracking-widest uppercase">CHANGE BEGINS WITH ME.</p>
+                <p className="font-display text-6xl md:text-7xl text-[#B59A63] tracking-widest uppercase">CHANGE BEGINS WITH ME.</p>
               </div>
               
               <p>Not because one person can change the world.</p>
               <p>But because every meaningful change needs someone willing to begin.</p>
               <p>And perhaps the greatest responsibility of a changemaker is not to become the face of change.</p>
               <p>It is to create conditions in which others discover—</p>
-              <p className="font-display text-4xl md:text-5xl text-[#051315] pt-12 leading-tight">THAT THEY CAN BECOME<br/><span className="text-[#B59A63] italic">CHANGEMAKERS TOO.</span></p>
+              <p className="font-display text-5xl md:text-6xl text-[#051315] pt-16 leading-tight">THAT THEY CAN BECOME<br/><span className="text-[#B59A63] italic">CHANGEMAKERS TOO.</span></p>
             </div>
 
-            <div className="mt-48 pt-16 inline-flex flex-col items-center">
-              <div className="w-12 h-[1px] bg-[#B59A63] mb-12" />
-              <p className="font-bold tracking-[0.3em] uppercase text-[#051315] text-xl">ADHIK KADAM</p>
-              <p className="text-sm tracking-widest text-[#0D343A]/60 mt-4 uppercase font-bold">Founder & Chairman</p>
-              <p className="text-sm tracking-widest text-[#0D343A]/60 mt-1 uppercase font-bold">Borderless World Foundation</p>
-              <p className="text-sm tracking-widest text-[#B59A63] mt-4 italic">Joining Hands. Building Bridges.</p>
-              <p className="text-sm tracking-widest text-[#051315] mt-12 font-bold bg-[#F7F6F1] px-4 py-2 rounded-full border border-[#051315]/10">1995 — 2026</p>
-              <p className="font-display text-3xl text-[#B59A63] mt-16 italic">THE JOURNEY CONTINUES.</p>
+            <div className="mt-48 pt-24 inline-flex flex-col items-center border-t border-[#051315]/10">
+              <div className="w-16 h-1 bg-[#B59A63] mb-16" />
+              <p className="font-bold tracking-[0.4em] uppercase text-[#051315] text-2xl">ADHIK KADAM</p>
+              <p className="text-base tracking-widest text-[#0D343A]/60 mt-6 uppercase font-bold">Founder & Chairman</p>
+              <p className="text-base tracking-widest text-[#0D343A]/60 mt-2 uppercase font-bold">Borderless World Foundation</p>
+              <p className="text-base tracking-widest text-[#B59A63] mt-6 italic">Joining Hands. Building Bridges.</p>
+              <p className="text-sm tracking-widest text-[#051315] mt-16 font-bold bg-[#F7F6F1] px-6 py-3 rounded-full border border-[#051315]/10">1995 — 2026</p>
+              <p className="font-display text-4xl text-[#B59A63] mt-24 italic">THE JOURNEY CONTINUES.</p>
             </div>
           </div>
         </section>
