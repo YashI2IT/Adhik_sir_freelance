@@ -154,7 +154,7 @@ export default function TheCourageToStay() {
             <TimelineEvent year="1997" title="I CROSSED INTO THE VALLEY.">
               <p>I entered Kashmir.</p>
               <p>I wanted to understand. But understanding Kashmir from a distance and living among its people were two very different things.</p>
-              <motion.img {...fadeUp(0)} src="/images/IMG_8065.jpg" alt="Crossing into the Valley" className="w-full aspect-[4/3] object-cover rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
+              <motion.img {...fadeUp(0)} src="/images/IMG_8065.jpg" alt="Crossing into the Valley" className="w-full md:w-[115%] md:-ml-[7.5%] h-[500px] md:h-[650px] object-cover rounded-2xl shadow-2xl my-16 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>Gradually, Kashmir began teaching me something that no university could have taught me.</p>
               <div className="mt-12 pt-8 pl-8 border-l-2 border-[#B59A63] space-y-4 font-display text-2xl text-[#051315]">
                 <p>Listen before speaking.</p>
