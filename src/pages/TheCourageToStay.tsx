@@ -174,7 +174,7 @@ export default function TheCourageToStay() {
               </p>
             </TimelineEvent>
           </div>
-
+        </section>
 
         {/* 3. UNDERSTANDING */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#F7F6F1]">
