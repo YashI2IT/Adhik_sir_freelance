@@ -45,13 +45,13 @@ export default function TheCourageToStay() {
         
         {/* 1. CINEMATIC HERO */}
         <section ref={heroRef} className="relative h-screen flex flex-col justify-end pb-32 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
-          <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-40">
+          <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-60">
             <img 
               src="/images/IMG_8648.jpg" 
               alt="Kashmir Landscape" 
-              className="w-full h-full object-cover object-[center_30%] mix-blend-overlay grayscale"
+              className="w-full h-full object-cover object-[center_30%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/60 to-transparent" />
           </motion.div>
 
           <div className="max-w-5xl mx-auto relative z-10 text-center text-[#F7F6F1]">
