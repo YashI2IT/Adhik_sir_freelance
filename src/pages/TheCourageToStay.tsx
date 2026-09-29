@@ -174,9 +174,7 @@ export default function TheCourageToStay() {
               </p>
             </TimelineEvent>
           </div>
-        </section>
 
-        <ParallaxDivider src="/images/IMG_8773.jpg" />
 
         {/* 3. UNDERSTANDING */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-[#F7F6F1]">
@@ -378,7 +376,7 @@ export default function TheCourageToStay() {
               </div>
             </div>
 
-            <div className="py-24 my-24 border-y border-[#051315]/10 max-w-4xl mx-auto text-center">
+            <div className="pt-16 mt-16 border-t border-[#051315]/10 max-w-4xl mx-auto text-center">
               <h3 className="font-display text-4xl text-[#051315] italic mb-8">HEALTHCARE HAD TO TRAVEL.</h3>
               <p className="text-[18px] md:text-[20px] text-[#0D343A]/80 mb-8">Instead of asking why patients weren't reaching healthcare, we asked: <br/><span className="font-display text-2xl text-[#051315]">WHY CAN'T HEALTHCARE REACH THEM?</span></p>
               <p className="text-[18px] md:text-[20px] text-[#0D343A]/80">Mobile Medical Units began travelling into underserved communities. And on Dal Lake, even the water became a road.</p>
