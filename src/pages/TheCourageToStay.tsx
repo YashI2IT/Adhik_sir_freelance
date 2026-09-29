@@ -154,7 +154,7 @@ export default function TheCourageToStay() {
             <TimelineEvent year="1997" title="I CROSSED INTO THE VALLEY.">
               <p>I entered Kashmir.</p>
               <p>I wanted to understand. But understanding Kashmir from a distance and living among its people were two very different things.</p>
-              <motion.img {...fadeUp(0)} src="/images/IMG_8065.jpg" alt="Crossing into the Valley" className="w-full md:w-[115%] md:-ml-[7.5%] h-[500px] md:h-[650px] object-cover rounded-2xl shadow-2xl my-16 grayscale hover:grayscale-0 transition-all duration-700" />
+              <motion.img {...fadeUp(0)} src="/images/IMG_8065.jpg" alt="Crossing into the Valley" className="w-full md:w-[115%] md:-ml-[7.5%] aspect-[4/3] md:aspect-[16/10] object-cover object-[center_10%] rounded-2xl shadow-2xl my-16 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>Gradually, Kashmir began teaching me something that no university could have taught me.</p>
               <div className="mt-12 pt-8 pl-8 border-l-2 border-[#B59A63] space-y-4 font-display text-2xl text-[#051315]">
                 <p>Listen before speaking.</p>
@@ -225,8 +225,8 @@ export default function TheCourageToStay() {
               <p>Our study recorded more than 1,000 orphaned children there.</p>
             </div>
 
-            <motion.div {...fadeUp(0)} className="w-full aspect-[16/9] md:aspect-[4/3] lg:aspect-[16/10] rounded-xl overflow-hidden shadow-2xl my-32">
-               <img src="/images/IMG_1888.jpg" alt="Research field notes" className="w-full h-full object-cover object-top grayscale opacity-90 hover:grayscale-0 transition-all duration-700" />
+            <motion.div {...fadeUp(0)} className="w-full aspect-[21/9] rounded-xl overflow-hidden shadow-2xl my-32">
+               <img src="/images/IMG_1888.jpg" alt="Research field notes" className="w-full h-full object-cover object-[center_40%] grayscale opacity-90 hover:grayscale-0 transition-all duration-700" />
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
