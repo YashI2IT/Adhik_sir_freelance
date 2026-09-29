@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-const code = `import { useSEO } from '../hooks/useSEO'
+import { useSEO } from '../hooks/useSEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { PageTransition } from '../components/PageTransition'
 import { useRef } from 'react'
