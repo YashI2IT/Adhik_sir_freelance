@@ -124,6 +124,23 @@ export default function TheCourageToStay() {
           </motion.button>
         </section>
 
+        {/* FEATURED VIDEO 2 */}
+        <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315]">
+          <div className="max-w-6xl mx-auto">
+             <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative">
+                <video 
+                  controls 
+                  preload="metadata" 
+                  className="w-full h-full object-cover"
+                  aria-label="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
+                >
+                  <source src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+             </div>
+          </div>
+        </section>
+
         {/* 2. THE BEGINNING / TIMELINE */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
           <div className="max-w-6xl mx-auto text-center mb-32">
@@ -386,6 +403,26 @@ export default function TheCourageToStay() {
               <p className="font-display text-4xl text-[#B59A63] pt-12 uppercase tracking-widest">DAL PARI <span className="text-2xl font-light text-[#0D343A]/60 italic lowercase">healthcare on water.</span></p>
             </div>
 
+            {/* IMPACT NUMBERS */}
+            <div className="pt-32 mt-32 border-t border-[#051315]/10 max-w-5xl mx-auto">
+              <h3 className="font-display text-4xl text-[#051315] mb-16 text-center">THE NUMBERS GREW.</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 text-center">
+                {[
+                  { label: "Girls supported", value: "—" },
+                  { label: "Patients treated", value: "—" },
+                  { label: "Villages reached", value: "—" },
+                  { label: "Ambulances deployed", value: "—" },
+                  { label: "Homes established", value: "—" },
+                  { label: "Students graduating", value: "—" },
+                  { label: "Families rebuilding", value: "—" },
+                ].map((stat, i) => (
+                  <div key={i} className="space-y-4">
+                    <p className="font-display text-5xl md:text-6xl text-[#B59A63]">{stat.value}</p>
+                    <p className="text-[12px] md:text-[14px] uppercase tracking-[0.2em] text-[#0D343A]/60 font-bold max-w-[150px] mx-auto">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
           </div>
         </section>
@@ -491,6 +528,22 @@ export default function TheCourageToStay() {
               </div>
             </div>
 
+            {/* VIDEO 1 */}
+            <div className="py-24 max-w-5xl mx-auto w-full">
+              <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl">
+                <video 
+                  controls 
+                  preload="metadata" 
+                  className="w-full h-full object-cover"
+                  aria-label="किती सुंदर क्षण आहेत हे"
+                >
+                  <source src="/images/किती सुंदर क्षण आहेत हे.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">"किती सुंदर क्षण आहेत हे"</p>
+            </div>
+
             <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start border-t border-[#051315]/10 pt-32">
               <h3 className="font-display text-4xl md:text-5xl text-[#051315] md:sticky md:top-32">FROM SERVICE<br/><span className="text-[#B59A63] italic">TO WITNESSING.</span></h3>
               <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
@@ -503,6 +556,32 @@ export default function TheCourageToStay() {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* GOOGLE SLIDES PRESENTATION */}
+        <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315] text-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h3 className="font-display text-4xl text-[#B59A63] mb-4">THE JOURNEY IN DEPTH</h3>
+              <p className="text-white/60">An overview of our work, impact, and the road ahead.</p>
+            </div>
+            <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-2xl bg-white/5 border border-white/10">
+              <iframe 
+                src="https://docs.google.com/presentation/d/1G0XcTdEvUWGDE-XiicRf6iLEqR-_xXT9/embed?start=false&loop=false&delayms=3000" 
+                frameBorder="0" 
+                width="100%" 
+                height="100%" 
+                allowFullScreen 
+                title="BWF Presentation"
+                className="w-full h-full"
+              />
+            </div>
+            <div className="mt-8 text-center hidden">
+              <a href="https://docs.google.com/presentation/d/1G0XcTdEvUWGDE-XiicRf6iLEqR-_xXT9/edit?usp=drivesdk&ouid=116111192609065699468&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="text-[#B59A63] hover:text-white transition-colors underline underline-offset-4 text-sm uppercase tracking-widest">
+                View Presentation
+              </a>
+            </div>
           </div>
         </section>
 
