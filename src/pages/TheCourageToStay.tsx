@@ -184,6 +184,7 @@ export default function TheCourageToStay() {
             <TimelineEvent year="1999" title="THEN I WITNESSED WAR.">
               <p>The Kargil conflict displaced families and disrupted ordinary life.</p>
               <p>I worked among affected communities around Gagangir and Sonamarg.</p>
+              <motion.img {...fadeUp(0)} src="/images/WhatsApp Image 2026-09-30 at 4.23.40 PM.jpeg" alt="Field Work 1999" className="w-full aspect-[4/3] object-cover rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>Community kitchens were organised. Children needed spaces to continue learning. Families needed support. Sometimes they simply needed someone willing to remain beside them.</p>
               <p>Something was changing inside me.</p>
               <p>I had come to Kashmir to understand conflict. But increasingly, I was encountering the human consequences of conflict.</p>
@@ -330,6 +331,7 @@ export default function TheCourageToStay() {
 
             <TimelineEvent year="2012" title="A DIFFERENT KIND OF STORM." dark>
               <p>Following public recognition of my work in Maharashtra, Marathi newspaper articles about me and our work began circulating in Kashmir.</p>
+              <motion.img {...fadeUp(0)} src="/images/WhatsApp Image 2026-09-30 at 4.23.41 PM.jpeg" alt="Newspaper Clippings" className="w-full aspect-video object-cover rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>In places where very few people could read Marathi, these articles were presented alongside serious allegations questioning my intentions and the work being done with vulnerable girls.</p>
               <p className="font-display text-2xl text-[#B59A63] py-4">MISINFORMATION COULD BECOME DANGEROUS.</p>
               <p>I was from Maharashtra. I could have returned home. I could have said: <span className="italic">“I tried.”</span></p>
@@ -436,6 +438,7 @@ export default function TheCourageToStay() {
             
             <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80">
               <p>Girls who entered our homes as vulnerable children grew up.</p>
+              <motion.img {...fadeUp(0)} src="/images/WhatsApp Image 2026-09-30 at 8.04.38 PM.jpeg" alt="Alumnae Leaders" className="w-full aspect-[3/2] object-cover rounded-xl shadow-lg my-8" />
               <p>They studied. They graduated. They became doctors, nurses, teachers, lawyers, professionals, breadwinners, mothers, and community leaders.</p>
               <p>And some returned. Not as beneficiaries.</p>
               <div className="py-12 my-12 border-y border-[#051315]/10 font-display text-4xl text-[#051315] space-y-4">

@@ -193,6 +193,91 @@ function EvidenceList() {
   )
 }
 
+function PhotoGallery() {
+  const images = [
+    "WhatsApp Image 2026-09-30 at 2.13.44 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.45 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.45 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.46 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.47 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.47 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.48 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.48 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.49 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.49 PM (2).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.49 PM (3).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.49 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.50 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.50 PM (2).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.50 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.51 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.51 PM (2).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.51 PM (3).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.51 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.52 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.52 PM (2).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.52 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.53 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.53 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.54 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.54 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.55 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.55 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.56 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.56 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.57 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.57 PM (2).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.57 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.58 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.58 PM (2).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.58 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.13.59 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.14.00 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.14.00 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 2.14.01 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 2.14.01 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.37 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.37 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.42 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.43 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.44 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.46 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 4.23.46 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 8.04.24 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 8.04.31 PM (1).jpeg",
+    "WhatsApp Image 2026-09-30 at 8.04.31 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 8.04.32 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 8.04.33 PM.jpeg",
+    "WhatsApp Image 2026-09-30 at 8.04.36 PM.jpeg"
+  ]
+
+  return (
+    <section className="bg-bwf-ivory py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <motion.div {...fadeUp(0)} className="mb-12">
+          <SectionTag text="PHOTOGRAPHS" />
+          <h2 className="font-display text-3xl md:text-4xl text-bwf-deep leading-tight">
+            Journey in Pictures
+          </h2>
+        </motion.div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {images.map((img, i) => (
+            <motion.div key={i} {...fadeUp(0.1 + (i % 4) * 0.05)} className="aspect-square w-full relative overflow-hidden rounded-xl bg-bwf-deep/5">
+              <img 
+                src={`/images/${img}`} 
+                alt={`Gallery photo ${i+1}`}
+                loading="lazy"
+                className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500 ease-out"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Main Export ───────────────────────────────────── */
 export function GalleryMediaContent() {
   return (
@@ -201,6 +286,7 @@ export function GalleryMediaContent() {
       <GalleryCTA />
       <FeaturedVideosGrid />
       <FeaturedMediaGrid />
+      <PhotoGallery />
       <EvidenceList />
     </main>
   )
