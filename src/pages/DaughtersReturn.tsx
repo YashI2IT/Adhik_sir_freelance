@@ -53,7 +53,7 @@ export default function DaughtersReturn() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#051315] via-[#051315]/80 to-transparent" />
           </motion.div>
 
-          <div className="max-w-5xl mx-auto relative z-10 text-center mt-20 text-bwf-ivory">
+          <div className="max-w-5xl mx-auto relative z-10 text-center pt-12 text-bwf-ivory">
             <motion.p {...fadeUp(0)} className="text-[11px] font-bold tracking-[0.3em] uppercase text-bwf-gold mb-10">
               {daughtersReturnContent.hero.eyebrow}
             </motion.p>
@@ -76,7 +76,7 @@ export default function DaughtersReturn() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-bwf-gold hover:text-bwf-ivory transition-colors z-20 group"
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-bwf-gold hover:text-bwf-ivory transition-colors z-20 group"
           >
             <span className="text-[10px] tracking-[0.2em] uppercase font-bold">Discover</span>
             <div className="w-[1px] h-12 bg-bwf-gold/30 relative overflow-hidden">

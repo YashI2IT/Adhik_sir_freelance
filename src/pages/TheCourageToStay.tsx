@@ -57,9 +57,9 @@ function ParallaxDivider({ src }: { src: string }) {
 
 export default function TheCourageToStay() {
   useSEO({
-    title: 'The Courage to Stay | Adhik Kadam',
+    title: 'The Journey | Adhik Kadam',
     description: 'Three Decades of Witnessing, Service & Belonging in Kashmir, from 1995 to 2026.',
-    canonicalPath: '/the-courage-to-stay',
+    canonicalPath: '/the-journey',
   })
 
   const heroRef = useRef<HTMLElement>(null)
@@ -78,7 +78,7 @@ export default function TheCourageToStay() {
       <main className="bg-[#F7F6F1] text-[#0D343A] min-h-screen font-light">
         
         {/* 1. CINEMATIC HERO */}
-        <section ref={heroRef} className="relative h-screen flex flex-col justify-end pb-32 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
+        <section ref={heroRef} className="relative h-screen flex flex-col justify-center pt-20 px-6 md:px-12 lg:px-16 overflow-hidden bg-[#051315]">
           <motion.div style={{ y }} className="absolute inset-0 z-0 opacity-60">
             <img 
               src="/images/IMG_8648.jpg" 
@@ -111,7 +111,7 @@ export default function TheCourageToStay() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-[#B59A63] hover:text-white transition-colors z-20 group"
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-[#B59A63] hover:text-white transition-colors z-20 group"
           >
             <span className="text-[10px] tracking-[0.2em] uppercase font-bold">Begin reading</span>
             <div className="w-[1px] h-12 bg-[#B59A63]/30 relative overflow-hidden">

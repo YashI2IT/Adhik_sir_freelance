@@ -83,7 +83,7 @@ export default function CuringTheGash() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-bwf-gold hover:text-bwf-ivory transition-colors z-20 group"
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-bwf-gold hover:text-bwf-ivory transition-colors z-20 group"
           >
             <span className="text-[10px] tracking-[0.2em] uppercase font-bold">Read the story</span>
             <div className="w-[1px] h-12 bg-bwf-gold/30 relative overflow-hidden">

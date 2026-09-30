@@ -90,7 +90,7 @@ export function RecognitionPageContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="mt-20 flex flex-col items-center gap-3 text-[#F7F6F1]/30"
+            className="absolute bottom-12 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-[#F7F6F1]/50"
           >
             <span className="text-[10px] tracking-[0.2em] uppercase font-bold">Scroll to explore</span>
             <ChevronDown size={14} className="animate-bounce mt-1" />
