@@ -93,7 +93,7 @@ export default function TheCourageToStay() {
               Three Decades of Witnessing, Service & Belonging in Kashmir
             </motion.p>
             <motion.h1 {...fadeUp(0.1)} className="font-display text-[clamp(3.5rem,8vw,7rem)] leading-[0.9] tracking-tight mb-8">
-              The Courage <span className="text-[#B59A63] italic">to Stay</span>
+              The <span className="text-[#B59A63] italic">Journey</span>
             </motion.h1>
 
             <motion.div {...fadeUp(0.2)} className="max-w-2xl mx-auto mb-16 space-y-4">
