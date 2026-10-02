@@ -4,6 +4,7 @@ import { PageTransition } from '../components/PageTransition'
 import { useRef, useState } from 'react'
 import { Play } from 'lucide-react'
 import { VideoModal } from '../components/VideoModal'
+import { PdfViewer } from '../components/PdfViewer'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -387,25 +388,11 @@ export default function TheCourageToStay() {
               
               {/* DOCUMENT EMBEDS */}
               <div className="space-y-12 my-12">
-                <div className="w-full aspect-[1/1.414] max-h-[850px] bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
-                   <object 
-                     data="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
-                     type="application/pdf" 
-                     className="w-full h-full border-none"
-                     style={{ WebkitOverflowScrolling: 'touch' }}
-                   >
-                     <p className="p-8 text-center text-white/60">Unable to display PDF directly. <a href="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf" target="_blank" rel="noreferrer" className="text-[#B59A63] underline">Download instead</a>.</p>
-                   </object>
+                <div className="w-full h-[60vh] md:h-[80vh] max-h-[850px] bg-[#0A1A1C] rounded-xl overflow-hidden shadow-2xl border border-white/10 relative p-4 md:p-8">
+                   <PdfViewer file="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf" />
                 </div>
-                <div className="w-full aspect-[1/1.414] max-h-[850px] bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
-                   <object 
-                     data="/docs/New%20Doc%2009-25-2026%2014.00.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
-                     type="application/pdf" 
-                     className="w-full h-full border-none"
-                     style={{ WebkitOverflowScrolling: 'touch' }}
-                   >
-                     <p className="p-8 text-center text-white/60">Unable to display PDF directly. <a href="/docs/New%20Doc%2009-25-2026%2014.00.pdf" target="_blank" rel="noreferrer" className="text-[#B59A63] underline">Download instead</a>.</p>
-                   </object>
+                <div className="w-full h-[60vh] md:h-[80vh] max-h-[850px] bg-[#0A1A1C] rounded-xl overflow-hidden shadow-2xl border border-white/10 relative p-4 md:p-8">
+                   <PdfViewer file="/docs/New%20Doc%2009-25-2026%2014.00.pdf" />
                 </div>
               </div>
 
