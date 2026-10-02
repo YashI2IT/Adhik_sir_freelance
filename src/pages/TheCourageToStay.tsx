@@ -22,7 +22,7 @@ function SectionHeading({ title, className = "" }: { title: string, className?: 
   )
 }
 
-function TimelineEvent({ year, title, children, dark = false }: { year: string, title: string, children: React.ReactNode, dark?: boolean }) {
+function TimelineEvent({ year, title, children, dark = false, leftChildren }: { year: string, title: string, children: React.ReactNode, dark?: boolean, leftChildren?: React.ReactNode }) {
   const textColor = dark ? 'text-white' : 'text-[#051315]'
   const subtitleColor = dark ? 'text-[#B59A63]' : 'text-[#B59A63]'
   const bodyColor = dark ? 'text-white/70' : 'text-[#0D343A]/80'
@@ -34,6 +34,7 @@ function TimelineEvent({ year, title, children, dark = false }: { year: string, 
         <h2 className={`font-display text-5xl md:text-6xl ${textColor} mb-4 tracking-tight`}>{year}</h2>
         <div className={`w-12 h-1 bg-[#B59A63] mb-8`}/>
         <h3 className={`font-display text-2xl md:text-3xl italic ${subtitleColor} leading-relaxed`}>{title}</h3>
+        {leftChildren && <div className="mt-8 md:mt-12">{leftChildren}</div>}
       </div>
       <div className={`space-y-8 text-[18px] md:text-[20px] leading-[1.9] ${bodyColor} font-light`}>
         {children}
@@ -362,9 +363,15 @@ export default function TheCourageToStay() {
               <p className="font-display text-4xl text-[#B59A63] italic pt-4">WE WERE ALREADY THERE.</p>
             </TimelineEvent>
 
-            <TimelineEvent year="2012" title="A DIFFERENT KIND OF STORM." dark>
+            <TimelineEvent 
+              year="2012" 
+              title="A DIFFERENT KIND OF STORM." 
+              dark
+              leftChildren={
+                <motion.img {...fadeUp(0)} src="/images/mail.png" alt="Email regarding Hurriyat Statement" className="w-full h-auto object-contain rounded-xl shadow-lg grayscale hover:grayscale-0 transition-all duration-700" />
+              }
+            >
               <p>Following public recognition of my work in Maharashtra, Marathi newspaper articles about me and our work began circulating in Kashmir.</p>
-              <motion.img {...fadeUp(0)} src="/images/mail.png" alt="Email regarding Hurriyat Statement" className="w-full max-w-xl mx-auto h-auto object-contain rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>In places where very few people could read Marathi, these articles were presented alongside serious allegations questioning my intentions and the work being done with vulnerable girls.</p>
               <p className="font-display text-2xl text-[#B59A63] py-4">MISINFORMATION COULD BECOME DANGEROUS.</p>
               <p>I was from Maharashtra. I could have returned home. I could have said: <span className="italic">“I tried.”</span></p>
