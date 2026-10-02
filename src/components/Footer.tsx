@@ -104,7 +104,7 @@ export function Footer() {
               <ul className="flex flex-col gap-0.5">
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About Adhik</NavLink>
-                <NavLink to="/journey">The Journey</NavLink>
+                <NavLink to="/journey">His Journey</NavLink>
                 <NavLink to="/work">His Work</NavLink>
                 <NavLink to="/impact">His Impact</NavLink>
                 <NavLink to="/recognition">Recognition</NavLink>

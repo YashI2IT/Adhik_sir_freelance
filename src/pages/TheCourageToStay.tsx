@@ -2,6 +2,7 @@ import { useSEO } from '../hooks/useSEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { PageTransition } from '../components/PageTransition'
 import { useRef } from 'react'
+import { VideoModal } from '../components/VideoModal'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -57,9 +58,9 @@ function ParallaxDivider({ src }: { src: string }) {
 
 export default function TheCourageToStay() {
   useSEO({
-    title: 'The Courage to Stay | Adhik Kadam',
+    title: 'The Journey | Adhik Kadam',
     description: 'Three Decades of Witnessing, Service & Belonging in Kashmir, from 1995 to 2026.',
-    canonicalPath: '/the-courage-to-stay',
+    canonicalPath: '/the-journey',
   })
 
   const heroRef = useRef<HTMLElement>(null)
@@ -127,16 +128,11 @@ export default function TheCourageToStay() {
         {/* FEATURED VIDEO 2 */}
         <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315]">
           <div className="max-w-6xl mx-auto">
-             <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative">
-                <video 
-                  controls 
-                  preload="metadata" 
-                  className="w-full h-full object-cover"
-                  aria-label="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
-                >
-                  <source src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+             <div className="w-full relative shadow-2xl">
+                <VideoModal 
+                  src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4"
+                  ariaLabel="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
+                />
              </div>
           </div>
         </section>
@@ -533,16 +529,11 @@ export default function TheCourageToStay() {
 
             {/* VIDEO 1 */}
             <div className="py-24 max-w-5xl mx-auto w-full">
-              <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl">
-                <video 
-                  controls 
-                  preload="metadata" 
-                  className="w-full h-full object-cover"
-                  aria-label="किती सुंदर क्षण आहेत हे"
-                >
-                  <source src="/images/किती सुंदर क्षण आहेत हे.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              <div className="w-full shadow-2xl relative">
+                <VideoModal 
+                  src="/images/किती सुंदर क्षण आहेत हे.mp4"
+                  ariaLabel="किती सुंदर क्षण आहेत हे - Video"
+                />
               </div>
               <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">"किती सुंदर क्षण आहेत हे"</p>
             </div>

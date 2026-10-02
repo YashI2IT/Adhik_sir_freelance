@@ -59,7 +59,7 @@ export const recognitionData = {
   closing: {
     quote: "Recognition does not complete responsibility. It enlarges it.",
     cta: [
-      { text: "Explore The Journey", link: "/journey" },
+      { text: "Explore His Journey", link: "/journey" },
       { text: "Discover His Impact", link: "/impact" },
       { text: "Connect", link: "/contact" }
     ]
