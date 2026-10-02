@@ -384,6 +384,17 @@ export default function TheCourageToStay() {
               
               <p className="font-display text-5xl text-[#B59A63] italic py-8">SO I STAYED.</p>
               <p>Not to fight anyone. Simply to continue the work.</p>
+              
+              {/* DOCUMENT EMBEDS */}
+              <div className="space-y-12 my-12">
+                <div className="w-full aspect-[1/1.414] max-h-[850px] bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
+                   <iframe src="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf#toolbar=0&navpanes=0&scrollbar=0" className="w-full h-full border-none" title="Grave Situation Document" />
+                </div>
+                <div className="w-full aspect-[1/1.414] max-h-[850px] bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
+                   <iframe src="/docs/New%20Doc%2009-25-2026%2014.00.pdf#toolbar=0&navpanes=0&scrollbar=0" className="w-full h-full border-none" title="New Document" />
+                </div>
+              </div>
+
               <p className="mt-8 font-display text-2xl text-white border-t border-white/10 pt-8">Buildings can be constructed with money. But trust cannot be bought. Presence became our strongest institution.</p>
             </TimelineEvent>
 
