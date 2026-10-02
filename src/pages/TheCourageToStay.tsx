@@ -305,7 +305,6 @@ export default function TheCourageToStay() {
                 </div>
               </div>
 
-              <motion.img {...fadeUp(0)} src="/images/IMG_8458.jpg" alt="Girls of Basera-e-Tabassum" className="w-full aspect-[3/2] object-cover rounded-xl shadow-lg my-10 opacity-90 hover:opacity-100 transition-opacity duration-500" />
               <p className="font-display text-3xl text-white pt-4 pb-8">Basera-e-Tabassum— <span className="italic text-[#B59A63]">“The Abode of Smiles”</span> —began as a home for vulnerable girls.</p>
               
               <div className="pt-12 mt-12 border-t border-white/10">
