@@ -59,7 +59,7 @@ export function VideoModal({ isOpen, onClose, videoSrc, youtubeUrl }: VideoModal
           >
             {youtubeUrl ? (
               <iframe
-                src={`${youtubeUrl.replace('youtu.be/', 'www.youtube.com/embed/').split('?')[0]}?autoplay=1&rel=0`}
+                src={`https://www.youtube.com/embed/${(youtubeUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/) || [])[1] || youtubeUrl}?autoplay=1&rel=0`}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
