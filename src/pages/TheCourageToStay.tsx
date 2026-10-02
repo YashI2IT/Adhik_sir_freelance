@@ -466,7 +466,7 @@ export default function TheCourageToStay() {
                  onClick={() => setVideoModal({ isOpen: true, type: 'youtube', src: 'RWiJiNgUyGQ' })}
                >
                   <img 
-                    src="https://img.youtube.com/vi/RWiJiNgUyGQ/maxresdefault.jpg"
+                    src="https://img.youtube.com/vi/RWiJiNgUyGQ/hqdefault.jpg"
                     alt="Brut Story - Dal Pari"
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
                   />
