@@ -388,10 +388,24 @@ export default function TheCourageToStay() {
               {/* DOCUMENT EMBEDS */}
               <div className="space-y-12 my-12">
                 <div className="w-full aspect-[1/1.414] max-h-[850px] bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
-                   <iframe src="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf#toolbar=0&navpanes=0&scrollbar=0" className="w-full h-full border-none" title="Grave Situation Document" />
+                   <object 
+                     data="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+                     type="application/pdf" 
+                     className="w-full h-full border-none"
+                     style={{ WebkitOverflowScrolling: 'touch' }}
+                   >
+                     <p className="p-8 text-center text-white/60">Unable to display PDF directly. <a href="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf" target="_blank" rel="noreferrer" className="text-[#B59A63] underline">Download instead</a>.</p>
+                   </object>
                 </div>
                 <div className="w-full aspect-[1/1.414] max-h-[850px] bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative">
-                   <iframe src="/docs/New%20Doc%2009-25-2026%2014.00.pdf#toolbar=0&navpanes=0&scrollbar=0" className="w-full h-full border-none" title="New Document" />
+                   <object 
+                     data="/docs/New%20Doc%2009-25-2026%2014.00.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+                     type="application/pdf" 
+                     className="w-full h-full border-none"
+                     style={{ WebkitOverflowScrolling: 'touch' }}
+                   >
+                     <p className="p-8 text-center text-white/60">Unable to display PDF directly. <a href="/docs/New%20Doc%2009-25-2026%2014.00.pdf" target="_blank" rel="noreferrer" className="text-[#B59A63] underline">Download instead</a>.</p>
+                   </object>
                 </div>
               </div>
 
