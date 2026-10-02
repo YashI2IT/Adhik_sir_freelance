@@ -654,31 +654,7 @@ export default function TheCourageToStay() {
           </div>
         </section>
 
-        {/* GOOGLE SLIDES PRESENTATION */}
-        <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315] text-white">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h3 className="font-display text-4xl text-[#B59A63] mb-4">THE JOURNEY IN DEPTH</h3>
-              <p className="text-white/60">An overview of our work, impact, and the road ahead.</p>
-            </div>
-            <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-2xl bg-white/5 border border-white/10">
-              <iframe 
-                src="https://docs.google.com/presentation/d/1G0XcTdEvUWGDE-XiicRf6iLEqR-_xXT9/embed?start=false&loop=false&delayms=3000" 
-                frameBorder="0" 
-                width="100%" 
-                height="100%" 
-                allowFullScreen 
-                title="BWF Presentation"
-                className="w-full h-full"
-              />
-            </div>
-            <div className="mt-8 text-center hidden">
-              <a href="https://docs.google.com/presentation/d/1G0XcTdEvUWGDE-XiicRf6iLEqR-_xXT9/edit?usp=drivesdk&ouid=116111192609065699468&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="text-[#B59A63] hover:text-white transition-colors underline underline-offset-4 text-sm uppercase tracking-widest">
-                View Presentation
-              </a>
-            </div>
-          </div>
-        </section>
+
 
         {/* 10. CLOSING SECTION */}
         <section className="py-48 px-6 md:px-12 lg:px-16 bg-white text-center relative overflow-hidden">
