@@ -438,6 +438,28 @@ export default function TheCourageToStay() {
               <p className="font-display text-4xl text-[#B59A63] pt-12 uppercase tracking-widest">DAL PARI <span className="text-2xl font-light text-[#0D343A]/60 italic lowercase">healthcare on water.</span></p>
             </div>
 
+            {/* BRUT STORY VIDEO */}
+            <div className="pt-24 max-w-6xl mx-auto w-full">
+               <div 
+                 className="w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group flex items-center justify-center"
+                 onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/VDE-0000.mp4' })}
+               >
+                  <video 
+                    preload="metadata" 
+                    className="w-full max-h-[80vh] object-contain opacity-60 group-hover:opacity-40 transition-opacity"
+                    aria-label="Brut Story - Dal Pari"
+                  >
+                    <source src="/images/VDE-0000.mp4#t=0.1" type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                      <Play fill="currentColor" size={32} className="ml-2" />
+                    </div>
+                  </div>
+               </div>
+               <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">DAL PARI — BRUT STORY</p>
+            </div>
+
             {/* IMPACT NUMBERS */}
             <div className="pt-32 mt-32 border-t border-[#051315]/10 max-w-5xl mx-auto">
               <h3 className="font-display text-4xl text-[#051315] mb-16 text-center">THE NUMBERS GREW.</h3>
