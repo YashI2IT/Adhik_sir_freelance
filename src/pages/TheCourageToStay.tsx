@@ -364,7 +364,7 @@ export default function TheCourageToStay() {
 
             <TimelineEvent year="2012" title="A DIFFERENT KIND OF STORM." dark>
               <p>Following public recognition of my work in Maharashtra, Marathi newspaper articles about me and our work began circulating in Kashmir.</p>
-              <motion.img {...fadeUp(0)} src="/images/WhatsApp Image 2026-09-30 at 4.23.41 PM.jpeg" alt="Newspaper Clippings" className="w-full aspect-video object-cover rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
+              <motion.img {...fadeUp(0)} src="/images/mail.png" alt="Email regarding Hurriyat Statement" className="w-full max-w-xl mx-auto h-auto object-contain rounded-xl shadow-lg my-8 grayscale hover:grayscale-0 transition-all duration-700" />
               <p>In places where very few people could read Marathi, these articles were presented alongside serious allegations questioning my intentions and the work being done with vulnerable girls.</p>
               <p className="font-display text-2xl text-[#B59A63] py-4">MISINFORMATION COULD BECOME DANGEROUS.</p>
               <p>I was from Maharashtra. I could have returned home. I could have said: <span className="italic">“I tried.”</span></p>
