@@ -132,28 +132,7 @@ export default function TheCourageToStay() {
           </motion.button>
         </section>
 
-        {/* FEATURED VIDEO 2 */}
-        <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315]">
-          <div className="max-w-6xl mx-auto">
-             <div 
-               className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
-               onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4' })}
-             >
-                <video 
-                  preload="metadata" 
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
-                  aria-label="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
-                >
-                  <source src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4#t=0.1" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                    <Play fill="currentColor" size={32} className="ml-2" />
-                  </div>
-                </div>
-             </div>
-          </div>
-        </section>
+        {/* FEATURED VIDEO 2 (Removed/Moved to 2002 section) */}
 
         {/* 2. THE BEGINNING / TIMELINE */}
         <section className="py-32 px-6 md:px-12 lg:px-16 bg-white">
@@ -307,6 +286,25 @@ export default function TheCourageToStay() {
               <p>In Kupwara, a small beginning was taking shape.</p>
               <p>There was no grand institution. No large building. No major donor. No blueprint for what it would eventually become.</p>
               <p>There were girls who needed security, education, affection and the possibility of a future. And there was a decision.</p>
+              
+              <div 
+               className="aspect-video w-full rounded-xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group my-12"
+               onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4' })}
+              >
+                <video 
+                  preload="metadata" 
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                  aria-label="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
+                >
+                  <source src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4#t=0.1" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <Play fill="currentColor" size={32} className="ml-2" />
+                  </div>
+                </div>
+              </div>
+
               <motion.img {...fadeUp(0)} src="/images/IMG_8458.jpg" alt="Girls of Basera-e-Tabassum" className="w-full aspect-[3/2] object-cover rounded-xl shadow-lg my-10 opacity-90 hover:opacity-100 transition-opacity duration-500" />
               <p className="font-display text-3xl text-white pt-4 pb-8">Basera-e-Tabassum— <span className="italic text-[#B59A63]">“The Abode of Smiles”</span> —began as a home for vulnerable girls.</p>
               
@@ -372,6 +370,27 @@ export default function TheCourageToStay() {
               <p>During the unrest of 2016, many young people suffered serious eye injuries.</p>
               <p className="font-display text-3xl text-[#B59A63] py-8">WHAT HAPPENS TO A YOUNG PERSON IF DARKNESS BECOMES PERMANENT?</p>
               <p>A teenager may have sixty or seventy years of life ahead. Could we simply watch?</p>
+              
+              {/* NEW YORK TIMES REFERENCE */}
+              <div className="my-12 p-8 border border-white/10 rounded-2xl bg-white/5">
+                <div className="text-[13px] font-semibold tracking-[0.2em] text-[#B59A63] mb-4 uppercase">DOCUMENTARY RECORD</div>
+                <h4 className="text-xl md:text-2xl text-white font-display mb-2">
+                  An Epidemic of 'Dead Eyes' in Kashmir as India Uses Pellet Guns on Protesters
+                </h4>
+                <p className="text-white/60 mb-6 italic">
+                  The New York Times · August 28, 2016
+                </p>
+                <a 
+                  href="https://www.nytimes.com/2016/08/29/world/asia/pellet-guns-used-in-kashmir-protests-cause-dead-eyes-epidemic.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-white hover:text-[#B59A63] transition-colors border border-white/20 hover:border-[#B59A63] px-6 py-3 rounded-full text-sm tracking-widest uppercase font-semibold group"
+                >
+                  View Original Coverage
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+
               <p className="font-display text-2xl text-white mt-8 mb-4">A WOUNDED EYE DOES NOT HAVE AN IDEOLOGY.</p>
               <p>We began reaching out. Doctors. Ophthalmologists. Eye surgeons. Hospitals. The purpose was simple: Find the best possible medical help wherever it existed.</p>
               <p className="mt-4">Not every battle against injury can be won. But every human being deserves our best effort.</p>
