@@ -514,13 +514,13 @@ export default function TheCourageToStay() {
               <h3 className="font-display text-4xl text-[#051315] mb-16 text-center">THE NUMBERS GREW.</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 text-center">
                 {[
-                  { label: "Girls supported", value: "—" },
-                  { label: "Patients treated", value: "—" },
-                  { label: "Villages reached", value: "—" },
-                  { label: "Ambulances deployed", value: "—" },
-                  { label: "Homes established", value: "—" },
-                  { label: "Students graduating", value: "—" },
-                  { label: "Families rebuilding", value: "—" },
+                  { label: "Girls Supported", value: "2,500+" },
+                  { label: "Patients Served* every year", value: "2.5 lakh+" },
+                  { label: "Villages Reached*", value: "210+" },
+                  { label: "Ambulances Deployed", value: "22" },
+                  { label: "Homes Established", value: "6" },
+                  { label: "Students Graduating", value: "800" },
+                  { label: "Marriages Supported", value: "1,000+" },
                 ].map((stat, i) => (
                   <div key={i} className="space-y-4">
                     <p className="font-display text-5xl md:text-6xl text-[#B59A63]">{stat.value}</p>
