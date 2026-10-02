@@ -440,23 +440,33 @@ export default function TheCourageToStay() {
             {/* BRUT STORY VIDEO */}
             <div className="pt-24 max-w-6xl mx-auto w-full">
                <div 
-                 className="w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group flex items-center justify-center"
-                 onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/VDE-0000.mp4' })}
+                 className="w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group flex items-center justify-center"
+                 onClick={() => setVideoModal({ isOpen: true, type: 'youtube', src: 'RWiJiNgUyGQ' })}
                >
-                  <video 
-                    preload="metadata" 
-                    className="w-full max-h-[80vh] object-contain opacity-60 group-hover:opacity-40 transition-opacity"
-                    aria-label="Brut Story - Dal Pari"
-                  >
-                    <source src="/images/VDE-0000.mp4#t=0.1" type="video/mp4" />
-                  </video>
+                  <img 
+                    src="https://img.youtube.com/vi/RWiJiNgUyGQ/maxresdefault.jpg"
+                    alt="Brut Story - Dal Pari"
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                       <Play fill="currentColor" size={32} className="ml-2" />
                     </div>
                   </div>
                </div>
-               <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">DAL PARI — BRUT STORY</p>
+               
+               <div className="flex flex-col items-center mt-8 space-y-4">
+                 <p className="font-display text-center text-xl text-[#B59A63] italic">DAL PARI — BRUT STORY</p>
+                 <a 
+                   href="https://www.brut.media/in/articles/india/society/adhik-kadam-the-man-who-brought-a-hospital-to-dal-lake-force-for-good-hero" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="inline-flex items-center gap-2 border border-[#051315]/20 hover:border-[#051315] text-[#051315] px-6 py-2 rounded-full uppercase tracking-wider text-xs transition-colors duration-300"
+                 >
+                   <span>Read Full Article on Brut</span>
+                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                 </a>
+               </div>
             </div>
 
             {/* IMPACT NUMBERS */}
