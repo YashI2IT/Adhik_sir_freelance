@@ -653,6 +653,28 @@ export default function TheCourageToStay() {
                 </div>
              </div>
              <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">DD Originals - Interview</p>
+             
+             {/* MODI VIDEO */}
+             <div className="mt-32">
+               <div 
+                 className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
+                 onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/modi.mp4' })}
+               >
+                 <video 
+                   preload="metadata" 
+                   className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                   aria-label="PM Modi Birthday Special"
+                 >
+                   <source src="/images/modi.mp4#t=0.1" type="video/mp4" />
+                 </video>
+                 <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                     <Play fill="currentColor" size={32} className="ml-2" />
+                   </div>
+                 </div>
+               </div>
+               <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">PM Modi Birthday Special</p>
+             </div>
           </div>
         </section>
 
