@@ -228,6 +228,28 @@ export default function TheCourageToStay() {
           <div className="max-w-5xl mx-auto">
             <h3 className="font-display text-5xl text-[#051315] mb-12 text-center">THEN I REACHED KUPWARA.</h3>
             
+            {/* KBC MARATHI VIDEO */}
+            <div className="pb-24 max-w-5xl mx-auto w-full">
+              <div 
+                className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
+                onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/किती सुंदर क्षण आहेत हे.mp4' })}
+              >
+                <video 
+                  preload="metadata" 
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                  aria-label="किती सुंदर क्षण आहेत हे"
+                >
+                  <source src="/images/किती सुंदर क्षण आहेत हे.mp4#t=0.1" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <Play fill="currentColor" size={32} className="ml-2" />
+                  </div>
+                </div>
+              </div>
+              <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">"किती सुंदर क्षण आहेत हे"</p>
+            </div>
+            
             <div className="space-y-8 text-[18px] md:text-[20px] leading-[1.9] text-[#0D343A]/80 text-center max-w-3xl mx-auto">
               <p>The findings confronted me with a scale of vulnerability I had never imagined.</p>
               <p>Our field study indicated that Kupwara district alone had more than 24,000 orphaned children.</p>
@@ -595,27 +617,7 @@ export default function TheCourageToStay() {
               </div>
             </div>
 
-            {/* VIDEO 1 */}
-            <div className="py-24 max-w-5xl mx-auto w-full">
-              <div 
-                className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
-                onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/किती सुंदर क्षण आहेत हे.mp4' })}
-              >
-                <video 
-                  preload="metadata" 
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
-                  aria-label="किती सुंदर क्षण आहेत हे"
-                >
-                  <source src="/images/किती सुंदर क्षण आहेत हे.mp4#t=0.1" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-                    <Play fill="currentColor" size={32} className="ml-2" />
-                  </div>
-                </div>
-              </div>
-              <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">"किती सुंदर क्षण आहेत हे"</p>
-            </div>
+
 
             <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start border-t border-[#051315]/10 pt-32">
               <h3 className="font-display text-4xl md:text-5xl text-[#051315] md:sticky md:top-32">FROM SERVICE<br/><span className="text-[#B59A63] italic">TO WITNESSING.</span></h3>
