@@ -4,7 +4,6 @@ import { PageTransition } from '../components/PageTransition'
 import { useRef, useState } from 'react'
 import { Play } from 'lucide-react'
 import { VideoModal } from '../components/VideoModal'
-import { PdfViewer } from '../components/PdfViewer'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -388,12 +387,51 @@ export default function TheCourageToStay() {
               
               {/* DOCUMENT EMBEDS */}
               <div className="space-y-12 my-12">
-                <div className="w-full h-[60vh] md:h-[80vh] max-h-[850px] bg-[#0A1A1C] rounded-xl overflow-hidden shadow-2xl border border-white/10 relative p-4 md:p-8">
-                   <PdfViewer file="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf" />
+                
+                {/* GRAVE SITUATION DOCUMENT */}
+                <div className="w-full bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative md:p-0">
+                   {/* Mobile View */}
+                   <div className="md:hidden flex flex-col items-center text-center space-y-6 p-8">
+                     <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B59A63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                     </div>
+                     <div>
+                       <h4 className="text-white font-display text-2xl mb-2">Hurriyat Statement</h4>
+                       <p className="text-white/60 text-[15px]">View the full translated statement document.</p>
+                     </div>
+                     <a href="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-[#B59A63] text-[#B59A63] hover:bg-[#B59A63] hover:text-[#051315] px-8 py-4 rounded-full uppercase tracking-widest text-[11px] font-bold transition-all duration-300 w-full justify-center">
+                       Read Document
+                     </a>
+                   </div>
+                   
+                   {/* Desktop View */}
+                   <div className="hidden md:block w-full aspect-[1/1.414] max-h-[850px]">
+                     <iframe src="/docs/GRAVE SITUATION AND HELPLESSNESS.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" className="w-full h-full border-none bg-white" title="Grave Situation Document" />
+                   </div>
                 </div>
-                <div className="w-full h-[60vh] md:h-[80vh] max-h-[850px] bg-[#0A1A1C] rounded-xl overflow-hidden shadow-2xl border border-white/10 relative p-4 md:p-8">
-                   <PdfViewer file="/docs/New%20Doc%2009-25-2026%2014.00.pdf" />
+
+                {/* NEW DOC */}
+                <div className="w-full bg-white/5 rounded-xl overflow-hidden shadow-2xl border border-white/10 relative md:p-0">
+                   {/* Mobile View */}
+                   <div className="md:hidden flex flex-col items-center text-center space-y-6 p-8">
+                     <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B59A63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                     </div>
+                     <div>
+                       <h4 className="text-white font-display text-2xl mb-2">Official Complaint</h4>
+                       <p className="text-white/60 text-[15px]">View the J&K Human Rights complaint.</p>
+                     </div>
+                     <a href="/docs/New%20Doc%2009-25-2026%2014.00.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-[#B59A63] text-[#B59A63] hover:bg-[#B59A63] hover:text-[#051315] px-8 py-4 rounded-full uppercase tracking-widest text-[11px] font-bold transition-all duration-300 w-full justify-center">
+                       Read Document
+                     </a>
+                   </div>
+                   
+                   {/* Desktop View */}
+                   <div className="hidden md:block w-full aspect-[1/1.414] max-h-[850px]">
+                     <iframe src="/docs/New%20Doc%2009-25-2026%2014.00.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" className="w-full h-full border-none bg-white" title="New Document" />
+                   </div>
                 </div>
+
               </div>
 
               <p className="mt-8 font-display text-2xl text-white border-t border-white/10 pt-8">Buildings can be constructed with money. But trust cannot be bought. Presence became our strongest institution.</p>
