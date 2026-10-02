@@ -1,7 +1,8 @@
 import { useSEO } from '../hooks/useSEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { PageTransition } from '../components/PageTransition'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { Play } from 'lucide-react'
 import { VideoModal } from '../components/VideoModal'
 
 const fadeUp = (delay = 0) => ({
@@ -58,9 +59,15 @@ function ParallaxDivider({ src }: { src: string }) {
 
 export default function TheCourageToStay() {
   useSEO({
-    title: 'The Journey | Adhik Kadam',
+    title: 'The Courage to Stay | Adhik Kadam',
     description: 'Three Decades of Witnessing, Service & Belonging in Kashmir, from 1995 to 2026.',
-    canonicalPath: '/the-journey',
+    canonicalPath: '/the-courage-to-stay',
+  })
+
+  const [videoModal, setVideoModal] = useState<{isOpen: boolean, type: 'mp4' | 'youtube', src: string}>({
+    isOpen: false,
+    type: 'mp4',
+    src: ''
   })
 
   const heroRef = useRef<HTMLElement>(null)
@@ -128,11 +135,22 @@ export default function TheCourageToStay() {
         {/* FEATURED VIDEO 2 */}
         <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315]">
           <div className="max-w-6xl mx-auto">
-             <div className="w-full relative shadow-2xl">
-                <VideoModal 
-                  src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4"
-                  ariaLabel="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
-                />
+             <div 
+               className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
+               onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4' })}
+             >
+                <video 
+                  preload="metadata" 
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                  aria-label="Karmaveer Adhik Kadam - Kon Honar Crorepati Best Moments"
+                >
+                  <source src="/images/कर्मवीर_अधिक_कदम___Ep_16___20th_June,_2019___कोण_होणार_करोडपती___Best_Moments(1080p).mp4#t=0.1" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <Play fill="currentColor" size={32} className="ml-2" />
+                  </div>
+                </div>
              </div>
           </div>
         </section>
@@ -529,11 +547,22 @@ export default function TheCourageToStay() {
 
             {/* VIDEO 1 */}
             <div className="py-24 max-w-5xl mx-auto w-full">
-              <div className="w-full shadow-2xl relative">
-                <VideoModal 
-                  src="/images/किती सुंदर क्षण आहेत हे.mp4"
-                  ariaLabel="किती सुंदर क्षण आहेत हे - Video"
-                />
+              <div 
+                className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
+                onClick={() => setVideoModal({ isOpen: true, type: 'mp4', src: '/images/किती सुंदर क्षण आहेत हे.mp4' })}
+              >
+                <video 
+                  preload="metadata" 
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                  aria-label="किती सुंदर क्षण आहेत हे"
+                >
+                  <source src="/images/किती सुंदर क्षण आहेत हे.mp4#t=0.1" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <Play fill="currentColor" size={32} className="ml-2" />
+                  </div>
+                </div>
               </div>
               <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">"किती सुंदर क्षण आहेत हे"</p>
             </div>
@@ -550,6 +579,28 @@ export default function TheCourageToStay() {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* DD ORIGINALS VIDEO */}
+        <section className="py-24 px-6 md:px-12 lg:px-16 bg-[#051315]">
+          <div className="max-w-6xl mx-auto">
+             <div 
+               className="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-2xl relative cursor-pointer group"
+               onClick={() => setVideoModal({ isOpen: true, type: 'youtube', src: 'https://youtu.be/FAIpp0ZzA60?si=zgBWkZV7aUPVnGuq' })}
+             >
+                <img 
+                  src="https://img.youtube.com/vi/FAIpp0ZzA60/maxresdefault.jpg"
+                  alt="DD Originals Thumbnail"
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <Play fill="currentColor" size={32} className="ml-2" />
+                  </div>
+                </div>
+             </div>
+             <p className="font-display text-center text-xl text-[#B59A63] mt-8 italic">DD Originals - Interview</p>
           </div>
         </section>
 
@@ -619,6 +670,13 @@ export default function TheCourageToStay() {
         </section>
 
       </main>
+
+      <VideoModal 
+        isOpen={videoModal.isOpen}
+        onClose={() => setVideoModal({ ...videoModal, isOpen: false })}
+        videoSrc={videoModal.type === 'mp4' ? videoModal.src : undefined}
+        youtubeUrl={videoModal.type === 'youtube' ? videoModal.src : undefined}
+      />
     </PageTransition>
   )
 }

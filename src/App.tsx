@@ -36,8 +36,7 @@ function AnimatedRoutes() {
         <Route path="/inner-journey" element={<InnerJourney />} />
         <Route path="/curing-the-gash" element={<CuringTheGash />} />
         <Route path="/from-service-to-witnessing" element={<ServiceToWitnessing />} />
-        <Route path="/the-journey" element={<TheCourageToStay />} />
-        <Route path="/the-courage-to-stay" element={<Navigate to="/the-journey" replace />} />
+        <Route path="/the-courage-to-stay" element={<TheCourageToStay />} />
         <Route path="/daughters-return-to-their-soil" element={<DaughtersReturn />} />
         <Route path="/gallery-media" element={<GalleryMedia />} />
         <Route path="/contact" element={<Contact />} />

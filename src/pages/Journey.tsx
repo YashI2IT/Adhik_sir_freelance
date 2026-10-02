@@ -11,7 +11,7 @@ import { PageTransition } from '../components/PageTransition'
 
 export default function Journey() {
   useSEO({
-    title: 'His Journey | Adhik Kadam',
+    title: 'The Journey | Adhik Kadam',
     description: 'Follow Adhik Kadam’s journey from grassroots volunteering to building an institution for conflict-affected communities.',
     canonicalPath: '/journey',
   })
